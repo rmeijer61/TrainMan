@@ -16,11 +16,26 @@
                             <entry key="actionbar">
                               <value>
                                 <PersistentState>
+                                  <option name="children">
+                                    <map>
+                                      <entry key="image">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="paddingPercent" value="10" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="K:\00 - MyCourses\Andriod Programming\00 - COP2660 - Intro to Android Programming\02 - Week2 (Module2)\TrainManImage2.png" />
-                                      <entry key="outputName" value="trainman_image2" />
+                                      <entry key="imageAsset" value="K:\00 - MyCourses\Andriod Programming\00 - COP2660 - Intro to Android Programming\02 - Week2 (Module2)\TrainManImage7.jpg" />
+                                      <entry key="outputName" value="trainman_image7" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -39,6 +54,11 @@
                 </map>
               </option>
             </PersistentState>
+          </value>
+        </entry>
+        <entry key="vectorWizard">
+          <value>
+            <PersistentState />
           </value>
         </entry>
       </map>
