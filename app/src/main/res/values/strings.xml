@@ -2,6 +2,7 @@
     <string name="app_name">TrainMan</string>
 
     <string name="trainman_image_desc">TrainMan!</string>
+    <string name="launcher_title_text">TrainMan</string>
     <string name="signin_text">Sign in</string>
     <string name="usernameEditText">usernameEditText</string>
     <string name="passwordEditText">passwordEditText</string>
