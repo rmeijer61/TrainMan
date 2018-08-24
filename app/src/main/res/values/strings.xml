@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">TrainMan</string>
+
+    <string name="signin_text">Sign in</string>
+    <string name="usernameEditText">usernameEditText</string>
+    <string name="passwordEditText">passwordEditText</string>
+    <string name="enter_username">Enter username</string>
+    <string name="enter_password">Enter password</string>
+    <string name="valid_username">jdoe</string>
+    <string name="valid_password">welcome1</string>
+    <string name="login_button">Login</string>
+    <string name="success_toast">Login Successful!</string>
+    <string name="failure_toast">Login Failure!</string>
+</resources>
