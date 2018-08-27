@@ -15,4 +15,19 @@
     <string name="login_button">Login</string>
     <string name="success_toast">Login Successful!</string>
     <string name="failure_toast">Login Failure!</string>
+
+    <!-- Strings for the functionality Buttons -->
+    <string name="main_menu_text">Main Menu</string>
+    <string name="enter_new_customer_text">Enter new customer</string>
+    <string name="display_customer_list_text">Display customer list"</string>
+    <string name="take_customer_picture_text">Take customer picture</string>
+    <string name="view_customer_session_text">View customer session</string>
+    <string name="complete_customer_session_text">Complete customer session</string>
+    <string name="enter_new_customer_session_text">Enter new customer session</string>
+    <string name="sign_customer_session_text">Sign session</string>
+    <string name="submit_customer_billing_info_text">Submit customer billing info</string>
+    <string name="submit_payment_text">Submit payment</string>
+    <string name="generate_receipt_text">Generate receipt</string>
+    <string name="print_receipt_text">Print receipt</string>
+    <string name="email_receipt_text">Email receipt</string>
 </resources>

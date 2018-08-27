@@ -7,11 +7,11 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_gravity="left"
+        android:layout_gravity="start"
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/trainman_launcher_image"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/trainman_image_desc"
             android:src="@drawable/trainmanimage3"
@@ -19,7 +19,7 @@
         <TextView style="@style/launcher_title"
             android:id="@+id/launcher_title"
             android:layout_marginTop="30dp"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/launcher_title_text"
             />

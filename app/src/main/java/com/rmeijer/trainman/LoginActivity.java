@@ -1,6 +1,7 @@
 package com.rmeijer.trainman;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -51,11 +52,18 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (checkLogin(username, password)) {
                     messageResId = R.string.success_toast;
+                    Context context = getApplicationContext();
+                    Toast.makeText(context, messageResId, Toast.LENGTH_SHORT).show();
+                    // Start MenuActivity
+                    Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                    startActivity(intent);
+
                 } else {
                     messageResId = R.string.failure_toast;
+                    Context context = getApplicationContext();
+                    Toast.makeText(context, messageResId, Toast.LENGTH_SHORT).show();
                 }
-                Context context = getApplicationContext();
-                Toast.makeText(context, messageResId, Toast.LENGTH_SHORT).show();
+
             }
         });
 

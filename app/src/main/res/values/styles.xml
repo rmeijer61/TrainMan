@@ -6,25 +6,31 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-
+        <item name="android:buttonStyle">@style/Widget.AppCompat.Button.Borderless</item>
 
     </style>
 
     <style name="launcher_title" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:textColor">#000</item>
-        <item name="android:textSize">40dp</item>
+        <item name="android:textSize">40sp</item>
 
     </style>
 
     <style name="head1" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:textColor">#000</item>
-        <item name="android:textSize">24dp</item>
+        <item name="android:textSize">24sp</item>
 
     </style>
 
     <style name="userinput" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:textColor">@color/colorInputText</item>
-        <item name="android:textSize">12dp</item>
+        <item name="android:textSize">12sp</item>
+
+    </style>
+
+    <style name="main_menu" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColor">#000</item>
+        <item name="android:textSize">40sp</item>
 
     </style>
 
