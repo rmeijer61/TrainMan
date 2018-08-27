@@ -171,5 +171,19 @@
             android:text="@string/email_receipt_text"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <Button
+            android:id="@+id/signout_button"
+            android:layout_width="312dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/button_round"
+            android:text="@string/signout_text"/>
+    </LinearLayout>
+
 
 </LinearLayout>

@@ -30,4 +30,5 @@
     <string name="generate_receipt_text">Generate receipt</string>
     <string name="print_receipt_text">Print receipt</string>
     <string name="email_receipt_text">Email receipt</string>
+    <string name="signout_text">Sign out</string>
 </resources>
