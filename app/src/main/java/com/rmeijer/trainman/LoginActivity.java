@@ -21,8 +21,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText eUsernameText;
     private EditText ePasswordText;
-    private Button mLoginButton;
-    private int mCurrentIndex = 0;
+
+    // Changed to local
+    //private Button mLoginButton;
+    //private int mCurrentIndex = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,24 +38,25 @@ public class LoginActivity extends AppCompatActivity {
 
 
         // 2.8 - Wiring up the new button
-        mLoginButton = findViewById(R.id.login_button);
+        Button mLoginButton = findViewById(R.id.login_button);
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 // Check authentication credentials
-                eUsernameText = (EditText) findViewById(R.id.username);
+                eUsernameText = findViewById(R.id.username);
                 String username = eUsernameText.getText().toString();
 
-                ePasswordText = (EditText) findViewById(R.id.password);
+                ePasswordText = findViewById(R.id.password);
                 String password =  ePasswordText.getText().toString();
 
-                int messageResId = 0;
+                int messageResId;
 
                 if (checkLogin(username, password)) {
                     messageResId = R.string.success_toast;
                     Context context = getApplicationContext();
                     Toast.makeText(context, messageResId, Toast.LENGTH_SHORT).show();
+
                     // Start MenuActivity
                     Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
                     startActivity(intent);
@@ -93,6 +96,8 @@ public class LoginActivity extends AppCompatActivity {
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         Log.i(TAG, "onSaveInstanceState");
+        // Changed from private
+        int mCurrentIndex = 0;
         savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
     }
 
@@ -114,10 +119,7 @@ public class LoginActivity extends AppCompatActivity {
         String validUsername = getResources().getString(R.string.valid_username);
         String validPassword = getResources().getString(R.string.valid_password);
 
-        if (username.equals(validUsername) && password.equals(validPassword))
-            return true;
-        else
-            return false;
+        return (username.equals(validUsername) && password.equals(validPassword));
     }
 
 }

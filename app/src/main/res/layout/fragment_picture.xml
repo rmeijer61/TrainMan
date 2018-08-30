@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:textAllCaps="false"
+    android:layout_margin="16dp">
+
+    <TextView style="@style/screentitle_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/take_customer_picture_title"/>
+
+    <TextView style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView style="@style/label_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="@string/customerName_label"/>
+
+    <EditText
+        android:id="@+id/customerName_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/customerName_hint"
+        android:inputType="text"/>
+
+    <LinearLayout style="?android:attr/buttonBarStyle"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start">
+        <Button style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/picture_button"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/button_round"
+            android:textColor="@android:color/black"
+            android:text="@string/picture_button_text" />
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            android:textColor="@color/gray500"/>
+    </LinearLayout>
+
+    <!-- Dummy place holder -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:contentDescription="@string/customer_picture_desc"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            android:textColor="@color/gray500"/>
+    </LinearLayout>
+    <LinearLayout style="?android:attr/buttonBarStyle"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <Button style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/customer_cancel_button"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/button_round"
+            android:textColor="@android:color/black"
+            android:text="@string/cancel_button_text" />
+        <Button style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/customer_save_button"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/button_round"
+            android:textColor="@android:color/black"
+            android:text="@string/save_button_text" />
+
+    </LinearLayout>
+
+</LinearLayout>

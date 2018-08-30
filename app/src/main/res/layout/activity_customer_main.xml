@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <FrameLayout
-        android:id="@+id/fragment_container_f1"
+        android:id="@+id/fragment_container_fc1"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="#fff"
@@ -13,9 +13,17 @@
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/fragment_container_f2"
+        android:id="@+id/fragment_container_fc2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="vertical">
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_container_fc3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="@drawable/menu_bg"
         android:orientation="vertical">
     </FrameLayout>

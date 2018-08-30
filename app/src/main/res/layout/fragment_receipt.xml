@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:textAllCaps="false"
+    android:layout_margin="16dp">
+
+    <TextView style="@style/screentitle_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/generate_receipt_title"/>
+
+    <TextView style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView style="@style/label_style"
+        android:id="@+id/receipt_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="@string/receipt_label"/>
+
+    <EditText
+        android:id="@+id/new_customer_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/receipt_hint"
+        android:inputType="text"/>
+
+    <LinearLayout style="?android:attr/buttonBarButtonStyle"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <Button style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/receipt_email_button"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/button_round"
+            android:textColor="@android:color/black"
+            android:text="@string/email_button_text" />
+
+        <Button style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/receipt_print_button"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/button_round"
+            android:textColor="@android:color/black"
+            android:text="@string/print_button_text" />
+
+        <Button style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/receipt_done_button"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/button_round"
+            android:textColor="@android:color/black"
+            android:text="@string/done_button_text" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -14,25 +14,38 @@
     <style name="launcher_title" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:textColor">#000</item>
         <item name="android:textSize">40sp</item>
-
     </style>
 
     <style name="head1" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:textColor">#000</item>
         <item name="android:textSize">24sp</item>
+    </style>
 
+    <style name="head2" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">#000</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="userinput" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:textColor">@color/colorInputText</item>
         <item name="android:textSize">12sp</item>
-
     </style>
 
     <style name="main_menu" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:textColor">#000</item>
         <item name="android:textSize">40sp</item>
+    </style>
 
+    <style name="screentitle_style" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColor">#000</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="label_style" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColor">#000</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 
 </resources>
