@@ -44,10 +44,10 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 // Check authentication credentials
-                eUsernameText = findViewById(R.id.username);
+                eUsernameText = findViewById(R.id.enter_username_edittext);
                 String username = eUsernameText.getText().toString();
 
-                ePasswordText = findViewById(R.id.password);
+                ePasswordText = findViewById(R.id.enter_password_edittext);
                 String password =  ePasswordText.getText().toString();
 
                 int messageResId;

@@ -12,7 +12,7 @@
         android:textAllCaps="false"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="4dp"
-        android:text="@string/user_label_text"/>
+        android:text="@string/user_logged_in_as_label"/>
 
     <TextView style="@style/label_style"
         android:layout_width="match_parent"

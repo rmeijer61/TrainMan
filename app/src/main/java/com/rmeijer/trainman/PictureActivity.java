@@ -22,22 +22,22 @@ public class PictureActivity extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
 
         // 7.16 - Adding a UserFragment
-        Fragment fragment_fp1 = fm.findFragmentById(R.id.fragment_container_fPic1);
+        Fragment fragment_fPic1 = fm.findFragmentById(R.id.fragment_container_fPic1);
 
-        if (fragment_fp1 == null) {
-            fragment_fp1 = new UserFragment();
+        if (fragment_fPic1 == null) {
+            fragment_fPic1 = new UserFragment();
             fm.beginTransaction()
-                    .add(R.id.fragment_container_fPic1, fragment_fp1)
+                    .add(R.id.fragment_container_fPic1, fragment_fPic1)
                     .commit();
         }
 
         // 7.16 - Adding a PictureFragment
-        Fragment fragment_fp2 = fm.findFragmentById(R.id.fragment_container_fPic2);
+        Fragment fragment_fPic2 = fm.findFragmentById(R.id.fragment_container_fPic2);
 
-        if (fragment_fp2 == null) {
-            fragment_fp2 = new PictureFragment();
+        if (fragment_fPic2 == null) {
+            fragment_fPic2 = new PictureFragment();
             fm.beginTransaction()
-                    .add(R.id.fragment_container_fPic2, fragment_fp2)
+                    .add(R.id.fragment_container_fPic2, fragment_fPic2)
                     .commit();
         }
     }

@@ -2,8 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/launcher_bg"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -16,22 +15,22 @@
             android:contentDescription="@string/trainman_image_desc"
             android:src="@drawable/trainmanimage3"
         />
-        <TextView style="@style/launcher_title"
-            android:id="@+id/launcher_title"
+        <TextView style="@style/app_title_style"
+            android:id="@+id/app_title_text"
             android:layout_marginTop="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/launcher_title_text"
+            android:text="@string/app_title_text"
             />
     </LinearLayout>
 
     <LinearLayout
-        android:padding="10dp"
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_gravity="center"
         android:layout_height="wrap_content">
 
-        <TextView style="@style/head1"
+        <TextView style="@style/head1_style"
             android:id="@+id/sigin_msg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,67 +40,54 @@
 
     <LinearLayout
         android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
             android:padding="4dp"
-            android:id="@+id/enter_username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/enter_username"
-        />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <EditText style="@style/userinput"
-            android:id="@+id/username"
-            android:label="@string/usernameEditText"
-            android:padding="4dp"
+            android:id="@+id/enter_username_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="top|center_horizontal"
+            android:layout_gravity="start"
+            android:text="@string/enter_username_label"
+        />
+
+        <EditText style="@style/edittext_style"
+            android:id="@+id/enter_username_edittext"
+            android:padding="4dp"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
             android:background="@drawable/edittext_bottom_border"
             android:hint="@string/enter_username_hint"
             android:inputType="text"
-            android:ems="20"
-
-        />
+            />
     </LinearLayout>
 
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_width="340dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
             android:padding="4dp"
-            android:id="@+id/enter_password"
-            android:layout_width="fill_parent"
+            android:id="@+id/enter_password_label"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/enter_password"
+            android:layout_gravity="start"
+            android:text="@string/enter_password_label"
         />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp">
-
-        <EditText style="@style/userinput"
-            android:id="@+id/password"
-            android:label="@string/passwordEditText"
+        <EditText style="@style/edittext_style"
+            android:id="@+id/enter_password_edittext"
             android:padding="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="top|center_horizontal"
+            android:layout_gravity="start"
             android:background="@drawable/edittext_bottom_border"
             android:inputType="textPassword"
             android:hint="@string/enter_password_hint"
@@ -110,6 +96,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_gravity="center"
         android:layout_height="wrap_content">

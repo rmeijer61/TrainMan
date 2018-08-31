@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
-        <TextView style="@style/main_menu"
+        <TextView style="@style/main_menu_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/main_menu_title"/>

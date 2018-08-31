@@ -1,8 +1,6 @@
 package com.rmeijer.trainman;
 
 // 7.9 - Supporting the Fragment import
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -54,8 +52,8 @@ public class MenuFragment extends Fragment {
             int messageResId = R.string.OK_msg_text;
             Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
-            // Start CustomerActivity
-            Intent intent = new Intent(getActivity(), CustomerActivity.class);
+            // Start EnterCustomerActivity
+            Intent intent = new Intent(getActivity(), EnterCustomerActivity.class);
             startActivity(intent);
             }
         });

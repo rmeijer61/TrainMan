@@ -6,7 +6,7 @@
     android:textAllCaps="false"
     android:layout_margin="16dp">
 
-    <TextView style="@style/screentitle_style"
+    <TextView style="@style/screen_title_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -49,13 +49,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAllCaps="false"
-            android:text="@string/sessionDesc_label"/>
+            android:text="@string/session_desc_label"/>
 
         <EditText
             android:id="@+id/sessionDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/sessionDesc_hint"
+            android:hint="@string/session_desc_hint"
             android:inputType="text"/>
     </LinearLayout>
 
@@ -70,13 +70,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAllCaps="false"
-            android:text="@string/sessionCompleted_label"/>
+            android:text="@string/session_completed_label"/>
 
         <EditText
             android:id="@+id/sessionCompleted"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/sessionCompleted_hint"
+            android:hint="@string/session_completed_hint"
             android:inputType="text"/>
     </LinearLayout>
 
@@ -91,13 +91,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAllCaps="false"
-            android:text="@string/sessionPaid_label"/>
+            android:text="@string/session_paid_label"/>
 
         <EditText
             android:id="@+id/sessionPaid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/sessionPaid_hint"
+            android:hint="@string/session_paid_hint"
             android:inputType="text"/>
     </LinearLayout>
 

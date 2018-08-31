@@ -30,7 +30,7 @@ public class EnterSessionActivity extends AppCompatActivity {
                     .commit();
         }
 
-        // 7.16 - Adding a CustomerFragment
+        // 7.16 - Adding a EnterCustomerFragment
         Fragment fragment_fESess2 = fm.findFragmentById(R.id.fragment_container_fESess2);
 
         if (fragment_fESess2 == null) {

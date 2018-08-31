@@ -21,7 +21,7 @@ public class CustomerListFragment extends Fragment {
 
     // 8.20 - Setting an Adapter
     // Changed to local
-    // private CustomerAdapter mAdapter;
+    private CustomerAdapter mAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,7 +29,7 @@ public class CustomerListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_customer_list, container, false);
 
         // Removed cast
-        mCustomerRecyclerView = view.findViewById(R.id.customer_recycler_view);
+        mCustomerRecyclerView = (RecyclerView) view.findViewById(R.id.customer_recycler_view);
         mCustomerRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         // 8.20 - Setting an Adapter
@@ -46,6 +46,16 @@ public class CustomerListFragment extends Fragment {
 
         CustomerAdapter mAdapter = new CustomerAdapter(customers);
         mCustomerRecyclerView.setAdapter(mAdapter);
+
+        // 10.9 - Reloading the list in onResume()
+        //mAdapter = new CrimeAdapter(crimes);
+        //mCrimeRecyclerView.setAdapter(mAdapter);
+        if (mAdapter == null) {
+            mAdapter = new CustomerAdapter(customers);
+            mCustomerRecyclerView.setAdapter(mAdapter);
+        } else {
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
 
@@ -61,8 +71,7 @@ public class CustomerListFragment extends Fragment {
         // 8.22 - Writing a bind(Customer) method
         private Customer mCustomer;
 
-        // Changed public to private
-        private CustomerHolder(LayoutInflater inflater, ViewGroup parent) {
+        public CustomerHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_customer, parent, false));
 
             // 8.24 - Detecting presses in CustomerHolder
@@ -70,26 +79,30 @@ public class CustomerListFragment extends Fragment {
 
             // 8.21 - Pulling out views in the constructor
             mNameTextView = itemView.findViewById(R.id.customer_name);
-            mDateTextView = itemView.findViewById(R.id.customer_date);
+            //mDateTextView = itemView.findViewById(R.id.customer_date);
         }
 
         // 8.22 - Writing a bind(Customer) method
         public void bind(Customer customer) {
             mCustomer = customer;
             mNameTextView.setText(mCustomer.getName());
-            mDateTextView.setText(mCustomer.getDate().toString());
+            //mDateTextView.setText(mCustomer.getDate().toString());
         }
 
         // 8.24 - Detecting presses in CustomerHolder
         @Override
         public void onClick(View view) {
-            Toast.makeText(getActivity(),
-                     "Selected " + mCustomer.getName(), Toast.LENGTH_SHORT)
-                    .show();
+            //Toast.makeText(getActivity(),
+            //         "Selected " + mCustomer.getName(), Toast.LENGTH_SHORT)
+            //        .show();
 
             // Go to Customer main
-            Intent intent = new Intent(getActivity(), CustomerMainActivity.class);
+            // 10.3 - Stashing and passing a Crime
+            //Intent intent = new Intent(getActivity(), ViewCustomerActivity.class);
+            Intent intent = ViewCustomerActivity.newIntent(getActivity(), mCustomer.getId());
+
             startActivity(intent);
+            // ???
             getActivity().finish();
         }
 
@@ -103,8 +116,7 @@ public class CustomerListFragment extends Fragment {
 
         private List<Customer> mCustomers;
 
-        // Changed public to private
-        private CustomerAdapter(List<Customer> customers) {
+        public CustomerAdapter(List<Customer> customers) {
             mCustomers = customers;
         }
 

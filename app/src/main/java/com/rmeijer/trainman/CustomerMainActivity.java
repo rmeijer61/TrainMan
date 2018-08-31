@@ -1,9 +1,13 @@
 package com.rmeijer.trainman;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+
+import java.util.UUID;
 
 public class CustomerMainActivity extends AppCompatActivity {
 
@@ -46,6 +50,31 @@ public class CustomerMainActivity extends AppCompatActivity {
                     .add(R.id.fragment_container_fc3, fragment_fc3)
                     .commit();
         }
+
+    }
+
+
+    // 10.2 - Creating a newIntent method
+    // 10.7 - Using newInstance(UUID)
+    //public static final String EXTRA_CUSTOMER_ID =
+    private static final String EXTRA_CUSTOMER_ID =
+            "com.rmeijer.trainman.customer_id";
+
+    public static Intent newIntent(Context packageContext, UUID customerId) {
+        Intent intent = new Intent(packageContext, CustomerMainActivity.class);
+        intent.putExtra(EXTRA_CUSTOMER_ID, customerId);
+        return intent;
+    }
+
+
+    // 8.9 - Cleaning up CustomerMainActivity
+    //@Override
+    protected Fragment createFragment() {
+        // 10.7 - Using newInstance(UUID)
+        //return new CrimeFragment();
+        UUID customerId = (UUID) getIntent()
+                .getSerializableExtra(EXTRA_CUSTOMER_ID);
+        return CustomerHeadFragment.newInstance(customerId);
 
     }
 }

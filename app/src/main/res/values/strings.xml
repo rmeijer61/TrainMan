@@ -2,21 +2,25 @@
     <string name="app_name">TrainMan</string>
 
     <!-- Login strings  -->
-    <string name="trainman_image_desc">TrainMan!</string>
-    <string name="launcher_title_text">TrainMan</string>
+    <string name="trainman_image_desc">TrainMan image</string>
+    <string name="app_title_text">TrainMan</string>
     <string name="login_text">Please Log In</string>
     <string name="login_button_text">Login</string>
-    <string name="usernameEditText">usernameEditText</string>
-    <string name="passwordEditText">passwordEditText</string>
-    <string name="enter_username">Enter username</string>
-    <string name="enter_username_hint">Username</string>
-    <string name="enter_password">Enter password</string>
-    <string name="enter_password_hint">Password</string>
+    <string name="enter_username_label">Username:</string>
+    <string name="enter_username_hint">Enter your username</string>
+    <string name="enter_password_label">Password:</string>
+    <string name="enter_password_hint">Enter your password</string>
+
+    <!-- Development login -->
     <string name="valid_username">jdoe</string>
     <string name="valid_password">welcome1</string>
+
+    <!-- Login toast strings-->
     <string name="success_toast">Login Successful!</string>
     <string name="failure_toast">Login Failure!</string>
-    <string name="user_label_text">User: </string>
+
+    <!-- User login string -->
+    <string name="user_logged_in_as_label">Logged in as:</string>
 
     <!-- Common strings -->
     <string name="cancel_button_text">Cancel</string>
@@ -24,22 +28,46 @@
     <string name="done_button_text">Done</string>
     <string name="OK_msg_text">OK</string>
     <string name="logout_button_text">Log Out</string>
+    <string name="null_string"></string>
 
     <!-- Main Menu strings -->
     <string name="main_menu_title">Main Menu</string>
     <string name="enter_new_customer_button_text">Enter new customer</string>
     <string name="display_customer_list_button_text">Display customer list"</string>
 
-    <!-- Customer list item -->
+    <!-- Customer list item strings-->
     <string name="list_item_customer_name_label">Customer Name:</string>
     <string name="list_item_customer_date_label">Customer Register Date:</string>
 
-    <!-- Enter new customer strings -->
-    <string name="customer_menu_title">Customer Menu</string>
-    <string name="customerName_hint">Enter customer name</string>
-    <string name="customerName_label">Customer Name:</string>
+    <!-- Customer common strings -->
+    <string name="customer_name_label">Customer Name:</string>
 
-    <!-- Customer strings -->
+    <!-- Enter customer strings -->
+    <string name="enter_customer_title">Enter Customer Information</string>
+    <string name="enter_customer_name_hint">Enter customer name</string>
+    <string name="enter_customer_phone_hint">Enter phone number</string>
+    <string name="enter_customer_email_hint">Enter email address</string>
+    <string name="select_gender_prompt">Select gender</string>
+    <string name="genderM">Male</string>
+    <string name="genderF">Female</string>
+    <string name="genderO">Other</string>
+    <string-array name="gender_list">
+        <item>@string/select_gender_prompt</item>
+        <item>@string/genderM</item>
+        <item>@string/genderF</item>
+        <item>@string/genderO</item>
+    </string-array>
+    <string name="enter_note">Enter note</string>
+
+
+    <!-- Customer Main Menu strings -->
+    <string name="customer_main_title">Customer Information</string>
+    <string name="customer_menu_title">Customer Menu</string>
+
+    <!-- View customer strings -->
+    <string name="view_customer_title">View Customer</string>
+
+    <!-- Customer menu strings -->
     <string name="enter_new_customer_title">Enter New Customer</string>
     <string name="take_customer_picture_button_text">Take customer picture</string>
     <string name="enter_new_session_button_text">Enter new session</string>
@@ -60,14 +88,14 @@
 
     <string name="enter_new_session_title">Enter New Session</string>
     <string name="view_session_title">View Session</string>
-    <string name="sessionDesc_label">Session description:</string>
-    <string name="sessionDesc_hint">Enter description</string>
+    <string name="session_desc_label">Session description:</string>
+    <string name="session_desc_hint">Enter description</string>
     <string name="session_date_label">Session date:</string>
     <string name="session_date_hint">Enter session date</string>
-    <string name="sessionCompleted_label">Session completed:</string>
-    <string name="sessionCompleted_hint">Check Completed</string>
-    <string name="sessionPaid_label">Session paid:</string>
-    <string name="sessionPaid_hint">Check Paid</string>
+    <string name="session_completed_label">Session completed:</string>
+    <string name="session_completed_hint">Check Completed</string>
+    <string name="session_paid_label">Session paid:</string>
+    <string name="session_paid_hint">Check Paid</string>
 
     <!-- Sign session strings-->
     <string name="sign_session_title">Sign Session</string>

@@ -7,17 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-// 8.10 - Implementing CustomerListActivity
-/**
-public class CustomerListActivity extends SingleFragmentActivity {
-
-    //@Override
-    protected Fragment createFragment() {
-        return new CustomerListFragment();
-    }
-
-}
- */
+import java.util.UUID;
 
 public class CustomerListActivity extends AppCompatActivity {
 
@@ -33,7 +23,7 @@ public class CustomerListActivity extends AppCompatActivity {
         // 7.15 - Getting the FragmentManager
         FragmentManager fm = getSupportFragmentManager();
 
-        // 7.16 - Adding a CustomerFragment
+        // 7.16 - Adding a EnterCustomerFragment
         Fragment fragment_f11 = fm.findFragmentById(R.id.fragment_container_f11);
 
         if (fragment_f11 == null) {
@@ -43,7 +33,7 @@ public class CustomerListActivity extends AppCompatActivity {
                     .commit();
         }
 
-        // 7.16 - Adding a CustomerFragment
+        // 7.16 - Adding a EnterCustomerFragment
         Fragment fragment_f12 = fm.findFragmentById(R.id.fragment_container_f12);
 
         if (fragment_f12 == null) {
@@ -53,4 +43,6 @@ public class CustomerListActivity extends AppCompatActivity {
                     .commit();
         }
     }
+
+
 }

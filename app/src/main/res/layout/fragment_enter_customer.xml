@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView_enter_new_customer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:textAllCaps="false">
+
+        <TextView
+            style="@style/screen_title_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/enter_new_customer_title" />
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:textColor="@color/gray800" />
+
+        <!-- android:textAllCaps="false" -->
+
+
+        <EditText
+            android:id="@+id/enter_customer_name"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:hint="@string/enter_customer_name_hint"
+            android:background="@drawable/edittext_input_shape"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/enter_customer_phone"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="4dp"
+            android:background="@drawable/edittext_input_shape"
+            android:hint="@string/enter_customer_phone_hint"
+            android:inputType="phone" />
+
+        <EditText
+            android:id="@+id/enter_customer_email"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="4dp"
+            android:hint="@string/enter_customer_email_hint"
+            android:background="@drawable/edittext_input_shape"
+            android:inputType="textEmailAddress" />
+
+        <Spinner
+            android:id="@+id/SpinnerGender"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:prompt="@string/select_gender_prompt"
+            android:entries="@array/gender_list">
+        </Spinner>
+
+        <EditText
+            android:id="@+id/enter_customer_note"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:hint="@string/enter_note"
+            android:inputType="textMultiLine"
+            android:minLines="1"
+            android:lines="2"
+            android:maxLines="5"
+            android:background="@drawable/edittext_input_shape">
+        </EditText>
+
+        <LinearLayout
+            style="?android:attr/buttonBarStyle"
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/enter_customer_cancel_button"
+                style="?android:attr/buttonBarStyle"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_round"
+                android:text="@string/cancel_button_text" />
+
+            <Button
+                android:id="@+id/enter_customer_save_button"
+                style="?android:attr/buttonBarStyle"
+                android:layout_margin="5dp"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_round"
+                android:text="@string/save_button_text" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

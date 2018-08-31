@@ -6,30 +6,40 @@
     android:textAllCaps="false"
     android:layout_margin="16dp">
 
-    <TextView style="@style/screentitle_style"
+    <TextView style="@style/screen_title_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/enter_new_customer_title"/>
+        android:text="@string/view_customer_title"/>
 
     <TextView style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
 
-    <TextView style="@style/label_style"
-        android:id="@+id/customerName_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="@string/customerName_label"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_gravity="start"
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/new_customer_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/customerName_hint"
-        android:inputType="text"/>
+        <ImageView
+            android:id="@+id/view_customer_picture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/customer_picture_desc"
+            android:src="@drawable/nophoto"
+            />
+        
+        <EditText
+            android:id="@+id/view_customer_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/null_string"
+            android:inputType="text"
+            />
+    </LinearLayout>
+
 
     <LinearLayout style="?android:attr/buttonBarStyle"
         android:orientation="horizontal"

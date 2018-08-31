@@ -31,7 +31,7 @@ public class SignActivity extends AppCompatActivity {
                     .commit();
         }
 
-        // 7.16 - Adding a CustomerFragment
+        // 7.16 - Adding a EnterCustomerFragment
         Fragment fragment_fSign2 = fm.findFragmentById(R.id.fragment_container_fSign2);
 
         if (fragment_fSign2 == null) {

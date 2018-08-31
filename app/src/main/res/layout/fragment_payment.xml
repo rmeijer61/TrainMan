@@ -6,7 +6,7 @@
     android:textAllCaps="false"
     android:layout_margin="16dp">
 
-    <TextView style="@style/screentitle_style"
+    <TextView style="@style/screen_title_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

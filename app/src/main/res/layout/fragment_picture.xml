@@ -6,7 +6,7 @@
     android:textAllCaps="false"
     android:layout_margin="16dp">
 
-    <TextView style="@style/screentitle_style"
+    <TextView style="@style/screen_title_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -21,13 +21,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="@string/customerName_label"/>
+        android:text="@string/customer_name_label"/>
 
     <EditText
         android:id="@+id/customerName_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/customerName_hint"
+        android:hint="@string/null_string"
         android:inputType="text"/>
 
     <LinearLayout style="?android:attr/buttonBarStyle"
