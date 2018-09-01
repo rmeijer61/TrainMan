@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!-- 11.3 - CustomerPagerActivity’s ViewPager -->
-<android.support.v4.view.ViewPager
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id='@+id/customer_view_pager'
+    android:background="@android:color/white"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-</android.support.v4.view.ViewPager>
+    <FrameLayout
+        android:id="@+id/fragment_container_fVCust1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#fff"
+        android:orientation="vertical">
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_container_fVCust2"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+        <android.support.v4.view.ViewPager
+            android:id='@+id/customer_view_pager'
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white">
+        </android.support.v4.view.ViewPager>
+    </FrameLayout>
+</LinearLayout>

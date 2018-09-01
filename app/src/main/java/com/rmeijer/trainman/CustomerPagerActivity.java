@@ -42,12 +42,28 @@ public class CustomerPagerActivity extends AppCompatActivity {
                 .getSerializableExtra(EXTRA_CUSTOMER_ID);
 
         // 11.2 - Setting up pager adapter
+        //Fix for two fragments
+        //mViewPager = (ViewPager) findViewById(R.id.customer_view_pager);
         mViewPager = (ViewPager) findViewById(R.id.customer_view_pager);
 
         mCustomers = CustomerStore.get(this).getCustomers();
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
+        // Author naming for fm not consistent !!!
+        //FragmentManager fragmentManager = getSupportFragmentManager();
+        // 7.15 - Getting the FragmentManager
+        FragmentManager fm = getSupportFragmentManager();
+
+        // 7.16 - Adding a UserFragment
+        Fragment fragment_fVCust1 = fm.findFragmentById(R.id.fragment_container_fVCust1);
+
+        if (fragment_fVCust1 == null) {
+            fragment_fVCust1 = new UserFragment();
+            fm.beginTransaction()
+                    .add(R.id.fragment_container_fVCust1, fragment_fVCust1)
+                    .commit();
+        }
+
+        mViewPager.setAdapter(new FragmentStatePagerAdapter(fm) {
 
             @Override
             public Fragment getItem(int position) {

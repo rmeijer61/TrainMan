@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="10dp"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:textAllCaps="false"
-    android:layout_margin="16dp">
+    >
 
     <TextView style="@style/screen_title_style"
         android:layout_width="match_parent"
@@ -14,32 +16,138 @@
 
     <TextView style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="2dp"
         />
+
+    <!-- Customer information -->
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_gravity="start"
         android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/view_customer_picture"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:contentDescription="@string/customer_picture_desc"
             android:src="@drawable/nophoto"
             />
+        <LinearLayout
+            android:layout_marginStart="4dp"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_gravity="start"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/enter_customer_name_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/customer_name_label" />
+            <EditText
+                android:id="@+id/view_customer_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:hint="@string/null_string"
+                android:background="@drawable/edittext_shape"
+                android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/view_customer_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/null_string"
-            android:inputType="text"
-            />
+            <LinearLayout
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/view_customer_gender_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/customer_gender_label" />
+                <Spinner
+                    android:id="@+id/SpinnerGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:prompt="@string/select_gender_prompt"
+                    android:entries="@array/gender_list">
+                </Spinner>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/view_customer_birthdate_label"
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/customer_birthdate_label" />
+            <EditText
+                android:id="@+id/view_customer_birthdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:hint="@string/enter_customer_birthdate_hint"
+                android:background="@drawable/edittext_shape"
+                android:inputType="date" />
+        </LinearLayout>
     </LinearLayout>
 
+    <!-- Customer contact and address information -->
+    <TextView style="?android:listSeparatorTextViewStyle"
+        android:layout_marginTop="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        />
+    <TextView
+        android:id="@+id/view_customer_phone_label"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/customer_phone_label" />
+    <EditText
+        android:id="@+id/view_customer_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:hint="@string/enter_customer_phone_hint"
+        android:background="@drawable/edittext_shape"
+        android:inputType="phone" />
+
+    <TextView
+        android:id="@+id/view_customer_email_label"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/customer_email_label" />
+    <EditText
+        android:id="@+id/view_customer_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:hint="@string/enter_customer_email_hint"
+        android:background="@drawable/edittext_shape"
+        android:inputType="textEmailAddress" />
+
+    <TextView
+        android:id="@+id/view_customer_note_label"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/customer_note_label" />
+    <EditText
+        android:id="@+id/view_customer_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:hint="@string/enter_note"
+        android:inputType="textMultiLine"
+        android:minLines="1"
+        android:lines="2"
+        android:maxLines="5"
+        android:background="@drawable/edittext_shape">
+    </EditText>
 
     <LinearLayout style="?android:attr/buttonBarStyle"
         android:orientation="horizontal"
@@ -49,14 +157,14 @@
         android:layout_gravity="center">
 
         <Button style="?android:attr/buttonBarStyle"
-            android:id="@+id/customer_cancel_button"
+            android:id="@+id/view_customer_cancel_button"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:background="@drawable/button_round"
             android:text="@string/cancel_button_text" />
         <Button style="?android:attr/buttonBarStyle"
-            android:id="@+id/customer_save_button"
+            android:id="@+id/view_customer_save_button"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"

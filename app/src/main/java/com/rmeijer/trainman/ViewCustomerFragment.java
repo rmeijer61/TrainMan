@@ -84,7 +84,7 @@ public class ViewCustomerFragment extends Fragment {
         // 7.12 - Wiring up the EditText widget
         // 7.13 - Setting Button text
         // 7.14 - Listening for CheckBox changes
-        Button mCustomerCancelButton = v.findViewById(R.id.customer_cancel_button);
+        Button mCustomerCancelButton = v.findViewById(R.id.view_customer_cancel_button);
         mCustomerCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,7 +94,7 @@ public class ViewCustomerFragment extends Fragment {
             }
         });
 
-        Button mCustomerSaveButton = v.findViewById(R.id.customer_save_button);
+        Button mCustomerSaveButton = v.findViewById(R.id.view_customer_save_button);
         mCustomerSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
