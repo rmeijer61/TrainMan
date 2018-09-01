@@ -7,9 +7,9 @@
     <string name="login_text">Please Log In</string>
     <string name="login_button_text">Login</string>
     <string name="enter_username_label">Username:</string>
-    <string name="enter_username_hint">Enter your username</string>
+    <string name="enter_username_hint"><font size="12"><i>Enter your username</i></font></string>
     <string name="enter_password_label">Password:</string>
-    <string name="enter_password_hint">Enter your password</string>
+    <string name="enter_password_hint"><font size="12"><i>Enter your password</i></font></string>
 
     <!-- Development login -->
     <string name="valid_username">jdoe</string>
@@ -27,8 +27,9 @@
     <string name="save_button_text">Save</string>
     <string name="done_button_text">Done</string>
     <string name="OK_msg_text">OK</string>
-    <string name="logout_button_text">Log Out</string>
-    <string name="null_string"></string>
+    <string name="logoff_button_text">LogOff</string>
+    <string name="logoff_msg_text">Logging You Off</string>
+    <string name="null_string"> </string>
 
     <!-- Main Menu strings -->
     <string name="main_menu_title">Main Menu</string>
@@ -41,23 +42,33 @@
 
     <!-- Customer common strings -->
     <string name="customer_name_label">Customer Name:</string>
+    <string name="customer_gender_label">Gender:</string>
+    <string name="customer_birthdate_label">Birth Date:</string>
+    <string name="customer_phone_label">Phone:</string>
+    <string name="customer_email_label">Email:</string>
+    <string name="customer_address_label">Address:</string>
+    <string name="customer_city_label">City:</string>
+    <string name="customer_state_label">State:</string>
+    <string name="customer_zip_label">Zip:</string>
+    <string name="customer_note_label">Note:</string>
 
     <!-- Enter customer strings -->
     <string name="enter_customer_title">Enter Customer Information</string>
-    <string name="enter_customer_name_hint">Enter customer name</string>
-    <string name="enter_customer_phone_hint">Enter phone number</string>
-    <string name="enter_customer_email_hint">Enter email address</string>
-    <string name="select_gender_prompt">Select gender</string>
-    <string name="genderM">Male</string>
-    <string name="genderF">Female</string>
-    <string name="genderO">Other</string>
+    <string name="enter_customer_name_hint"><font size="12"><i>Enter customer name</i></font></string>
+    <string name="enter_customer_birthdate_hint"><font size="12"><i>Enter birthdate</i></font></string>
+    <string name="enter_customer_phone_hint"><font size="12"><i>Enter phone number</i></font></string>
+    <string name="enter_customer_email_hint"><font size="12"><i>Enter email address</i></font></string>
+    <string name="select_gender_prompt"><font size="12"><i>Select gender</i></font></string>
+    <string name="genderM"><font size="14" weight="normal">Male</font></string>
+    <string name="genderF"><font size="14" weight="normal">Female</font></string>
+    <string name="genderO"><font size="14" weight="normal">Other</font></string>
     <string-array name="gender_list">
         <item>@string/select_gender_prompt</item>
         <item>@string/genderM</item>
         <item>@string/genderF</item>
         <item>@string/genderO</item>
     </string-array>
-    <string name="enter_note">Enter note</string>
+    <string name="enter_note"><font size="12"><i>Enter note</i></font></string>
 
 
     <!-- Customer Main Menu strings -->

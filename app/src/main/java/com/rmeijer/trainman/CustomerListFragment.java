@@ -97,9 +97,11 @@ public class CustomerListFragment extends Fragment {
             //        .show();
 
             // Go to Customer main
-            // 10.3 - Stashing and passing a Crime
+            // 10.3 - Stashing and passing a Customer
             //Intent intent = new Intent(getActivity(), ViewCustomerActivity.class);
-            Intent intent = ViewCustomerActivity.newIntent(getActivity(), mCustomer.getId());
+            // 11.4 - Firing it up
+            //Intent intent = ViewCustomerActivity.newIntent(getActivity(), mCustomer.getId());
+            Intent intent = CustomerPagerActivity.newIntent(getActivity(), mCustomer.getId());
 
             startActivity(intent);
             // ???

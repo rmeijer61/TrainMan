@@ -27,52 +27,96 @@
 
         <!-- android:textAllCaps="false" -->
 
-
+        <TextView
+            android:id="@+id/enter_customer_name_label"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/customer_name_label" />
         <EditText
             android:id="@+id/enter_customer_name"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
             android:hint="@string/enter_customer_name_hint"
-            android:background="@drawable/edittext_input_shape"
+            android:background="@drawable/edittext_shape"
             android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/enter_customer_phone"
+        <TextView
+            android:id="@+id/enter_customer_birthdate_label"
             android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/customer_birthdate_label" />
+        <EditText
+            android:id="@+id/enter_customer_birthdate"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="4dp"
-            android:background="@drawable/edittext_input_shape"
+            android:hint="@string/enter_customer_birthdate_hint"
+            android:background="@drawable/edittext_shape"
+            android:inputType="date" />
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/enter_customer_gender_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/customer_gender_label" />
+            <Spinner
+                android:id="@+id/SpinnerGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:prompt="@string/select_gender_prompt"
+                android:entries="@array/gender_list">
+            </Spinner>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/enter_customer_phone_label"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/customer_phone_label" />
+        <EditText
+            android:id="@+id/enter_customer_phone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="4dp"
             android:hint="@string/enter_customer_phone_hint"
+            android:background="@drawable/edittext_shape"
             android:inputType="phone" />
 
+        <TextView
+            android:id="@+id/enter_customer_email_label"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/customer_email_label" />
         <EditText
             android:id="@+id/enter_customer_email"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="4dp"
             android:hint="@string/enter_customer_email_hint"
-            android:background="@drawable/edittext_input_shape"
+            android:background="@drawable/edittext_shape"
             android:inputType="textEmailAddress" />
 
-        <Spinner
-            android:id="@+id/SpinnerGender"
+        <TextView
+            android:id="@+id/enter_customer_note_label"
             android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:prompt="@string/select_gender_prompt"
-            android:entries="@array/gender_list">
-        </Spinner>
-
+            android:text="@string/customer_note_label" />
         <EditText
             android:id="@+id/enter_customer_note"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="4dp"
@@ -81,7 +125,7 @@
             android:minLines="1"
             android:lines="2"
             android:maxLines="5"
-            android:background="@drawable/edittext_input_shape">
+            android:background="@drawable/edittext_shape">
         </EditText>
 
         <LinearLayout

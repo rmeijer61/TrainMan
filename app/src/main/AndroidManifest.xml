@@ -36,6 +36,7 @@
         <activity android:name=".SignActivity" />
         <activity android:name=".PaymentActivity" />
         <activity android:name=".ReceiptActivity" />
+        <activity android:name=".CustomerPagerActivity" />
     </application>
 
 </manifest>

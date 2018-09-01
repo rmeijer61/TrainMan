@@ -36,7 +36,7 @@ public class MenuFragment extends Fragment {
         mDisplayCustomerListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            int messageResId = R.string.OK_msg_text;
+            int messageResId = R.string.display_customer_list_button_text;
             Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
             // Start CustomerListActivity
@@ -49,7 +49,7 @@ public class MenuFragment extends Fragment {
         mEnterNewCustomerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            int messageResId = R.string.OK_msg_text;
+            int messageResId = R.string.enter_new_customer_button_text;
             Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
             // Start EnterCustomerActivity
@@ -58,6 +58,16 @@ public class MenuFragment extends Fragment {
             }
         });
 
+        Button mLogOffButton = v.findViewById(R.id.menu_logoff_button);
+        mLogOffButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int messageResId = R.string.logoff_msg_text;
+                Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
+
+                getActivity().finish();
+            }
+        });
 
         return v;
         }

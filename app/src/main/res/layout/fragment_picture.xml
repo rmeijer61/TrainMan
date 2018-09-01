@@ -82,7 +82,7 @@
         android:layout_gravity="center">
 
         <Button style="?android:attr/buttonBarButtonStyle"
-            android:id="@+id/customer_cancel_button"
+            android:id="@+id/picture_cancel_button"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -90,7 +90,7 @@
             android:textColor="@android:color/black"
             android:text="@string/cancel_button_text" />
         <Button style="?android:attr/buttonBarButtonStyle"
-            android:id="@+id/customer_save_button"
+            android:id="@+id/picture_save_button"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"

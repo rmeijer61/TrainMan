@@ -36,7 +36,7 @@ public class CustomerMenuFragment extends Fragment {
         mTakeCustomerPictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            int messageResId = R.string.OK_msg_text;
+            int messageResId = R.string.take_customer_picture_button_text;
             Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
             // Start PictureActivity
@@ -49,7 +49,7 @@ public class CustomerMenuFragment extends Fragment {
         mEnterSessionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            int messageResId = R.string.OK_msg_text;
+            int messageResId = R.string.enter_new_session_button_text;
             Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
             // Start SessionActivity
@@ -62,7 +62,7 @@ public class CustomerMenuFragment extends Fragment {
         mViewSessionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            int messageResId = R.string.OK_msg_text;
+            int messageResId = R.string.view_session_button_text;
             Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
             // Start SessionActivity
@@ -71,15 +71,25 @@ public class CustomerMenuFragment extends Fragment {
             }
         });
 
-
-        Button mPaymentSaveButton = v.findViewById(R.id.customer_menu_done_button);
-        mPaymentSaveButton.setOnClickListener(new View.OnClickListener() {
+        Button mDoneButton = v.findViewById(R.id.customer_menu_done_button);
+        mDoneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             int messageResId = R.string.done_button_text;
             Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
             getActivity().finish();
+            }
+        });
+
+        Button mLogOffButton = v.findViewById(R.id.customer_menu_logoff_button);
+        mDoneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int messageResId = R.string.logoff_msg_text;
+                Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
+
+                getActivity().finish();
             }
         });
         return v;

@@ -30,7 +30,7 @@
             android:contentDescription="@string/customer_picture_desc"
             android:src="@drawable/nophoto"
             />
-        
+
         <EditText
             android:id="@+id/view_customer_name"
             android:layout_width="wrap_content"
