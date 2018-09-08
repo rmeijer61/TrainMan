@@ -2,8 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_marginTop="2dp"
+    android:layout_marginBottom="1dp"
     android:layout_width="wrap_content"
-    android:layout_height="30dp"
+    android:layout_height="26dp"
     android:layout_gravity="start">
 
     <TextView style="@style/label_style"
@@ -12,11 +13,14 @@
         android:textAllCaps="false"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="4dp"
+        android:layout_marginBottom="1dp"
         android:text="@string/user_logged_in_as_label"/>
 
     <TextView style="@style/label_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="1dp"
         android:textAllCaps="false"
         android:text="@string/valid_username"/>
 

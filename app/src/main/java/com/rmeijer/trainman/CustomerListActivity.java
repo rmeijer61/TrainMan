@@ -42,6 +42,18 @@ public class CustomerListActivity extends AppCompatActivity {
                     .add(R.id.fragment_container_f12, fragment_f12)
                     .commit();
         }
+
+        // 7.16 - Adding a DoneButton Fragment
+        Fragment fragment_f13 = fm.findFragmentById(R.id.fragment_container_f13);
+
+        if (fragment_f13 == null) {
+            fragment_f13 = new DoneButtonFragment();
+            fm.beginTransaction()
+                    .add(R.id.fragment_container_f13, fragment_f13)
+                    .commit();
+        }
+
+
     }
 
 

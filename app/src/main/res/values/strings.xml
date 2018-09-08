@@ -29,7 +29,13 @@
     <string name="OK_msg_text">OK</string>
     <string name="logoff_button_text">LogOff</string>
     <string name="logoff_msg_text">Logging You Off</string>
+    <string name="are_you_sure_msg_text">Are you sure?</string>
     <string name="null_string"> </string>
+    <string name="date_picker_title">Select Date</string>
+    <string name="show_message">Show Message</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="alert_title">Alert</string>
 
     <!-- Main Menu strings -->
     <string name="main_menu_title">Main Menu</string>
@@ -38,10 +44,14 @@
 
     <!-- Customer list item strings-->
     <string name="list_item_customer_name_label">Customer Name:</string>
-    <string name="list_item_customer_date_label">Customer Register Date:</string>
+    <string name="list_item_customer_date_label">Date Registered:</string>
+    <string name="new_customer">New Customer</string>
+    <string name="show_subtitle">Show Subtitle</string>
+    <string name="hide_subtitle">Hide Subtitle</string>
+    <string name="subtitle_format">%1$d customers</string>
 
     <!-- Customer common strings -->
-    <string name="customer_name_label">Customer Name:</string>
+    <string name="customer_name_label">Customer:</string>
     <string name="customer_gender_label">Gender:</string>
     <string name="customer_birthdate_label">Birth Date:</string>
     <string name="customer_phone_label">Phone:</string>
@@ -51,10 +61,13 @@
     <string name="customer_state_label">State:</string>
     <string name="customer_zip_label">Zip:</string>
     <string name="customer_note_label">Note:</string>
+    <string name="customer_take_picture_button_text">Take Picture</string>
 
     <!-- Enter customer strings -->
-    <string name="enter_customer_title">Enter Customer Information</string>
+    <string name="enter_customer_title">Enter New Customer</string>
     <string name="enter_customer_name_hint"><font size="12"><i>Enter customer name</i></font></string>
+    <string name="enter_customer_birthdate_button_text">Select Birthdate</string>
+    <string name="enter_customer_birthdate_title">Birthdate</string>
     <string name="enter_customer_birthdate_hint"><font size="12"><i>Enter birthdate</i></font></string>
     <string name="enter_customer_phone_hint"><font size="12"><i>Enter phone number</i></font></string>
     <string name="enter_customer_email_hint"><font size="12"><i>Enter email address</i></font></string>
@@ -74,12 +87,13 @@
     <!-- Customer Main Menu strings -->
     <string name="customer_main_title">Customer Information</string>
     <string name="customer_menu_title">Customer Menu</string>
+    <string name="customer_head_layout">customer_head_layout</string>
 
     <!-- View customer strings -->
     <string name="view_customer_title">View Customer</string>
 
     <!-- Customer menu strings -->
-    <string name="enter_new_customer_title">Enter New Customer</string>
+    <string name="view_customer_button_text">View Customer</string>
     <string name="take_customer_picture_button_text">Take customer picture</string>
     <string name="enter_new_session_button_text">Enter new session</string>
     <string name="view_session_button_text">View session</string>
@@ -88,6 +102,12 @@
     <string name="take_customer_picture_title">Take Customer Picture</string>
     <string name="picture_button_text">Take Picture</string>
     <string name="customer_picture_desc">Customer picture</string>
+
+    <!-- Common Session strings -->
+    <string name="session_date_label">Date:</string>
+    <string name="session_desc_label">Description:</string>
+    <string name="session_completed_label">Completed:</string>
+    <string name="session_paid_label">Paid:</string>
 
     <!-- View Session strings -->
     <string name="complete_session_button_text">Complete session</string>
@@ -99,14 +119,10 @@
 
     <string name="enter_new_session_title">Enter New Session</string>
     <string name="view_session_title">View Session</string>
-    <string name="session_desc_label">Session description:</string>
-    <string name="session_desc_hint">Enter description</string>
-    <string name="session_date_label">Session date:</string>
-    <string name="session_date_hint">Enter session date</string>
-    <string name="session_completed_label">Session completed:</string>
-    <string name="session_completed_hint">Check Completed</string>
-    <string name="session_paid_label">Session paid:</string>
-    <string name="session_paid_hint">Check Paid</string>
+    <string name="enter_session_date_hint">Enter session date</string>
+    <string name="enter_session_desc_hint">Enter description</string>
+    <string name="session_completed_hint">Completed</string>
+    <string name="session_paid_hint">Paid</string>
 
     <!-- Sign session strings-->
     <string name="sign_session_title">Sign Session</string>

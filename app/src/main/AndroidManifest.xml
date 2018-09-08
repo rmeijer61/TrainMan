@@ -27,7 +27,13 @@
         </activity>
         <activity android:name=".MenuActivity" />
         <activity android:name=".CustomerListActivity" />
-        <activity android:name=".ViewCustomerActivity" />
+
+        <!-- 13.11 - Go back to the list when UP Button pressed [Not working - goes to menu] -->
+        <activity
+            android:name=".ViewCustomerActivity"
+            android:parentActivityName=".CustomerListActivity"
+            />
+
         <activity android:name=".EnterCustomerActivity" />
         <activity android:name=".CustomerMainActivity" />
         <activity android:name=".PictureActivity" />
@@ -36,7 +42,12 @@
         <activity android:name=".SignActivity" />
         <activity android:name=".PaymentActivity" />
         <activity android:name=".ReceiptActivity" />
-        <activity android:name=".CustomerPagerActivity" />
+
+        <!-- 13.11 - Turning on the Up button [parentActivityName] -->
+        <activity
+            android:name=".CustomerPagerActivity"
+            android:parentActivityName=".CustomerListActivity"
+            />
     </application>
 
 </manifest>

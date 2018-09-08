@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- 11.3 - CustomerPagerActivity’s ViewPager -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@android:color/white"
@@ -10,24 +9,48 @@
 
     <FrameLayout
         android:id="@+id/fragment_container_fVCust1"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#fff"
+        android:layout_height="26dp"
+        android:background="@android:color/white"
         android:orientation="vertical">
     </FrameLayout>
 
+    <View
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray400" />
+
     <FrameLayout
         android:id="@+id/fragment_container_fVCust2"
-        android:layout_margin="10dp"
+        android:layout_margin="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <!-- 11.3 - CustomerPagerActivity’s ViewPager -->
+        <android.support.v4.view.ViewPager
+            android:id='@+id/customer_view_pager'
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@android:color/white">
+        </android.support.v4.view.ViewPager>
+    </FrameLayout>
+
+    <View
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray400" />
+
+    <FrameLayout
+        android:id="@+id/fragment_container_fVCust3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"
         android:orientation="vertical">
-        <android.support.v4.view.ViewPager
-            android:id='@+id/customer_view_pager'
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/white">
-        </android.support.v4.view.ViewPager>
     </FrameLayout>
 </LinearLayout>

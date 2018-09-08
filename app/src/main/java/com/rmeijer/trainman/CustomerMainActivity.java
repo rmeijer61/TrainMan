@@ -71,7 +71,7 @@ public class CustomerMainActivity extends AppCompatActivity {
     //@Override
     protected Fragment createFragment() {
         // 10.7 - Using newInstance(UUID)
-        //return new CrimeFragment();
+        //return new CustomerFragment();
         UUID customerId = (UUID) getIntent()
                 .getSerializableExtra(EXTRA_CUSTOMER_ID);
         return CustomerHeadFragment.newInstance(customerId);

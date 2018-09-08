@@ -1,23 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:orientation="vertical">
 
     <FrameLayout
         android:id="@+id/fragment_container_f11"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#fff"
+        android:layout_height="26dp"
+        android:background="@android:color/white"
         android:orientation="vertical">
     </FrameLayout>
 
     <FrameLayout
         android:id="@+id/fragment_container_f12"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#fff"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:background="@android:color/white"
         android:orientation="vertical">
     </FrameLayout>
 
+    <View
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/blueA700" />
+
+    <FrameLayout
+        android:id="@+id/fragment_container_f13"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+    </FrameLayout>
 </LinearLayout>

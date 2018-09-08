@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/customer_head_layout"
+    android:id="@+id/session_head_layout"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -16,21 +16,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 
-        <TextView
-            android:id="@+id/customer_head_customer_id"
-            android:layout_width="1dp"
-            android:layout_height="1dp"
-            android:text=""/>
-
         <ImageView
-            android:id="@+id/trainman_launcher_image"
+            android:id="@+id/session_head_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/customer_picture_desc"
             android:src="@drawable/nophoto"
             />
         <TextView style="@style/label_style"
-            android:id="@+id/customer_head_name_label"
+            android:id="@+id/session_head_name_label"
             android:layout_marginEnd="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,7 +32,7 @@
             android:text="@string/customer_name_label"
             />
         <TextView style="@style/label_style"
-            android:id="@+id/customer_head_customer_name"
+            android:id="@+id/session_head_customer_name"
             android:layout_marginEnd="1dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

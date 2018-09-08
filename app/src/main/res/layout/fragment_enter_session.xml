@@ -12,11 +12,6 @@
         android:layout_gravity="center"
         android:text="@string/enter_new_session_title"/>
 
-    <TextView style="?android:listSeparatorTextViewStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
@@ -24,18 +19,18 @@
         android:layout_gravity="start">
 
         <TextView style="@style/label_style"
-            android:id="@+id/session_date_label"
+            android:id="@+id/enter_session_date_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAllCaps="false"
             android:text="@string/session_date_label"/>
 
         <EditText
-            android:id="@+id/session_date_edittext"
+            android:id="@+id/enter_session_date_edittext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/edittext_input_shape"
-            android:hint="@string/session_date_hint"
+            android:hint="@string/enter_session_date_hint"
             android:inputType="date"/>
     </LinearLayout>
 
@@ -46,17 +41,17 @@
         android:layout_gravity="start">
 
         <TextView style="@style/label_style"
-            android:id="@+id/sessionDesc_label"
+            android:id="@+id/enter_session_desc_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAllCaps="false"
             android:text="@string/session_desc_label"/>
 
         <EditText
-            android:id="@+id/sessionDesc"
+            android:id="@+id/enter_session_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/session_desc_hint"
+            android:hint="@string/enter_session_desc_hint"
             android:inputType="text"/>
     </LinearLayout>
 
@@ -67,18 +62,19 @@
         android:layout_gravity="start">
 
         <TextView style="@style/label_style"
-            android:id="@+id/sessionCompleted_label"
+            android:id="@+id/enter_session_completed_label"
+            android:layout_margin="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAllCaps="false"
             android:text="@string/session_completed_label"/>
 
-        <EditText
-            android:id="@+id/sessionCompleted"
+        <CheckBox
+            android:id="@+id/enter_session_completed_checkbox"
+            android:layout_margin="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/session_completed_hint"
-            android:inputType="text"/>
+            android:text=""/>
     </LinearLayout>
 
     <LinearLayout
@@ -88,23 +84,24 @@
         android:layout_gravity="start">
 
         <TextView style="@style/label_style"
-            android:id="@+id/sessionPaid_label"
+            android:id="@+id/enter_session_paid_label"
+            android:layout_margin="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAllCaps="false"
             android:text="@string/session_paid_label"/>
 
-        <EditText
-            android:id="@+id/sessionPaid"
-            android:layout_width="match_parent"
+        <CheckBox
+            android:id="@+id/enter_session_paid_checkbox"
+            android:layout_margin="3dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/session_paid_hint"
-            android:inputType="text"/>
+            android:text=""/>
     </LinearLayout>
 
     <LinearLayout style="?android:attr/buttonBarStyle"
         android:orientation="horizontal"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center">

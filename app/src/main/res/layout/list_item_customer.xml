@@ -4,15 +4,22 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp">
+    android:padding="8dp"
+    android:background="@android:color/white">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        android:textColor="@color/gray800" />
     <TextView
-        android:id="@+id/customer_name"
+        android:id="@+id/customer_list_name"
+        android:layout_marginTop="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/list_item_customer_name_label"/>
     <TextView
-        android:id="@+id/customer_date"
+        android:id="@+id/customer_list_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/list_item_customer_date_label"/>

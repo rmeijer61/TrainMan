@@ -157,6 +157,13 @@
         android:layout_gravity="center">
 
         <Button style="?android:attr/buttonBarStyle"
+            android:id="@+id/view_customer_take_picture_button"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/button_round"
+            android:text="@string/customer_take_picture_button_text" />
+        <Button style="?android:attr/buttonBarStyle"
             android:id="@+id/view_customer_cancel_button"
             android:layout_width="80dp"
             android:layout_height="wrap_content"

@@ -1,188 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView_view_session"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:textAllCaps="false"
-    android:layout_margin="16dp">
-
-    <TextView style="@style/screen_title_style"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/view_session_title"/>
-
-    <TextView style="?android:listSeparatorTextViewStyle"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        />
+    android:scrollbars="vertical">
 
     <LinearLayout
-        android:orientation="horizontal"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="start">
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:textAllCaps="false">
 
-        <TextView style="@style/label_style"
-            android:id="@+id/session_date_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAllCaps="false"
-            android:text="@string/session_date_label"/>
-
-        <EditText
-            android:id="@+id/session_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/session_date_hint"
-            android:inputType="date"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start">
-
-        <TextView style="@style/label_style"
-            android:id="@+id/sessionDesc_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAllCaps="false"
-            android:text="@string/session_desc_label"/>
-
-        <EditText
-            android:id="@+id/sessionDesc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/session_desc_hint"
-            android:inputType="text"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start">
-
-        <TextView style="@style/label_style"
-            android:id="@+id/sessionCompleted_label"
+        <TextView
+            style="@style/screen_title_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAllCaps="false"
-            android:text="@string/session_completed_label"/>
+            android:layout_gravity="center"
+            android:text="@string/view_session_title" />
 
-        <EditText
-            android:id="@+id/sessionCompleted"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/session_completed_hint"
-            android:inputType="text"/>
-    </LinearLayout>
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray400"/>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start">
-
-        <TextView style="@style/label_style"
-            android:id="@+id/sessionPaid_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAllCaps="false"
-            android:text="@string/session_paid_label"/>
-
-        <EditText
-            android:id="@+id/sessionPaid"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/session_paid_hint"
-            android:inputType="text"/>
-    </LinearLayout>
+            android:layout_gravity="start"
+            android:orientation="horizontal">
 
-    <LinearLayout style="?android:attr/buttonBarStyle"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-        <Button style="?android:attr/buttonBarStyle"
-            android:id="@+id/complete_session_button"
-            android:layout_width="312dp"
+            <TextView
+                android:id="@+id/view_session_date_label"
+                style="@style/label_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/session_date_label"
+                android:textAllCaps="false" />
+
+            <EditText
+                android:id="@+id/view_session_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_session_date_hint"
+                android:inputType="date" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@drawable/button_round"
-            android:text="@string/complete_session_button_text"/>
-    </LinearLayout>
+            android:layout_gravity="start"
+            android:orientation="horizontal">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-        <Button
-            android:id="@+id/sign_session_button"
-            android:layout_width="312dp"
+            <TextView
+                android:id="@+id/view_session_desc_label"
+                style="@style/label_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/session_desc_label"
+                android:textAllCaps="false" />
+
+            <EditText
+                android:id="@+id/sessionDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_session_desc_hint"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@drawable/button_round"
-            android:text="@string/sign_session_button_text"/>
-    </LinearLayout>
+            android:layout_gravity="start"
+            android:orientation="horizontal">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-        <Button
-            android:id="@+id/process_payment_button"
-            android:layout_width="312dp"
+            <TextView style="@style/label_style"
+                android:id="@+id/sessionCompleted_label"
+                android:layout_margin="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/session_completed_label"
+                android:textAllCaps="false" />
+
+            <CheckBox
+                android:id="@+id/view_session_completed_checkbox"
+                android:layout_margin="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@drawable/button_round"
-            android:text="@string/process_payment_button_text"/>
-    </LinearLayout>
+            android:layout_gravity="start"
+            android:orientation="horizontal">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-        <Button
-            android:id="@+id/generate_receipt_button"
-            android:layout_width="312dp"
+            <TextView style="@style/label_style"
+                android:id="@+id/sessionPaid_label"
+                android:layout_margin="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:text="@string/session_paid_label"/>
+
+            <CheckBox
+                android:id="@+id/view_session_paid_checkbox"
+                android:layout_margin="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@drawable/button_round"
-            android:text="@string/generate_receipt_button_text"/>
-    </LinearLayout>
+            android:layout_gravity="center"
+            android:orientation="vertical">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-        <Button
-            android:id="@+id/view_session_cancel_button"
-            android:layout_width="312dp"
+            <Button
+                android:id="@+id/sign_session_button"
+                android:layout_width="312dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:background="@drawable/button_round"
+                android:text="@string/sign_session_button_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@drawable/button_round"
-            android:text="@string/cancel_button_text" />
-    </LinearLayout>
+            android:layout_gravity="center"
+            android:orientation="vertical">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-        <Button
-            android:id="@+id/view_session_done_button"
-            android:layout_width="312dp"
+            <Button
+                android:id="@+id/process_payment_button"
+                android:layout_width="312dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:background="@drawable/button_round"
+                android:text="@string/process_payment_button_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/generate_receipt_button"
+                android:layout_width="312dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:background="@drawable/button_round"
+                android:text="@string/generate_receipt_button_text" />
+        </LinearLayout>
+
+        <TextView
+            style="?android:listSeparatorTextViewStyle"
             android:layout_margin="5dp"
-            android:background="@drawable/button_round"
-            android:text="@string/done_button_text"/>
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/blueA700" />
+
+        <LinearLayout style="?android:attr/buttonBarStyle"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <Button style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/view_session_cancel_button"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_round"
+                android:textColor="@android:color/black"
+                android:text="@string/cancel_button_text" />
+            <Button style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/view_session_save_button"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_round"
+                android:textColor="@android:color/black"
+                android:text="@string/save_button_text" />
+        </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

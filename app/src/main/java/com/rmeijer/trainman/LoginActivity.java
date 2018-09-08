@@ -35,8 +35,6 @@ public class LoginActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
 
-
-
         // 2.8 - Wiring up the new button
         Button mLoginButton = findViewById(R.id.login_button);
         mLoginButton.setOnClickListener(new View.OnClickListener() {

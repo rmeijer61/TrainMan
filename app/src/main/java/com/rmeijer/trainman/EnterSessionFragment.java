@@ -27,8 +27,8 @@ public class EnterSessionFragment extends Fragment {
         // 7.12 - Wiring up the EditText widget
         // 7.13 - Setting Button text
         // 7.14 - Listening for CheckBox changes
-        Button mCustomerCancelButton = v.findViewById(R.id.enter_session_cancel_button);
-        mCustomerCancelButton.setOnClickListener(new View.OnClickListener() {
+        Button mCancelButton = v.findViewById(R.id.enter_session_cancel_button);
+        mCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             int messageResId = R.string.cancel_button_text;
@@ -37,8 +37,8 @@ public class EnterSessionFragment extends Fragment {
             }
         });
 
-        Button mCustomerSaveButton = v.findViewById(R.id.enter_session_save_button);
-        mCustomerSaveButton.setOnClickListener(new View.OnClickListener() {
+        Button mSaveButton = v.findViewById(R.id.enter_session_save_button);
+        mSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             int messageResId = R.string.save_button_text;

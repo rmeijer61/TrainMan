@@ -31,7 +31,7 @@ public class ViewSessionFragment extends Fragment {
         // 7.13 - Setting Button text
         // 7.14 - Listening for CheckBox changes
 
-        Button mCompleteCustomerSessionButton = v.findViewById(R.id.complete_session_button);
+        Button mCompleteCustomerSessionButton = v.findViewById(R.id.view_session_completed_checkbox);
         mCompleteCustomerSessionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,11 +86,21 @@ public class ViewSessionFragment extends Fragment {
             }
         });
 
-        Button mCustomerCancelButton = v.findViewById(R.id.view_session_cancel_button);
-        mCustomerCancelButton.setOnClickListener(new View.OnClickListener() {
+        Button mCancelButton = v.findViewById(R.id.view_session_cancel_button);
+        mCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int messageResId = R.string.cancel_button_text;
+                Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
+                getActivity().finish();
+            }
+        });
+
+        Button mSaveButton = v.findViewById(R.id.view_session_save_button);
+        mSaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int messageResId = R.string.save_button_text;
                 Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
                 getActivity().finish();
             }

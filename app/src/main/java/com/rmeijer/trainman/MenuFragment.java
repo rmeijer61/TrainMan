@@ -4,6 +4,7 @@ package com.rmeijer.trainman;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class MenuFragment extends Fragment {
+    private static final String EXTRA_RESULT = "true";
 
     // 7.10 - Overriding Fragment.onCreate(Bundle)
     //private Menu mMenu;
@@ -62,13 +64,14 @@ public class MenuFragment extends Fragment {
         mLogOffButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int messageResId = R.string.logoff_msg_text;
-                Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
-
-                getActivity().finish();
+            FragmentManager manager = getFragmentManager();
+            ConfirmFragment dialog = new ConfirmFragment();
+            dialog.show(manager, null);
             }
         });
 
         return v;
-        }
     }
+
+}
+

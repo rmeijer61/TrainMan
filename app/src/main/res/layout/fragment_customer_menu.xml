@@ -10,10 +10,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
-        <TextView style="@style/head1_style"
+        <TextView style="@style/head2_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/customer_menu_title"/>
+    </LinearLayout>
+
+    <View
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="90dp"
+        android:background="@color/blue700" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <Button
+            android:id="@+id/view_customer_button"
+            android:layout_width="312dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:background="@drawable/button_round"
+            android:text="@string/view_customer_button_text"/>
     </LinearLayout>
 
     <LinearLayout
@@ -25,7 +48,7 @@
             android:id="@+id/take_customer_picture_button"
             android:layout_width="312dp"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="3dp"
             android:background="@drawable/button_round"
             android:text="@string/take_customer_picture_button_text"/>
     </LinearLayout>
@@ -39,7 +62,7 @@
             android:id="@+id/enter_new_session_button"
             android:layout_width="312dp"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="3dp"
             android:background="@drawable/button_round"
             android:text="@string/enter_new_session_button_text"/>
     </LinearLayout>
@@ -53,7 +76,7 @@
             android:id="@+id/view_session_button"
             android:layout_width="312dp"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="3dp"
             android:background="@drawable/button_round"
             android:text="@string/view_session_button_text"/>
     </LinearLayout>
@@ -67,23 +90,9 @@
             android:id="@+id/customer_menu_done_button"
             android:layout_width="312dp"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="3dp"
             android:background="@drawable/button_round"
             android:text="@string/done_button_text"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-        <Button
-            android:id="@+id/customer_menu_logoff_button"
-            android:layout_width="312dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@drawable/button_round"
-            android:text="@string/logoff_button_text"/>
     </LinearLayout>
 
 </LinearLayout>
