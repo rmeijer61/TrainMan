@@ -13,7 +13,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/trainman_image_desc"
-            android:src="@drawable/trainmanimage3"
+            android:src="@drawable/trainmanimage6"
         />
         <TextView style="@style/app_title_style"
             android:id="@+id/app_title_text"

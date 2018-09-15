@@ -36,6 +36,16 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="alert_title">Alert</string>
+    <string name="delete_button_text">Delete</string>
+
+    <!-- Common labels  -->
+    <string name="address_label">Address</string>
+    <string name="street_label">Street</string>
+    <string name="city_label">City: </string>
+    <string name="state_label">State: </string>
+    <string name="zip_label">Zip: </string>
+    <string name="one_label">1) </string>
+    <string name="two_label">2) </string>
 
     <!-- Main Menu strings -->
     <string name="main_menu_title">Main Menu</string>
@@ -66,21 +76,23 @@
     <!-- Enter customer strings -->
     <string name="enter_customer_title">Enter New Customer</string>
     <string name="enter_customer_name_hint"><font size="12"><i>Enter customer name</i></font></string>
-    <string name="enter_customer_birthdate_button_text">Select Birthdate</string>
-    <string name="enter_customer_birthdate_title">Birthdate</string>
-    <string name="enter_customer_birthdate_hint"><font size="12"><i>Enter birthdate</i></font></string>
-    <string name="enter_customer_phone_hint"><font size="12"><i>Enter phone number</i></font></string>
-    <string name="enter_customer_email_hint"><font size="12"><i>Enter email address</i></font></string>
-    <string name="select_gender_prompt"><font size="12"><i>Select gender</i></font></string>
+    <string name="genderS"><font size="12"><i>Select gender</i></font></string>
     <string name="genderM"><font size="14" weight="normal">Male</font></string>
     <string name="genderF"><font size="14" weight="normal">Female</font></string>
     <string name="genderO"><font size="14" weight="normal">Other</font></string>
     <string-array name="gender_list">
-        <item>@string/select_gender_prompt</item>
+        <item>@string/genderS</item>
         <item>@string/genderM</item>
         <item>@string/genderF</item>
         <item>@string/genderO</item>
     </string-array>
+    <string name="enter_customer_birthdate_button_text">Select Birthdate</string>
+    <string name="enter_customer_birthdate_title">Birthdate</string>
+    <string name="enter_customer_birthdate_hint"><font size="12"><i>Enter birthdate</i></font></string>
+    <string name="enter_customer_phone1_hint"><font size="12"><i>Enter primary phone number</i></font></string>
+    <string name="enter_customer_phone2_hint"><font size="12"><i>Enter secondary phone number</i></font></string>
+    <string name="enter_customer_email1_hint"><font size="12"><i>Enter primary email</i></font></string>
+    <string name="enter_customer_email2_hint"><font size="12"><i>Enter secondary email number</i></font></string>
     <string name="enter_note"><font size="12"><i>Enter note</i></font></string>
 
 
@@ -91,6 +103,7 @@
 
     <!-- View customer strings -->
     <string name="view_customer_title">View Customer</string>
+    <string name="delete_customer_msg_text">Delete Customer</string>
 
     <!-- Customer menu strings -->
     <string name="view_customer_button_text">View Customer</string>
@@ -105,7 +118,9 @@
 
     <!-- Common Session strings -->
     <string name="session_date_label">Date:</string>
+    <string name="session_date_button_text">Enter session date</string>
     <string name="session_desc_label">Description:</string>
+    <string name="session_desc_hint">Enter description</string>
     <string name="session_completed_label">Completed:</string>
     <string name="session_paid_label">Paid:</string>
 
@@ -119,8 +134,8 @@
 
     <string name="enter_new_session_title">Enter New Session</string>
     <string name="view_session_title">View Session</string>
-    <string name="enter_session_date_hint">Enter session date</string>
-    <string name="enter_session_desc_hint">Enter description</string>
+    <string name="enter_session_date_button_text">Enter session date</string>
+
     <string name="session_completed_hint">Completed</string>
     <string name="session_paid_hint">Paid</string>
 

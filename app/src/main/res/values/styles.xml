@@ -10,6 +10,9 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:buttonStyle">@style/Widget.AppCompat.Button.Borderless</item>
+
+        <!-- default white background -->
+        <item name="android:windowBackground">@android:color/white</item>
     </style>
 
     <style name="app_title_style" parent="Theme.AppCompat.Light.NoActionBar">
@@ -51,5 +54,22 @@
     </style>
     <style
         name="DialogTheme" parent="@android:style/Theme.Dialog">
+    </style>
+    <!--style name="datePickerSpinnerStyle" parent="@android:style/Widget.Material.DatePicker">
+        <item name="android:datePickerMode">spinner</item>
+        <item name="android:calendarViewShown">false</item>
+        <item name="colorControlNormal">#d50000</item>
+    </style-->
+
+    <style name="DatePickerDialogTheme" parent="android:Theme.Holo.Light.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="colorControlNormal">#d50000</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>
     </style>
 </resources>

@@ -27,6 +27,7 @@
 
         <!-- Customer Information -->
 
+        <!-- Name -->
         <TextView
             android:id="@+id/enter_customer_name_label"
             android:layout_marginTop="10dp"
@@ -34,7 +35,7 @@
             android:layout_height="wrap_content"
             android:text="@string/customer_name_label" />
         <EditText
-            android:id="@+id/enter_customer_name"
+            android:id="@+id/enter_customer_name_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="4dp"
@@ -42,9 +43,9 @@
             android:paddingEnd="4dp"
             android:hint="@string/enter_customer_name_hint"
             android:background="@drawable/edittext_shape"
-            android:focusableInTouchMode="false"
             android:inputType="textPersonName" />
 
+        <!-- Gender  -->
         <LinearLayout
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
@@ -56,15 +57,16 @@
                 android:layout_height="wrap_content"
                 android:text="@string/customer_gender_label" />
             <Spinner
-                android:id="@+id/SpinnerGender"
+                android:id="@+id/enter_customer_gender_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="4dp"
-                android:prompt="@string/select_gender_prompt"
+                android:prompt="@string/genderS"
                 android:entries="@array/gender_list">
             </Spinner>
         </LinearLayout>
 
+        <!-- Birthdate -->
         <TextView
             android:id="@+id/enter_customer_birthdate_label"
             android:layout_marginTop="10dp"
@@ -76,40 +78,131 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/date_button"
+            android:textAlignment="textStart"
             android:padding="0dp"
             android:text="@string/enter_customer_birthdate_button_text" />
 
-        <!-- Contact and address -->
+        <!-- Phone -->
         <TextView
-            android:id="@+id/enter_customer_phone_label"
+            android:id="@+id/enter_customer_phone1_label"
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/customer_phone_label" />
         <EditText
-            android:id="@+id/enter_customer_phone"
+            android:id="@+id/enter_customer_phone1_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="4dp"
-            android:hint="@string/enter_customer_phone_hint"
+            android:hint="@string/enter_customer_phone1_hint"
+            android:background="@drawable/edittext_shape"
+            android:inputType="phone" />
+        <EditText
+            android:id="@+id/enter_customer_phone2_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:hint="@string/enter_customer_phone2_hint"
             android:background="@drawable/edittext_shape"
             android:inputType="phone" />
 
+        <!-- Email -->
         <TextView
-            android:id="@+id/enter_customer_email_label"
+            android:id="@+id/enter_customer_email1_label"
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/customer_email_label" />
         <EditText
-            android:id="@+id/enter_customer_email"
+            android:id="@+id/enter_customer_email1_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="4dp"
-            android:hint="@string/enter_customer_email_hint"
+            android:hint="@string/enter_customer_email1_hint"
+            android:background="@drawable/edittext_shape"
+            android:inputType="textEmailAddress" />
+        <EditText
+            android:id="@+id/enter_customer_email2_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:hint="@string/enter_customer_email2_hint"
             android:background="@drawable/edittext_shape"
             android:inputType="textEmailAddress" />
 
+        <!-- Address -->
+        <TextView
+            android:id="@+id/enter_customer_address_label"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/address_label" />
+        <EditText
+            android:id="@+id/enter_customer_address1_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:hint="@string/null_string"
+            android:background="@drawable/edittext_shape"
+            android:inputType="textPostalAddress" />
+        <EditText
+            android:id="@+id/enter_customer_address2_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:hint="@string/null_string"
+            android:background="@drawable/edittext_shape"
+            android:inputType="textPostalAddress" />
+
+        <!-- City  -->
+        <TextView
+            android:id="@+id/enter_customer_city_label"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/city_label" />
+        <EditText
+            android:id="@+id/enter_customer_city_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:hint="@string/null_string"
+            android:background="@drawable/edittext_shape"
+            android:inputType="text" />
+
+        <!-- State  -->
+        <TextView
+            android:id="@+id/enter_customer_state_label"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/state_label" />
+        <EditText
+            android:id="@+id/enter_customer_state_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:hint="@string/null_string"
+            android:background="@drawable/edittext_shape"
+            android:inputType="text" />
+
+        <!-- Zip -->
+        <TextView
+            android:id="@+id/enter_customer_zip_label"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/zip_label" />
+        <EditText
+            android:id="@+id/enter_customer_zip_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:hint="@string/null_string"
+            android:background="@drawable/edittext_shape"
+            android:inputType="text" />
+
+        <!-- Note -->
         <TextView
             android:id="@+id/enter_customer_note_label"
             android:layout_marginTop="10dp"
@@ -117,7 +210,7 @@
             android:layout_height="wrap_content"
             android:text="@string/customer_note_label" />
         <EditText
-            android:id="@+id/enter_customer_note"
+            android:id="@+id/enter_customer_note_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="4dp"
@@ -129,6 +222,7 @@
             android:background="@drawable/edittext_shape">
         </EditText>
 
+        <!-- Save and Cancel Buttons -->
         <LinearLayout
             style="?android:attr/buttonBarStyle"
             android:layout_marginTop="30dp"
@@ -138,15 +232,6 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/enter_customer_cancel_button"
-                style="?android:attr/buttonBarStyle"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="@drawable/button_round"
-                android:text="@string/cancel_button_text" />
-
-            <Button
                 android:id="@+id/enter_customer_save_button"
                 style="?android:attr/buttonBarStyle"
                 android:layout_margin="5dp"
@@ -154,6 +239,14 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_round"
                 android:text="@string/save_button_text" />
+            <Button
+                android:id="@+id/enter_customer_cancel_button"
+                style="?android:attr/buttonBarStyle"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_round"
+                android:text="@string/cancel_button_text" />
 
         </LinearLayout>
 

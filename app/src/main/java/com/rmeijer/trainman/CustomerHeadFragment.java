@@ -1,5 +1,8 @@
 package com.rmeijer.trainman;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -35,6 +38,37 @@ public class CustomerHeadFragment extends Fragment {
     // Customer Id field
     private TextView mIdField;
 
+    // 17.6 - Adding callback interface
+    private Callbacks mCallbacks;
+
+    /**
+     * Required interface for hosting activities
+     */
+    public interface Callbacks {
+        void onCustomerSelected(Customer customer);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mCallbacks = (Callbacks) context;
+        getCustomerObject();
+        Log.v("CustomerHead: ", "onAttach - beg+++++++++++++++++++++++++++++++++++");
+        if (mCustomer != null) {
+            Log.v("CustomerHead: ", "Customer: " + mCustomer.getId().toString());
+        }
+        Log.v("CustomerHead: ", "onAttach - end+++++++++++++++++++++++++++++++++++");
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mCallbacks = null;
+    }
+
+    // end 17.6
+
+
     // 10.6 - Writing a newInstance(UUID) method
     // Creates each instance of the fragment - one for each customer
     public static CustomerHeadFragment newInstance(UUID customerId) {
@@ -45,6 +79,34 @@ public class CustomerHeadFragment extends Fragment {
         fragment.setArguments(args);
 
         return fragment;
+    }
+
+    public void getCustomerObject() {
+        UUID customerId = null;
+        Activity test_activity = getActivity();
+        if (test_activity != null) {
+            Intent test_intent = getActivity().getIntent();
+            if (test_intent != null) {
+                //customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
+                //Log.v("CustomerHead: ", "Found EXTRA_CUSTOMER_ID: " + customerId);
+                customerId = (UUID) this.getArguments().get(ARG_CUSTOMER_ID);
+                Log.v("CustomerHead: ", "Found ARG_CUSTOMER_ID: " + customerId);
+            }
+        }
+
+        if (customerId != null) {
+            mCustomer = CustomerStore.get(getActivity()).getCustomer(customerId);
+            if (mCustomer.getId() != null) {
+                Log.v("CustomerHead: ", "Found customer: " + mCustomer.getId());
+            } else {
+                Log.v("CustomerHead: ", "Customer NOT FOUND! ");
+            }
+        } else {
+            Log.v("CustomerHead: ", "getCustomerOnject****************************");
+            Log.v("CustomerHead: ", "Customer extra not found!");
+            Log.v("CustomerHead: ", "getCustomerOnject****************************");
+            Toast.makeText(getActivity(), "Id extra not found or null!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void updateExtra(UUID customerId) {
@@ -113,11 +175,29 @@ public class CustomerHeadFragment extends Fragment {
     }
 
     @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            Log.v("CustomerHead: ", "Visible - beg************************************");
+            // If not the first time (because can be null on first time)
+            if (mCustomer != null) {
+                getCustomerObject();
+                updateExtra(mCustomer.getId());
+            }
+
+            Log.v("CustomerHead: ", "Visible - end************************************");
+        }
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
+        // Make sure the customer object is current
+        getCustomerObject();
         Log.v("CustomerHead: ", "onResume*****************************************");
-        Log.v("CustomerHead: ", "Customer: " + mCustomer.getId().toString());
-        //Toast.makeText(getActivity(), "Focus changed: " + mCustomer.getId().toString(), Toast.LENGTH_SHORT).show();
+        if (mCustomer.getId() != null) {
+            Log.v("CustomerHead: ", "Customer: " + mCustomer.getId().toString());
+        }
         Log.v("CustomerHead: ", "*************************************************");
     }
 

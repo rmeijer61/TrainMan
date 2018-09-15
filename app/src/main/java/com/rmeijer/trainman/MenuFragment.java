@@ -64,9 +64,9 @@ public class MenuFragment extends Fragment {
         mLogOffButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            FragmentManager manager = getFragmentManager();
+            FragmentManager fm = getFragmentManager();
             ConfirmFragment dialog = new ConfirmFragment();
-            dialog.show(manager, null);
+            dialog.show(fm, null);
             }
         });
 

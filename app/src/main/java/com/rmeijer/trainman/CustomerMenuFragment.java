@@ -65,7 +65,7 @@ public class CustomerMenuFragment extends Fragment {
 
                     // Get the extra from the pager activity intent
                     UUID customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
-                    mCustomer = CustomerStore.get(getActivity()).getCustomer(customerId);;
+                    mCustomer = CustomerStore.get(getActivity()).getCustomer(customerId);
 
                     // Start ViewCustomerActivity
                     Intent intent = new Intent(getActivity(), ViewCustomerActivity.class);

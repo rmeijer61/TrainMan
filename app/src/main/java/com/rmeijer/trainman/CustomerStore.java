@@ -24,8 +24,18 @@ public class CustomerStore {
 
         // 14.9 - Inserting a row
         ContentValues values = getContentValues(c);
-        mDatabase.insert(CustomerDbSchema.CustomerTable.NAME, null, values);
-        //mDatabase.insert(CustomerDbSchema.CustomerTable.DATE, null, values);
+        mDatabase.insert(CustomerDbSchema.CustomerTable.TABLE_NAME, null, values);
+    }
+
+    // Delete customer row
+    // ???? Need to check return code ????
+    public void deleteCustomer(UUID customerId)
+    {
+        String uuidString = customerId.toString();
+        mDatabase.delete(CustomerDbSchema.CustomerTable.TABLE_NAME,
+           CustomerDbSchema.CustomerTable.Cols.UUID + " = ?",
+            new String[] {uuidString}
+            );
     }
 
     // 14.7 - Tearing down some walls
@@ -75,21 +85,21 @@ public class CustomerStore {
 
         // 14.18 - Returning customer list
         //return new ArrayList<>();
-        List<Customer> customers = new ArrayList<>();
+        List<Customer> customerArray = new ArrayList<>();
 
         CustomerCursorWrapper cursor = queryCustomers(null, null);
 
         try {
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
-                customers.add(cursor.getCustomer());
+                customerArray.add(cursor.getCustomerRow());
                 cursor.moveToNext();
             }
         } finally {
             cursor.close();
         }
 
-        return customers;
+        return customerArray;
         //end 14.18
     }
 
@@ -116,7 +126,7 @@ public class CustomerStore {
             }
 
             cursor.moveToFirst();
-            return cursor.getCustomer();
+            return cursor.getCustomerRow();
         } finally {
             cursor.close();
         }
@@ -129,7 +139,7 @@ public class CustomerStore {
         String uuidString = customer.getId().toString();
         ContentValues values = getContentValues(customer);
 
-        mDatabase.update(CustomerDbSchema.CustomerTable.NAME, values,
+        mDatabase.update(CustomerDbSchema.CustomerTable.TABLE_NAME, values,
                 CustomerDbSchema.CustomerTable.Cols.UUID + " = ?",
                 new String[] { uuidString });
     }
@@ -140,7 +150,7 @@ public class CustomerStore {
     //private Cursor queryCustomers(String whereClause, String[] whereArgs) {
     private CustomerCursorWrapper queryCustomers(String whereClause, String[] whereArgs) {
         Cursor cursor = mDatabase.query(
-                CustomerDbSchema.CustomerTable.NAME,
+                CustomerDbSchema.CustomerTable.TABLE_NAME,
                 null, // columns - null selects all columns
                 whereClause,
                 whereArgs,
@@ -156,14 +166,25 @@ public class CustomerStore {
     // end 14.17
 
     // 14.8 - Creating a ContentValues
+    // Writes and updates to databases are done with the assistance of a class called ContentValues
+    // ContentValues is a key-value store class, specifically designed to store the kinds of data SQLite can hold
     private static ContentValues getContentValues(Customer customer) {
         ContentValues values = new ContentValues();
         values.put(CustomerDbSchema.CustomerTable.Cols.UUID, customer.getId().toString());
         values.put(CustomerDbSchema.CustomerTable.Cols.DATE, customer.getDate().getTime());
         values.put(CustomerDbSchema.CustomerTable.Cols.NAME, customer.getName());
-        //values.put(CustomerDbSchema.CustomerTable.Cols.BIRTHDATE, customer.getBirthDate());
-
-
+        values.put(CustomerDbSchema.CustomerTable.Cols.GENDER, customer.getGender());
+        values.put(CustomerDbSchema.CustomerTable.Cols.BIRTHDATE, customer.getBirthDate().getTime());
+        values.put(CustomerDbSchema.CustomerTable.Cols.PHONE1, customer.getPhone1());
+        values.put(CustomerDbSchema.CustomerTable.Cols.PHONE2, customer.getPhone2());
+        values.put(CustomerDbSchema.CustomerTable.Cols.EMAIL1, customer.getEmail1());
+        values.put(CustomerDbSchema.CustomerTable.Cols.EMAIL2, customer.getEmail2());
+        values.put(CustomerDbSchema.CustomerTable.Cols.ADDRESS1, customer.getAddress1());
+        values.put(CustomerDbSchema.CustomerTable.Cols.ADDRESS2, customer.getAddress2());
+        values.put(CustomerDbSchema.CustomerTable.Cols.CITY, customer.getCity());
+        values.put(CustomerDbSchema.CustomerTable.Cols.STATE, customer.getState());
+        values.put(CustomerDbSchema.CustomerTable.Cols.ZIP, customer.getZip());
+        values.put(CustomerDbSchema.CustomerTable.Cols.NOTE, customer.getNote());
         return values;
     }
     // end 14.8

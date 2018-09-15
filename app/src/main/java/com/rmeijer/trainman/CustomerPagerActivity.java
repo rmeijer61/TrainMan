@@ -17,7 +17,9 @@ import java.util.UUID;
 
 // 11.1 - Created class
 // 11.1 - Setting up ViewPager
-public class CustomerPagerActivity extends AppCompatActivity {
+// 17.7 - Implementing callbacks
+public class CustomerPagerActivity extends AppCompatActivity
+    implements CustomerHeadFragment.Callbacks {
 
     // 10.6 - Writing a newInstance(UUID) method
     //??? Update the pager activity intent with new customer_id
@@ -49,6 +51,11 @@ public class CustomerPagerActivity extends AppCompatActivity {
     private UUID mUUID;
 
 
+    // 17.7 - Implementing callbacks
+    @Override
+    public void onCustomerSelected(Customer customer) {
+    }
+
     // 11.3 - Creating newIntent
     public static Intent newIntent(Context packageContext, UUID customerId) {
         Intent intent = new Intent(packageContext, CustomerPagerActivity.class);
@@ -65,6 +72,7 @@ public class CustomerPagerActivity extends AppCompatActivity {
         String ARG_CUSTOMER_ID = "customer_id";
 
         getIntent().putExtra(EXTRA_CUSTOMER_ID, customerId);
+        getIntent().putExtra(ARG_CUSTOMER_ID, customerId);
 
         // TESTING
         UUID check_customerId = (UUID) getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
@@ -122,7 +130,7 @@ public class CustomerPagerActivity extends AppCompatActivity {
 
             @Override
             public Fragment getItem(int position) {
-                Log.v("pager_adapter: ", "****************************************************");
+                Log.v("pager_adapter: ", "******************************");
                 Log.v("pager_adapter: ", "getItem- Position: " + Integer.toString(position));
 
                 // Need to share
@@ -136,29 +144,29 @@ public class CustomerPagerActivity extends AppCompatActivity {
                 // Change to CustomerHeadFragment
                 //return ViewCustomerFragment.newInstance(customer.getId());
 
-                Log.v("pager_adapter: ", "****************************************************");
-                Log.v("pager_adapter: ", "getItem- customerId: " + current_customer.getId().toString());
-                Log.v("pager_adapter: ", "getItem- Name: " + current_customer.getName());
+                Log.v("pager_adapter: ", "Current - beg***********");
+                Log.v("pager_adapter: ", "getItem- (Cuurrnt) customerId: " + current_customer.getId().toString());
+                Log.v("pager_adapter: ", "getItem- (Current) Name: " + current_customer.getName());
                 updateExtra(current_customer.getId());
 
                 if (mViewPager != null) {
                     current_item = mViewPager.getCurrentItem();
-                    Log.v("pager_adapter", "getItem- Current Item: " + Integer.toString(current_item));
+                    Log.v("pager_adapter", "getItem- (Current) Current Item: " + Integer.toString(current_item));
 
                     if (getCurrentFocus() != null) {
                         current_focus_view = getCurrentFocus();
-                        Log.v("pager_adapter: ", "getItem- Current View: " + current_focus_view);
+                        Log.v("pager_adapter: ", "getItem- (Current) Current View: " + current_focus_view);
                         current_focus_view_id = current_focus_view.findViewById(R.id.customer_head_customer_id);
-                        Log.v("pager_adapter: ", "getItem- Current View Id: " + current_focus_view_id);
+                        Log.v("pager_adapter: ", "getItem- (Current) Current View Id: " + current_focus_view_id);
                     }
                     if (mViewPager.getFocusedChild() != null) {
                         current_focus_child = mViewPager.getFocusedChild();
                         current_id = (UUID) mViewPager.getFocusedChild().findViewById(R.id.customer_head_customer_id).getTag();
-                        Log.v("pager_adapter: ", "getItem- Current focus: " + current_focus_child.toString());
-                        Log.v("pager_adapter: ", "getItem- Current customerId: " + current_id.toString());
+                        Log.v("pager_adapter: ", "getItem- (Current) Current focus: " + current_focus_child.toString());
+                        Log.v("pager_adapter: ", "getItem- (Current) Current customerId: " + current_id.toString());
                     }
                 }
-                Log.v("X" , "****************************************************");
+                Log.v("X" , "Current - end***********");
 
                 return CustomerHeadFragment.newInstance(customer.getId());
             }
@@ -183,6 +191,7 @@ public class CustomerPagerActivity extends AppCompatActivity {
         }
 
     }
+
 
     @Override
     public void onStop() {

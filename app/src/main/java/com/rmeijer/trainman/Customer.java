@@ -7,23 +7,31 @@ public class Customer {
     private UUID mId;
     private Date mDate;
     private String mName;
-    private char mGender;
+    private String mGender;
     private Date mBirthDate;
+    private String mPhone1;
+    private String mPhone2;
+    private String mEmail1;
+    private String mEmail2;
+    private String mAddress1;
+    private String mAddress2;
+    private String mCity;
+    private String mState;
+    private String mZip;
+    private String mNote;
 
     public Customer() {
         // 14.15 - Adding Customer constructor
         //mId = UUID.randomUUID();
         //mDate = new Date();
         this(UUID.randomUUID());
-
-        // Just for development
-        mBirthDate = new Date();
     }
 
     // 14.15 - Adding Customer constructor
     public Customer(UUID id) {
         mId = id;
         mDate = new Date();
+        mBirthDate = new Date(0);
     }
     // end 14.15
 
@@ -47,11 +55,11 @@ public class Customer {
         mName = name;
     }
 
-    public void setGender(char gender) {
+    public void setGender(String gender) {
         mGender = gender;
     }
 
-    public char getGender() {
+    public String getGender() {
         return mGender;
     }
 
@@ -61,5 +69,85 @@ public class Customer {
 
     public Date getBirthDate() {
         return mBirthDate;
+    }
+
+    public String getPhone1() {
+        return mPhone1;
+    }
+
+    public void setPhone1(String phone1) {
+        this.mPhone1 = phone1;
+    }
+
+    public String getPhone2() {
+        return mPhone2;
+    }
+
+    public void setPhone2(String phone2) {
+        this.mPhone2 = phone2;
+    }
+
+    public String getEmail1() {
+        return mEmail1;
+    }
+
+    public void setEmail1(String email1) {
+        this.mEmail1 = email1;
+    }
+
+    public String getEmail2() {
+        return mEmail2;
+    }
+
+    public void setEmail2(String email2) {
+        this.mEmail2 = email2;
+    }
+
+    public String getAddress1() {
+        return mAddress1;
+    }
+
+    public void setAddress1(String address1) {
+        this.mAddress1 = address1;
+    }
+
+    public String getAddress2() {
+        return mAddress2;
+    }
+
+    public void setAddress2(String address2) {
+        this.mAddress2 = address2;
+    }
+
+    public String getCity() {
+        return mCity;
+    }
+
+    public void setCity(String city) {
+        this.mCity = city;
+    }
+
+    public String getState() {
+        return mState;
+    }
+
+    public void setState(String state) {
+        this.mState = state;
+    }
+
+    public String getZip() {
+        return mZip;
+    }
+
+    public void setZip(String zip) {
+        this.mZip = zip;
+    }
+
+    public String getNote() {
+        return mNote;
+    }
+
+    public void setNote(String note) {
+        mNote = note;
     }
 }
