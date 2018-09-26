@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 13.4 - Creating a menu resource for SessionListFragment -->
+<!-- 13.5 - Referencing a local resource
+     android:icon="@android:drawable/ic_menu_add" -->
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/new_payment"
+        android:title="@string/null_string"
+        android:icon="@drawable/ic_menu_add"
+        android:textAllCaps="false"
+        app:showAsAction="ifRoom|withText"/>
+
+    <item
+        android:id="@+id/show_subtitle"
+        android:title="@string/show_subtitle"
+        android:textAllCaps="false"
+        app:showAsAction="ifRoom"/>
+
+</menu>

@@ -23,9 +23,13 @@
     <string name="user_logged_in_as_label">Logged in as:</string>
 
     <!-- Common strings -->
+    <string name="date_button_text"><font size="12"><i>Select date</i></font></string>
     <string name="cancel_button_text">Cancel</string>
     <string name="save_button_text">Save</string>
+    <string name="confirm_button_text">Confirm</string>
+    <string name="discard_button_text">Discard</string>
     <string name="done_button_text">Done</string>
+    <string name="back_button_text">Back</string>
     <string name="OK_msg_text">OK</string>
     <string name="logoff_button_text">LogOff</string>
     <string name="logoff_msg_text">Logging You Off</string>
@@ -37,6 +41,10 @@
     <string name="no">No</string>
     <string name="alert_title">Alert</string>
     <string name="delete_button_text">Delete</string>
+    <string name="not_found_msg_text">No data found.</string>
+    <string name="OK_to_continue_msg_text">OK to continue</string>
+    <string name="print_button_text">Send to printer</string>
+    <string name="email_button_text">Send email</string>
 
     <!-- Common labels  -->
     <string name="address_label">Address</string>
@@ -46,55 +54,55 @@
     <string name="zip_label">Zip: </string>
     <string name="one_label">1) </string>
     <string name="two_label">2) </string>
+    <string name="note_label">Note:</string>
 
     <!-- Main Menu strings -->
     <string name="main_menu_title">Main Menu</string>
     <string name="enter_new_customer_button_text">Enter new customer</string>
     <string name="display_customer_list_button_text">Display customer list"</string>
+    <string name="camera2_demo_button_text">Camera2 Demo"</string>
+    <string name="generate_customers_button_text">Generate Test Customers"</string>
 
     <!-- Customer list item strings-->
+    <string name="customer_list_title">Customer List</string>
     <string name="list_item_customer_name_label">Customer Name:</string>
     <string name="list_item_customer_date_label">Date Registered:</string>
     <string name="new_customer">New Customer</string>
     <string name="show_subtitle">Show Subtitle</string>
     <string name="hide_subtitle">Hide Subtitle</string>
-    <string name="subtitle_format">%1$d customers</string>
+    <string name="customer_list_subtitle_format">%1$d customers</string>
 
     <!-- Customer common strings -->
     <string name="customer_name_label">Customer:</string>
-    <string name="customer_gender_label">Gender:</string>
-    <string name="customer_birthdate_label">Birth Date:</string>
-    <string name="customer_phone_label">Phone:</string>
-    <string name="customer_email_label">Email:</string>
-    <string name="customer_address_label">Address:</string>
-    <string name="customer_city_label">City:</string>
-    <string name="customer_state_label">State:</string>
-    <string name="customer_zip_label">Zip:</string>
-    <string name="customer_note_label">Note:</string>
+    <string name="gender_label">Gender:</string>
+    <string name="birthdate_label">Birth Date:</string>
+    <string name="phone_label">Phone:</string>
+    <string name="email_label">Email:</string>
     <string name="customer_take_picture_button_text">Take Picture</string>
 
     <!-- Enter customer strings -->
     <string name="enter_customer_title">Enter New Customer</string>
-    <string name="enter_customer_name_hint"><font size="12"><i>Enter customer name</i></font></string>
-    <string name="genderS"><font size="12"><i>Select gender</i></font></string>
-    <string name="genderM"><font size="14" weight="normal">Male</font></string>
-    <string name="genderF"><font size="14" weight="normal">Female</font></string>
-    <string name="genderO"><font size="14" weight="normal">Other</font></string>
+    <string name="customer_name_hint"><font size="12"><i>Customer name goes here</i></font></string>
+    <string name="gender_select"><font size="12"><i>Select gender</i></font></string>
+    <string name="gender_male"><font size="14" weight="normal">Male</font></string>
+    <string name="gender_female"><font size="14" weight="normal">Female</font></string>
+    <string name="gender_other"><font size="14" weight="normal">Other</font></string>
     <string-array name="gender_list">
-        <item>@string/genderS</item>
-        <item>@string/genderM</item>
-        <item>@string/genderF</item>
-        <item>@string/genderO</item>
+        <item>@string/gender_select</item>
+        <item>@string/gender_male</item>
+        <item>@string/gender_female</item>
+        <item>@string/gender_other</item>
     </string-array>
-    <string name="enter_customer_birthdate_button_text">Select Birthdate</string>
-    <string name="enter_customer_birthdate_title">Birthdate</string>
-    <string name="enter_customer_birthdate_hint"><font size="12"><i>Enter birthdate</i></font></string>
-    <string name="enter_customer_phone1_hint"><font size="12"><i>Enter primary phone number</i></font></string>
-    <string name="enter_customer_phone2_hint"><font size="12"><i>Enter secondary phone number</i></font></string>
-    <string name="enter_customer_email1_hint"><font size="12"><i>Enter primary email</i></font></string>
-    <string name="enter_customer_email2_hint"><font size="12"><i>Enter secondary email number</i></font></string>
-    <string name="enter_note"><font size="12"><i>Enter note</i></font></string>
-
+    <string name="phone1_hint"><font size="12"><i>Primary phone number goes here</i></font></string>
+    <string name="phone2_hint"><font size="12"><i>Secondary phone number goes here</i></font></string>
+    <string name="email1_hint"><font size="12"><i>Primary email goes herre</i></font></string>
+    <string name="email2_hint"><font size="12"><i>Secondary email goes here</i></font></string>
+    <string name="address1_hint"><font size="12"><i>Address part 1 goes here</i></font></string>
+    <string name="address2_hint"><font size="12"><i>Address part 2 goes here</i></font></string>
+    <string name="city_hint"><font size="12"><i>City goes here</i></font></string>
+    <string name="state_hint"><font size="12"><i>State goes here</i></font></string>
+    <string name="zip_hint"><font size="12"><i>Zip goes here</i></font></string>
+    <string name="note_hint"><font size="12"><i>Note, if any, goes here</i></font></string>
 
     <!-- Customer Main Menu strings -->
     <string name="customer_main_title">Customer Information</string>
@@ -106,54 +114,124 @@
     <string name="delete_customer_msg_text">Delete Customer</string>
 
     <!-- Customer menu strings -->
-    <string name="view_customer_button_text">View Customer</string>
+    <string name="view_customer_button_text">View/Edit Customer Details</string>
     <string name="take_customer_picture_button_text">Take customer picture</string>
+    <string name="view_customer_sessions_button_text">View Customer\'s Sessions</string>
     <string name="enter_new_session_button_text">Enter new session</string>
-    <string name="view_session_button_text">View session</string>
+    <string name="view_customer_payments_button_text">View Customer Payments</string>
+    <string name="delete_customer_sessions_button_text">Delete Customer\'s Sessions</string>
 
     <!-- Take customer picture strings -->
     <string name="take_customer_picture_title">Take Customer Picture</string>
     <string name="picture_button_text">Take Picture</string>
     <string name="customer_picture_desc">Customer picture</string>
 
+    <!-- Session List strings -->
+    <string name="session_list_title">Customer Session List</string>
+    <string name="session_list_session_type_label">Session Type: </string>
+    <string name="session_list_session_date_label">Date Entered: </string>
+    <string name="session_list_subtitle_format">%1$d sessions</string>
+
+    <!-- View Customer Payments -->
+    <string name="view_customer_payments_title">Customer Payments</string>
+    <string name="payment_list_payment_amount_label">Amount: </string>
+    <string name="payment_list_payment_date_label">Payment Date: </string>
+    <string name="payment_list_subtitle_format">%1$d payments</string>
+
+    <!-- Session Menu -->
+    <string name="session_menu_title">Customer Session Menu</string>
+
     <!-- Common Session strings -->
-    <string name="session_date_label">Date:</string>
+    <string name="session_date_label">Session Date:</string>
     <string name="session_date_button_text">Enter session date</string>
-    <string name="session_desc_label">Description:</string>
-    <string name="session_desc_hint">Enter description</string>
+    <string name="session_service_label">Service: </string>
+    <string name="session_service_select"><font size="12"><i>Select Service</i></font></string>
+    <string name="session_service_1"><font size="14" weight="normal">Standard</font></string>
+    <string name="session_service_2"><font size="14" weight="normal">Premium</font></string>
+    <string name="session_service_3"><font size="14" weight="normal">Other</font></string>
+    <string-array name="session_service_list">
+        <item>@string/session_service_select</item>
+        <item>@string/session_service_1</item>
+        <item>@string/session_service_2</item>
+        <item>@string/session_service_3</item>
+    </string-array>
+    <string name="session_descr_label">Description:</string>
+    <string name="session_descr_hint"><font size="12"><i>Enter description</i></font></string>
+    <string name="session_sign_label">Signature:</string>
+    <string name="session_sign_hint"><font size="12"><i>Sign here</i></font></string>
     <string name="session_completed_label">Completed:</string>
     <string name="session_paid_label">Paid:</string>
 
     <!-- View Session strings -->
+    <string name="display_session_list_button_text">Display Sessions</string>
+    <string name="view_session_button_text">View/Edit Session Details</string>
     <string name="complete_session_button_text">Complete session</string>
     <string name="sign_session_button_text">Sign session</string>
-    <string name="process_payment_button_text">Process payment</string>
+    <string name="enter_payment_button_text">Enter payment</string>
+    <string name="view_payment_button_text">View payment</string>
     <string name="generate_receipt_button_text">Generate receipt</string>
     <string name="print_receipt_button_text">Print receipt</string>
     <string name="email_receipt_button_text">Email receipt</string>
 
     <string name="enter_new_session_title">Enter New Session</string>
     <string name="view_session_title">View Session</string>
-    <string name="enter_session_date_button_text">Enter session date</string>
 
     <string name="session_completed_hint">Completed</string>
     <string name="session_paid_hint">Paid</string>
 
     <!-- Sign session strings-->
     <string name="sign_session_title">Sign Session</string>
-    <string name="sign_session_label">Confirm session completion</string>
-    <string name="sign_session_hint">Provide signature</string>
+    <string name="sign_session_label">Sign and confirm session completion</string>
+    <string name="sign_session_hint"><font size="12"><i>Sign here</i></font></string>
 
     <!-- Payment strings -->
-    <string name="process_payment_title">Process Payment</string>
-    <string name="payment_label">Payment:</string>
-    <string name="payment_hint">Enter payment</string>
+    <string name="payment_process_payment_title">Process Payment</string>
+    <string name="payment_pay_method_label">Payment Method:</string>
+    <string name="payment_pay_method_select"><font size="12"><i>Select Payment Method</i></font></string>
+    <string name="payment_pay_method_Cash"><font size="14" weight="normal">Cash</font></string>
+    <string name="payment_pay_method_CreditCard"><font size="14" weight="normal">Credit Card</font></string>
+    <string name="payment_pay_method_PayPal"><font size="14" weight="normal">PayPal</font></string>
+    <string-array name="payment_pay_method_list">
+        <item>@string/payment_pay_method_select</item>
+        <item>@string/payment_pay_method_Cash</item>
+        <item>@string/payment_pay_method_CreditCard</item>
+        <item>@string/payment_pay_method_PayPal</item>
+    </string-array>
+    <string name="payment_card_number_label">Card Number:</string>
+    <string name="payment_card_number_hint"><font size="12"><i>Card number goes here</i></font></string>
+    <string name="payment_card_expire_date_label">Card Expire Date:</string>
+    <string name="payment_card_expire_date_hint"><font size="12" weight="normal"><i>Select expiration date</i></font></string>
+    <string name="payment_card_security_code_label">Security code:</string>
+    <string name="payment_card_security_code_hint"><font size="12"><i>Card security code goes here</i></font></string>
+    <string name="payment_pay_date_label">Pay date:</string>
+    <string name="payment_pay_date_hint"><font size="12"><i>Select pay date</i></font></string>
+    <string name="payment_amount_label">Amount:</string>
+    <string name="payment_amount_hint"><font size="12"><i>Payment amount goes here</i></font></string>
+    <string name="payment_bill_to_name_label">Billing name:</string>
+    <string name="payment_bill_to_name_hint"><font size="12"><i>Bill to name goes here</i></font></string>
+    <string name="payment_bill_to_address_label">Billing address:</string>
+    <string name="payment_bill_to_address1_hint"><font size="12"><i>Bill to address 1 goes here</i></font></string>
+    <string name="payment_bill_to_address2_hint"><font size="12"><i>Bill to address 2 goes here</i></font></string>
+    <string name="payment_bill_to_city_label">Billing city:</string>
+    <string name="payment_bill_to_city_hint"><font size="12"><i>Bill to city goes here</i></font></string>
+    <string name="payment_bill_to_state_label">Billing state:</string>
+    <string name="payment_bill_to_state_hint"><font size="12"><i>Bill to state goes here</i></font></string>
+    <string name="payment_bill_to_zip_label">Billing zip:</string>
+    <string name="payment_bill_to_zip_hint"><font size="12"><i>Bill to zip goes here</i></font></string>
 
     <!-- Receipt strings -->
     <string name="generate_receipt_title">Email/Print Receipt</string>
-    <string name="receipt_label">Receipt type:</string>
-    <string name="receipt_hint">Choose receipt type</string>
-    <string name="email_button_text">Email</string>
-    <string name="print_button_text">Print</string>
+    <string name="receipt_email_label">Email:</string>
+    <string name="receipt_email_hint"><font size="12"><i>Email address goes here</i></font></string>
+    <string name="receipt_email_msg_text">Emailing receipt</string>
+    <string name="receipt_printer_label">Printer:</string>
+    <string name="receipt_printer_hint"><font size="12"><i>Printer goes here</i></font></string>
+    <string name="receipt_print_msg_text">Printing receipt</string>
+
+    <!-- Camera2 -->
+    <string name="picture">Picture</string>
+    <string name="description_info">Info</string>
+    <string name="request_permission">Need camera permission.</string>
+    <string name="camera_error">This device doesn\'t support Camera2 API.</string>
 
 </resources>

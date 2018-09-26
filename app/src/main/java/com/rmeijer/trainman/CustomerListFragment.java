@@ -14,8 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import java.util.Calendar;
 import java.util.List;
 
 // 8.11 - Implementing CustomerListFragment
@@ -94,8 +94,8 @@ public class CustomerListFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.new_customer:
-                // Start EnterCustomerActivity
-                Intent intent = new Intent(getActivity(), EnterCustomerActivity.class);
+                // Start CustomerEnterActivity
+                Intent intent = new Intent(getActivity(), CustomerEnterActivity.class);
                 startActivity(intent);
                 return true;
             // 13.14 - Responding to SHOW SUBTITLE action item
@@ -117,7 +117,7 @@ public class CustomerListFragment extends Fragment {
     private void updateSubtitle() {
         CustomerStore customerstore = CustomerStore.get(getActivity());
         int customerCount = customerstore.getCustomers().size();
-        String subtitle = getString(R.string.subtitle_format, customerCount);
+        String subtitle = getString(R.string.customer_list_subtitle_format, customerCount);
 
         // 13.17 - Showing or hiding the subtitle
         if (!mSubtitleVisible) {
@@ -181,7 +181,14 @@ public class CustomerListFragment extends Fragment {
         public void bind(Customer customer) {
             mCustomer = customer;
             mNameTextView.setText(mCustomer.getName());
-            mDateTextView.setText(mCustomer.getDate().toString());
+            // Format the date
+            Calendar calDate = Calendar.getInstance();
+            calDate.setTime(mCustomer.getBirthDate());
+            int year = calDate.get(Calendar.YEAR);
+            int month = calDate.get(Calendar.MONTH);
+            int day = calDate.get(Calendar.DAY_OF_MONTH);
+            String dateString = "Birthdate: " + (month+1) + "/" + day + "/" + year;
+            mDateTextView.setText(dateString);
         }
 
         // 8.24 - Detecting presses in CustomerHolder
@@ -189,9 +196,9 @@ public class CustomerListFragment extends Fragment {
         public void onClick(View view) {
             // Go to Customer main - (Update: Go to pager instead)
             // 10.3 - Stashing and passing a Customer
-            //Intent intent = new Intent(getActivity(), ViewCustomerActivity.class);
+            //Intent intent = new Intent(getActivity(), CustomerViewActivity.class);
             // 11.4 - Firing it up
-            //Intent intent = ViewCustomerActivity.newIntent(getActivity(), mCustomer.getId());
+            //Intent intent = CustomerViewActivity.newIntent(getActivity(), mCustomer.getId());
 
             Intent intent = CustomerPagerActivity.newIntent(getActivity(), mCustomer.getId());
             //Create an argument in the pager activity intent for the customer_id

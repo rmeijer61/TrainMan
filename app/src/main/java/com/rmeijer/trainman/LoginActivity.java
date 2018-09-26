@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,11 +30,9 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Adding a log statement to onCreate(Bundle)
-        Log.d(TAG, "onCreate(Bundle) called");
-
         setContentView(R.layout.activity_login);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         // 2.8 - Wiring up the new button
         Button mLoginButton = findViewById(R.id.login_button);
@@ -64,7 +63,6 @@ public class LoginActivity extends AppCompatActivity {
                     Context context = getApplicationContext();
                     Toast.makeText(context, messageResId, Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 
@@ -118,6 +116,8 @@ public class LoginActivity extends AppCompatActivity {
         String validPassword = getResources().getString(R.string.valid_password);
 
         return (username.equals(validUsername) && password.equals(validPassword));
+        // For Testing
+        // return true;
     }
 
 }

@@ -4,18 +4,31 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.rmeijer.trainman.database.CustomerBaseHelper;
 import com.rmeijer.trainman.database.CustomerCursorWrapper;
 import com.rmeijer.trainman.database.CustomerDbSchema;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 public class CustomerStore {
+
+    final String TAG = "CustomerStore: ";
+
     // 8.1 - Setting up the singleton
     private static CustomerStore sCustomerStore;
+
+    // 14.4 - Opening a SQLiteDatabase
+    private Context mContext;
+    private SQLiteDatabase mDatabase;
+
+    //**********************************************************************************************
+    // Methods
+    //**********************************************************************************************
 
     // 13.8 - Adding a new customer
     public void addCustomer(Customer c) {
@@ -42,10 +55,6 @@ public class CustomerStore {
     // 8.2 - Setting up the List of Customer objects
     //private List<Customer> mCustomers;
     // end 14.7
-
-    // 14.4 - Opening a SQLiteDatabase
-    private Context mContext;
-    private SQLiteDatabase mDatabase;
 
     // 8.1 - Setting up the singleton
     public static CustomerStore get(Context context) {
@@ -103,6 +112,7 @@ public class CustomerStore {
         //end 14.18
     }
 
+    // Why not static?
     public Customer getCustomer(UUID id) {
 
         // 14.7 - Tearing down some walls
@@ -145,6 +155,19 @@ public class CustomerStore {
     }
     // end 14.10
 
+    //**********************************************************************************************
+    // 16.6 - Finding photo file location
+    //**********************************************************************************************
+    public File getPhotoFile(Customer customer) {
+        Log.v( TAG, "getPhotoFile: " + customer.toString());
+        File filesDir = mContext.getFilesDir();
+        Log.v( TAG, "getPhotoFile: FilesDir is: " + filesDir.toURI().toString());
+        return new File(filesDir, customer.getPhotoFilename());
+    }
+
+    //**********************************************************************************************
+    // SQLite wrapper and content values
+    //**********************************************************************************************
     // 14.17 - 14.17 - Vending cursor wrapper
     // 14.12 - Querying for Customers
     //private Cursor queryCustomers(String whereClause, String[] whereArgs) {

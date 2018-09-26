@@ -119,14 +119,6 @@ public class CustomerHeadFragment extends Fragment {
         String ARG_CUSTOMER_ID = "customer_id";
 
         getActivity().getIntent().putExtra(EXTRA_CUSTOMER_ID, customerId);
-
-        // TESTING
-        //UUID check_customerid = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
-        //FragmentManager fmAlert = getActivity().getSupportFragmentManager();
-        //String msg = "Update CustomerHead Extra: " + check_customerid.toString();
-        //AlertFragment alert = new AlertFragment();
-        //alert.setAlertMessage(msg);
-        //alert.show(fmAlert, "alert_tag");
     }
 
     // 7.10 - Overriding Fragment.onCreate(Bundle)
@@ -155,8 +147,6 @@ public class CustomerHeadFragment extends Fragment {
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_customer_head, container, false);
-
-
 
         // 7.12 - Wiring up the EditText widget
         mNameField = (TextView) v.findViewById(R.id.customer_head_customer_name);

@@ -1,70 +1,268 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView_receipt"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:textAllCaps="false"
-    android:layout_margin="16dp">
+    android:scrollbars="vertical">
 
-    <TextView style="@style/screen_title_style"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/generate_receipt_title"/>
-
-    <TextView style="?android:listSeparatorTextViewStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
-
-    <TextView style="@style/label_style"
-        android:id="@+id/receipt_label"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="@string/receipt_label"/>
+        android:layout_margin="10dp">
 
-    <EditText
-        android:id="@+id/new_customer_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/receipt_hint"
-        android:inputType="text"/>
-
-    <LinearLayout style="?android:attr/buttonBarButtonStyle"
-        android:orientation="horizontal"
-        android:layout_marginTop="30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-
-        <Button style="?android:attr/buttonBarButtonStyle"
-            android:id="@+id/receipt_email_button"
-            android:layout_width="80dp"
+        <TextView style="@style/screen_title_style"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@drawable/button_round"
-            android:textColor="@android:color/black"
-            android:text="@string/email_button_text" />
+            android:layout_gravity="center"
+            android:text="@string/generate_receipt_title"/>
 
-        <Button style="?android:attr/buttonBarButtonStyle"
-            android:id="@+id/receipt_print_button"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@drawable/button_round"
-            android:textColor="@android:color/black"
-            android:text="@string/print_button_text" />
+        <View
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray400" />
 
-        <Button style="?android:attr/buttonBarButtonStyle"
-            android:id="@+id/receipt_done_button"
-            android:layout_width="80dp"
+        <!-- Customer Name -->
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@drawable/button_round"
-            android:textColor="@android:color/black"
-            android:text="@string/done_button_text" />
+            android:orientation="horizontal">
+            <TextView style="@style/label_style"
+                android:id="@+id/receipt_customer_name_label"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:text="@string/customer_name_label"
+                />
+            <TextView style="@style/info_style"
+                android:id="@+id/receipt_customer_name_textview"
+                android:layout_marginEnd="1dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                />
+        </LinearLayout>
+
+        <!-- Service -->
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView style="@style/label_style"
+                android:id="@+id/receipt_session_service_label"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="2dp"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/session_service_label" />
+            <TextView style="@style/info_style"
+                android:id="@+id/receipt_session_service_textview"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- Session Date -->
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView style="@style/label_style"
+                android:id="@+id/receipt_session_date_label"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginBottom="2dp"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/session_date_label"
+                android:textAllCaps="false" />
+            <TextView style="@style/info_style"
+                android:id="@+id/receipt_session_date_textview"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- Payment Amount -->
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView style="@style/label_style"
+                android:id="@+id/receipt_payment_amount_label"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/payment_amount_label" />
+            <TextView style="@style/info_style"
+                android:id="@+id/receipt_payment_amount_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- Payment Date -->
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView style="@style/label_style"
+                android:id="@+id/receipt_payment_date_label"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/payment_pay_date_label" />
+            <TextView style="@style/info_style"
+                android:id="@+id/receipt_payment_date_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <View
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray400" />
+
+        <!-- Email -->
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView style="@style/label_style"
+                    android:id="@+id/receipt_email_label"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/receipt_email_label" />
+                <EditText
+                    android:id="@+id/receipt_email_edittext"
+                    android:layout_width="242dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_shape"
+                    android:hint="@string/receipt_email_hint"
+                    android:inputType="textEmailAddress"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="0dp" />
+                <Button style="?android:attr/buttonBarButtonStyle"
+                    android:id="@+id/email_button"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/button_round"
+                    android:textColor="@android:color/black"
+                    android:text="@string/email_button_text" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Printer -->
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView style="@style/label_style"
+                    android:id="@+id/receipt_printer_label"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/receipt_printer_label" />
+                <EditText
+                    android:id="@+id/receipt_printer_edittext"
+                    android:layout_width="242dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_shape"
+                    android:hint="@string/receipt_printer_hint"
+                    android:inputType="text|textNoSuggestions"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="0dp" />
+                <Button style="?android:attr/buttonBarButtonStyle"
+                    android:id="@+id/print_button"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/button_round"
+                    android:textColor="@android:color/black"
+                    android:text="@string/print_button_text" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray400" />
+
+        <LinearLayout style="?android:attr/buttonBarButtonStyle"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <Button style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/done_button"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_round"
+                android:textColor="@android:color/black"
+                android:text="@string/done_button_text" />
+        </LinearLayout>
 
     </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<GridLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@android:color/white"
     android:orientation="vertical">
 
     <FrameLayout
         android:id="@+id/fragment_container_f11"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
         android:layout_width="match_parent"
         android:layout_height="26dp"
         android:background="@android:color/white"
@@ -15,10 +17,32 @@
     </FrameLayout>
 
     <FrameLayout
+        android:id="@+id/fragment_container_title"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <TextView style="@style/head2_style"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:text="@string/customer_list_title" />
+    </FrameLayout>
+
+    <FrameLayout
         android:id="@+id/fragment_container_f12"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="470dp"
         android:layout_margin="1dp"
+        android:layout_marginTop="3dp"
         android:background="@android:color/white"
         android:orientation="vertical">
     </FrameLayout>
@@ -31,10 +55,13 @@
 
     <FrameLayout
         android:id="@+id/fragment_container_f13"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginTop="1dp"
+        android:layout_height="40dp"
         android:background="@android:color/white"
         android:orientation="vertical">
     </FrameLayout>
-</LinearLayout>
+</GridLayout>

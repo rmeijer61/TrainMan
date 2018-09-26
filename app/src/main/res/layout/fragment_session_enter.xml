@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView_enter_new_session"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+        android:textAllCaps="false">
+
+        <TextView
+            style="@style/screen_title_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/enter_new_session_title" />
+
+        <View style="?android:listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray400"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView style="@style/label_style"
+                android:id="@+id/session_service_label"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="2dp"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="@string/session_service_label" />
+            <Spinner
+                android:id="@+id/enter_session_service_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:prompt="@string/session_service_select"
+                android:entries="@array/session_service_list">
+            </Spinner>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="306dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/session_date_label"
+                style="@style/label_style"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/session_date_label"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/enter_session_date_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/date_button"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:paddingBottom="0dp"
+                android:paddingEnd="1dp"
+                android:paddingStart="4dp"
+                android:paddingTop="0dp"
+                android:text="@string/session_date_button_text"
+                android:textAlignment="textStart"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <TextView style="@style/label_style"
+            android:id="@+id/session_descr_label"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/session_descr_label"
+            android:textAllCaps="false" />
+
+        <EditText style="@style/info_style"
+            android:id="@+id/enter_session_descr_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/session_descr_hint"
+            android:minLines="1"
+            android:lines="2"
+            android:maxLines="5"
+            android:background="@drawable/edittext_shape"
+            android:inputType="text"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:orientation="horizontal">
+
+            <TextView style="@style/label_style"
+                android:id="@+id/session_completed_label"
+                android:layout_margin="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/session_completed_label"
+                android:textAllCaps="false" />
+
+            <CheckBox
+                android:id="@+id/enter_session_completed_checkbox"
+                android:layout_margin="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/greenAccentStyle"
+                />
+            <!-- (API 21 and higher - android:buttonTint="@color/greenA700"-->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:orientation="horizontal">
+
+            <TextView style="@style/label_style"
+                android:id="@+id/sessionPaid_label"
+                android:layout_margin="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:text="@string/session_paid_label"/>
+
+            <CheckBox
+                android:id="@+id/enter_session_paid_checkbox"
+                android:layout_margin="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/greenAccentStyle"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginBottom="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:orientation="horizontal">
+            <TextView style="@style/label_style"
+                android:id="@+id/session_sign_label"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="3dp"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="@string/session_sign_label"
+                android:textAllCaps="false" />
+            <EditText style="@style/info_style"
+                android:id="@+id/enter_session_sign_edittext"
+                android:layout_width="242dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/session_sign_hint"
+                android:background="@drawable/edittext_shape"
+                android:inputType="text"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="?android:attr/buttonBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/enter_session_cancel_button"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_round"
+                android:text="@string/cancel_button_text"
+                android:textColor="@android:color/black" />
+
+            <Button
+                android:id="@+id/enter_session_save_button"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_round"
+                android:text="@string/save_button_text"
+                android:textColor="@android:color/black" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

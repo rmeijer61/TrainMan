@@ -16,6 +16,14 @@
             android:text="@string/main_menu_title"/>
     </LinearLayout>
 
+    <View
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_marginBottom="5dp"
+        android:layout_gravity="center"
+        android:layout_width="312dp"
+        android:layout_height="1dp"
+        android:background="@color/blue700" />
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
@@ -57,6 +65,45 @@
             android:layout_margin="5dp"
             android:background="@drawable/button_round"
             android:text="@string/logoff_button_text"/>
+    </LinearLayout>
+
+    <View
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+        android:layout_width="312dp"
+        android:layout_height="1dp"
+        android:background="@color/blue700" />
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/menu_camera2_demo_button"
+            android:layout_width="312dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/button_round"
+            android:text="@string/camera2_demo_button_text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/menu_generate_customers_button"
+            android:layout_width="312dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/button_round"
+            android:text="@string/generate_customers_button_text" />
     </LinearLayout>
 
 </LinearLayout>

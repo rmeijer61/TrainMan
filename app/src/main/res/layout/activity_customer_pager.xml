@@ -21,7 +21,7 @@
         style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/gray400" />
+        android:background="@color/gray50" />
 
     <FrameLayout
         android:id="@+id/fragment_container_fVCust2"
@@ -33,7 +33,7 @@
 
         <!-- 11.3 - CustomerPagerActivity’s ViewPager -->
         <android.support.v4.view.ViewPager
-            android:id='@+id/customer_view_pager'
+            android:id='@+id/fragment_container_fVCust2_customer_view_pager'
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:background="@android:color/white">
@@ -44,7 +44,7 @@
         style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/gray400" />
+        android:background="@color/gray50" />
 
     <FrameLayout
         android:id="@+id/fragment_container_fVCust3"

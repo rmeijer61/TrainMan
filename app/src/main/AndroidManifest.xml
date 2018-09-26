@@ -2,13 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.rmeijer.trainman">
 
+    <!-- Camera Permissions -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- Storage Permissions -->
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
-    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission
         android:name="android.permission.WRITE_SETTINGS"
         android:maxSdkVersion="18" />
+
+    <!-- Camera2 Features -->
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <!-- android:roundIcon="@mipmap/ic_launcher_round" -->
 
@@ -19,35 +26,68 @@
         android:roundIcon="@drawable/trainmanimage6"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!--
+        Camera2
+        android:label="@string/app_name"
+        android:icon="@drawable/ic_launcher"
+        android:theme="@style/MaterialTheme">
+        -->
+
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--
+        // ***************************************************************************************
+        // Note: Up button in toolbar provides navigation code internally and may cause issues with
+        // application navigation and intent extras values
+        // ***************************************************************************************
+        -->
         <activity android:name=".MenuActivity" />
-        <activity android:name=".CustomerListActivity" />
-
-        <!-- 13.11 - Go back to the list when UP Button pressed [Not working - goes to menu] -->
-        <activity
-            android:name=".ViewCustomerActivity"
-            android:parentActivityName=".CustomerListActivity"
-            />
-
-        <activity android:name=".EnterCustomerActivity" />
-        <activity android:name=".CustomerMainActivity" />
+        <!-- 13.11 - Turning on the Up button [parentActivityName] -->
+        <activity android:name=".CustomerListActivity"
+            android:parentActivityName=".MenuActivity" />
+        <activity android:name=".CustomerPagerActivity"
+            android:parentActivityName=".CustomerListActivity" />
+        <activity android:name=".CustomerViewActivity" />
+        <activity android:name=".CustomerEnterActivity" />
         <activity android:name=".PictureActivity" />
-        <activity android:name=".EnterSessionActivity" />
-        <activity android:name=".ViewSessionActivity" />
-        <activity android:name=".SignActivity" />
-        <activity android:name=".PaymentActivity" />
+        <activity android:name=".SessionEnterActivity" />
+        <activity android:name=".SessionListActivity"
+            android:parentActivityName=".CustomerPagerActivity" />
+        <activity android:name=".SessionPagerActivity" />
+        <activity android:name=".PaymentListActivity"
+            android:parentActivityName=".CustomerPagerActivity" />
+        <activity android:name=".SessionViewActivity" />
+        <activity android:name=".SignSessionActivity" />
+        <activity android:name=".PaymentEnterActivity" />
+        <activity android:name=".PaymentViewActivity" />
         <activity android:name=".ReceiptActivity" />
 
-        <!-- 13.11 - Turning on the Up button [parentActivityName] -->
-        <activity
-            android:name=".CustomerPagerActivity"
-            android:parentActivityName=".CustomerListActivity"
-            />
+        <!-- Camera Activity -->
+        <!-- Left out og activity tag: android:label="@string/app_name"  -->
+        <activity android:name=".Camera2Activity">
+            <!--intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter-->
+        </activity>
+
+        <!-- 16.2 - Adding a FileProvider declaration -->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.rmeijer.trainman.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/files"/>
+        </provider>
+
     </application>
 
 </manifest>

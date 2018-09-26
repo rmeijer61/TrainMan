@@ -1,12 +1,10 @@
 package com.rmeijer.trainman;
 
 import android.app.Activity;
-import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.StyleableRes;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
@@ -17,7 +15,6 @@ import android.widget.DatePicker;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class DatePickerFragment extends DialogFragment {
         //implements DatePickerDialog.OnDateSetListener {
@@ -127,7 +124,7 @@ public class DatePickerFragment extends DialogFragment {
         }
         Log.v("DatePicker: ", "Date " + calDate.toString());
         //Intent intent = new Intent();
-        Intent intent = new Intent(getActivity(), EnterCustomerActivity.class);
+        Intent intent = new Intent(getActivity(), CustomerEnterActivity.class);
         intent.putExtra(EXTRA_DATE, calDate);
 
         getTargetFragment()

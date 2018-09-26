@@ -1,60 +1,308 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView_enter_new_customer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:textAllCaps="false"
-    android:layout_margin="16dp">
+    android:scrollbars="vertical">
 
-    <TextView style="@style/screen_title_style"
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="1dp"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/process_payment_title"/>
+        android:layout_height="match_parent"
+        android:textAllCaps="false">
 
-    <TextView style="?android:listSeparatorTextViewStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
-
-    <TextView style="@style/label_style"
-        android:id="@+id/payment_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="@string/payment_label"/>
-
-    <EditText
-        android:id="@+id/new_customer_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/payment_hint"
-        android:inputType="text"/>
-
-    <LinearLayout style="?android:attr/buttonBarStyle"
-        android:orientation="horizontal"
-        android:layout_marginTop="30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-
-        <Button style="?android:attr/buttonBarButtonStyle"
-            android:id="@+id/payment_cancel_button"
-            android:layout_width="80dp"
+        <TextView style="@style/screen_title_style"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@drawable/button_round"
-            android:textColor="@android:color/black"
-            android:text="@string/cancel_button_text" />
-        <Button style="?android:attr/buttonBarButtonStyle"
-            android:id="@+id/payment_save_button"
-            android:layout_width="80dp"
+            android:layout_gravity="center"
+            android:text="@string/payment_process_payment_title"/>
+
+        <View
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray400" />
+
+        <!-- Pay Method  -->
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@drawable/button_round"
-            android:textColor="@android:color/black"
-            android:text="@string/save_button_text" />
+            android:orientation="horizontal">
+            <TextView style="@style/label_style"
+                android:id="@+id/payment_pay_method_label"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="@string/payment_pay_method_label" />
+            <Spinner
+                android:id="@+id/payment_pay_method_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:prompt="@string/payment_pay_method_select"
+                android:entries="@array/payment_pay_method_list">
+            </Spinner>
+        </LinearLayout>
+
+        <!-- Card Number -->
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView style="@style/label_style"
+                android:id="@+id/payment_card_number_label"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="@string/payment_card_number_label" />
+            <EditText style="@style/info_style"
+                android:id="@+id/payment_card_number_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:hint="@string/payment_card_number_hint"
+                android:background="@drawable/edittext_shape"
+                android:inputType="textNoSuggestions" />
+        </LinearLayout>
+
+        <!-- Card Expiration Date -->
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView style="@style/label_style"
+                android:id="@+id/payment_card_expire_date_label"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="@string/payment_card_expire_date_label" />
+            <Button
+                android:id="@+id/payment_card_expire_date_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/date_button"
+                android:textAlignment="textStart"
+                android:paddingStart="4dp"
+                android:paddingEnd="1dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:textStyle="normal"
+                android:text="@string/payment_card_expire_date_hint" />
+        </LinearLayout>
+
+        <!-- Card Security Code -->
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView style="@style/label_style"
+                android:id="@+id/payment_card_security_code_label"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="@string/payment_card_security_code_label" />
+            <EditText style="@style/info_style"
+                android:id="@+id/payment_card_security_code_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:hint="@string/payment_card_security_code_hint"
+                android:background="@drawable/edittext_shape"
+                android:inputType="textNoSuggestions" />
+        </LinearLayout>
+
+        <!-- Payment Amount -->
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView style="@style/label_style"
+                android:id="@+id/payment_amount_label"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="@string/payment_amount_label" />
+            <EditText style="@style/info_style"
+                android:id="@+id/payment_amount_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:hint="@string/payment_amount_hint"
+                android:background="@drawable/edittext_shape"
+                android:inputType="numberDecimal" />
+        </LinearLayout>
+
+        <!-- Payment Date -->
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView style="@style/label_style"
+                android:id="@+id/payment_pay_date_label"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="@string/payment_pay_date_label" />
+            <Button
+                android:id="@+id/payment_pay_date_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/date_button"
+                android:textAlignment="textStart"
+                android:paddingStart="4dp"
+                android:paddingEnd="1dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:text="@string/payment_pay_date_hint" />
+        </LinearLayout>
+
+        <View
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray400" />
+
+        <!-- Bill-to Information -->
+
+        <!-- Name -->
+        <TextView style="@style/label_style"
+            android:id="@+id/payment_bill_to_name_label"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/payment_bill_to_name_label" />
+        <EditText style="@style/info_style"
+            android:id="@+id/payment_bill_to_name_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="4dp"
+            android:paddingEnd="1dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:hint="@string/payment_bill_to_name_hint"
+            android:background="@drawable/edittext_shape"
+            android:inputType="textPersonName|textNoSuggestions" />
+
+        <!-- Address -->
+        <TextView style="@style/label_style"
+            android:id="@+id/payment_bill_to_address_label"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/payment_bill_to_address_label" />
+        <EditText style="@style/info_style"
+            android:id="@+id/payment_bill_to_address1_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:hint="@string/payment_bill_to_address1_hint"
+            android:background="@drawable/edittext_shape"
+            android:inputType="textPostalAddress|textNoSuggestions" />
+        <EditText style="@style/info_style"
+            android:id="@+id/payment_bill_to_address2_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:hint="@string/payment_bill_to_address2_hint"
+            android:background="@drawable/edittext_shape"
+            android:inputType="textPostalAddress|textNoSuggestions" />
+
+        <!-- City  -->
+        <TextView style="@style/label_style"
+            android:id="@+id/payment_bill_to_city_label"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/payment_bill_to_city_label" />
+        <EditText style="@style/info_style"
+            android:id="@+id/payment_bill_to_city_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:hint="@string/payment_bill_to_city_hint"
+            android:background="@drawable/edittext_shape"
+            android:inputType="text|textNoSuggestions" />
+
+        <!-- State  -->
+        <TextView style="@style/label_style"
+            android:id="@+id/payment_bill_to_state_label"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/payment_bill_to_state_label" />
+        <EditText style="@style/info_style"
+            android:id="@+id/payment_bill_to_state_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:hint="@string/payment_bill_to_state_hint"
+            android:background="@drawable/edittext_shape"
+            android:inputType="text|textNoSuggestions" />
+
+        <!-- Zip -->
+        <TextView style="@style/label_style"
+            android:id="@+id/payment_bill_to_zip_label"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/payment_bill_to_zip_label" />
+        <EditText style="@style/info_style"
+            android:id="@+id/payment_bill_to_zip_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:hint="@string/payment_bill_to_zip_hint"
+            android:background="@drawable/edittext_shape"
+            android:inputType="text|textNoSuggestions" />
+
+        <View
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray400" />
+
+        <LinearLayout style="?android:attr/buttonBarStyle"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <Button style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/back_button"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_round"
+                android:textColor="@android:color/black"
+                android:text="@string/back_button_text" />
+            <Button style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/cancel_button"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_round"
+                android:textColor="@android:color/black"
+                android:text="@string/cancel_button_text" />
+            <Button style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/save_button"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_round"
+                android:textColor="@android:color/black"
+                android:text="@string/save_button_text" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

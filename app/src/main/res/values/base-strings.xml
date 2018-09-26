@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+base-strings.xml
+-->
+
+<resources>
+    <!--string name="app_name">Camera2</string-->>
+    <string name="intro_message">
+        <![CDATA[
+
+
+            This is a demonstration of the basic use of Camera2 API including:
+            1. displaying a camera preview
+            2. taking pictures
+
+
+        ]]>
+    </string>
+</resources>

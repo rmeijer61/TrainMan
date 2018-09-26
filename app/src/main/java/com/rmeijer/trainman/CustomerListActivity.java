@@ -23,7 +23,7 @@ public class CustomerListActivity extends AppCompatActivity {
         // 7.15 - Getting the FragmentManager
         FragmentManager fm = getSupportFragmentManager();
 
-        // 7.16 - Adding a EnterCustomerFragment
+        // 7.16 - Adding a CustomerEnterFragment
         Fragment fragment_f11 = fm.findFragmentById(R.id.fragment_container_f11);
 
         if (fragment_f11 == null) {
@@ -33,7 +33,9 @@ public class CustomerListActivity extends AppCompatActivity {
                     .commit();
         }
 
-        // 7.16 - Adding a EnterCustomerFragment
+        // 7.16 - Adding a CustomerEnterFragment
+        // When RecyclerView is drawn, it calculates all the remaining size on screen to itself before
+        // drawing the next elements. Does not recalculate after the other elements are drawn.
         Fragment fragment_f12 = fm.findFragmentById(R.id.fragment_container_f12);
 
         if (fragment_f12 == null) {
@@ -52,7 +54,6 @@ public class CustomerListActivity extends AppCompatActivity {
                     .add(R.id.fragment_container_f13, fragment_f13)
                     .commit();
         }
-
 
     }
 

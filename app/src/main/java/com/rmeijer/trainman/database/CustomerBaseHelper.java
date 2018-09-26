@@ -5,11 +5,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.rmeijer.trainman.CustomerGenerator;
+
 import static com.rmeijer.trainman.database.CustomerDbSchema.CustomerTable.TABLE_NAME;
 
 // 14.3 - Creating CustomerBaseHelper
 public class CustomerBaseHelper extends SQLiteOpenHelper {
-    private static final int VERSION = 2018091402;
+    private static final String TAG = "CustomerBaseHelper";
+    private static final int VERSION = 2018091404;
     private static final String DATABASE_NAME = "customerBase.db";
 
     public CustomerBaseHelper(Context context) {

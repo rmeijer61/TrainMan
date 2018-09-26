@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/fragment_container_f11"
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+    </FrameLayout>
+
+    <TextView
+        style="@style/head2_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:text="@string/session_list_title" />
+
+    <FrameLayout
+        android:id="@+id/fragment_container_f12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+    </FrameLayout>
+
+    <View
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/blueA700" />
+
+    <FrameLayout
+        android:id="@+id/fragment_container_f13"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+    </FrameLayout>
+</LinearLayout>

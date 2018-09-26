@@ -92,7 +92,8 @@ public class CustomerPagerActivity extends AppCompatActivity
                 .getSerializableExtra(EXTRA_CUSTOMER_ID);
 
         // 11.2 - Setting up pager adapter
-        mViewPager = (ViewPager) findViewById(R.id.customer_view_pager);
+        // This points to the layout XML
+        mViewPager = (ViewPager) findViewById(R.id.fragment_container_fVCust2_customer_view_pager);
 
         mCustomers = CustomerStore.get(this).getCustomers();
 
@@ -110,6 +111,9 @@ public class CustomerPagerActivity extends AppCompatActivity
                     .add(R.id.fragment_container_fVCust1, fragment_fVCust1)
                     .commit();
         }
+
+        // This Fragment - Fragment fragment_fVCust2 = fm.findFragmentById(R.id.fragment_container_fVCust2);
+        // is handled by the pager: android.support.v4.view.ViewPager
 
         // 7.16 - Adding a CustomerMenuFragment
         Fragment fragment_fVCust3 = fm.findFragmentById(R.id.fragment_container_fVCust3);
@@ -142,7 +146,7 @@ public class CustomerPagerActivity extends AppCompatActivity
                 current_customerId = current_customer.getId();
 
                 // Change to CustomerHeadFragment
-                //return ViewCustomerFragment.newInstance(customer.getId());
+                //return CustomerViewFragment.newInstance(customer.getId());
 
                 Log.v("pager_adapter: ", "Current - beg***********");
                 Log.v("pager_adapter: ", "getItem- (Cuurrnt) customerId: " + current_customer.getId().toString());
@@ -196,13 +200,13 @@ public class CustomerPagerActivity extends AppCompatActivity
     @Override
     public void onStop() {
         super.onStop();
-        Log.v("Pager Act: ", "onStop *******************************************");
-        Log.v("Pager Act: ", "onStop- Current customerId: " + current_customerId);
+        Log.v("Customer Pager Act: ", "onStop *******************************************");
+        Log.v("Customer Pager Act: ", "onStop- Current customerId: " + current_customerId);
         if (mViewPager != null) {
             current_item = mViewPager.getCurrentItem();
-            Log.v("Pager Act: ", "onStop- Current Item: " + Integer.toString(current_item));
+            Log.v("Customer Pager Act: ", "onStop- Current Item: " + Integer.toString(current_item));
         }
-        Log.v("X" , "****************************************************");
+        Log.v("Customer Pager Act" , "****************************************************");
     }
 
 }

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="5dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:textAllCaps="false">
+
+    <TextView style="@style/screen_title_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/sign_session_title"/>
+
+    <View
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray400" />
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView style="@style/info_style"
+            android:id="@+id/sign_session_service_label"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="2dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/session_service_label" />
+
+        <TextView style="@style/info_style"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:id="@+id/sign_session_service_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView style="@style/info_style"
+            android:id="@+id/sign_session_date_label"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="2dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/session_date_label"
+            android:textAllCaps="false" />
+
+        <TextView style="@style/info_style"
+            android:id="@+id/sign_session_date_textview"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+    <View
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray400" />
+
+    <TextView style="@style/label_style"
+        android:id="@+id/sign_session_label"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAllCaps="false"
+        android:text="@string/sign_session_label"/>
+
+    <EditText
+        android:id="@+id/sign_session_sign_edittext"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:hint="@string/sign_session_hint"
+        android:inputType="text"/>
+
+    <LinearLayout style="?android:attr/buttonBarButtonStyle"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <Button style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/sign_session_cancel_button"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/button_round"
+            android:textColor="@android:color/black"
+            android:text="@string/cancel_button_text" />
+        <Button style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/sign_session_confirm_button"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/button_round"
+            android:textColor="@android:color/black"
+            android:text="@string/confirm_button_text" />
+
+    </LinearLayout>
+
+</LinearLayout>

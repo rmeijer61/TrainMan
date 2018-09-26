@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:textAllCaps="false"
-    android:layout_margin="16dp">
+    android:layout_margin="10dp">
 
     <TextView style="@style/screen_title_style"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/take_customer_picture_title"/>
@@ -25,20 +25,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
         <TextView style="@style/label_style"
-            android:id="@+id/customer_take_picture_name_label"
+            android:id="@+id/picture_customer_name_label"
             android:layout_marginEnd="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAllCaps="false"
-            android:text="@string/customer_name_label"
-            />
+            android:text="@string/customer_name_label" />
         <TextView style="@style/label_style"
-            android:id="@+id/customer_take_picture_name_text"
+            android:id="@+id/picture_customer_name_textview"
             android:layout_marginEnd="1dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <LinearLayout style="?android:attr/buttonBarStyle"
@@ -47,12 +44,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start">
-        <Button style="?android:attr/buttonBarButtonStyle"
-            android:id="@+id/picture_button"
+        <ImageButton style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/picture_imagebutton"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:background="@drawable/button_round"
+            android:src="@android:drawable/ic_menu_camera"
             android:textColor="@android:color/black"
             android:text="@string/picture_button_text" />
     </LinearLayout>
@@ -66,19 +64,20 @@
             android:textColor="@color/gray500"/>
     </LinearLayout>
 
-    <!-- Dummy place holder -->
+    <!-- Customer photo **************************************** -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
+            android:id="@+id/picture_image_imageview"
             android:layout_marginEnd="1dp"
             android:layout_marginBottom="2dp"
             android:layout_width="match_parent"
             android:layout_height="240dp"
             android:contentDescription="@string/customer_picture_desc"
-            android:background="@color/gray100"
-            />
+            android:background="@color/gray100" />
     </LinearLayout>
+    <!-- ******************************************************* -->
 
     <LinearLayout
         android:layout_width="match_parent"

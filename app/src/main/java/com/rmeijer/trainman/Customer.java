@@ -1,9 +1,12 @@
 package com.rmeijer.trainman;
 
+import android.util.Log;
+
 import java.util.Date;
 import java.util.UUID;
 
 public class Customer {
+    final String TAG = "Customer: ";
     private UUID mId;
     private Date mDate;
     private String mName;
@@ -21,9 +24,6 @@ public class Customer {
     private String mNote;
 
     public Customer() {
-        // 14.15 - Adding Customer constructor
-        //mId = UUID.randomUUID();
-        //mDate = new Date();
         this(UUID.randomUUID());
     }
 
@@ -31,7 +31,6 @@ public class Customer {
     public Customer(UUID id) {
         mId = id;
         mDate = new Date();
-        mBirthDate = new Date(0);
     }
     // end 14.15
 
@@ -150,4 +149,11 @@ public class Customer {
     public void setNote(String note) {
         mNote = note;
     }
+
+    // 16.5 - Adding the filename-derived property
+    public String getPhotoFilename() {
+        Log.v( TAG, "Customer: " + "IMG_" + getId().toString() + ".jpg");
+        return "IMG_" + getId().toString() + ".jpg";
+    }
+
 }

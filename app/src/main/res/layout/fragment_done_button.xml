@@ -5,12 +5,12 @@
     android:layout_marginTop="1dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <Button
+    <Button style="?android:attr/buttonBarStyle"
         android:id="@+id/customer_list_done_button"
         android:layout_gravity="center"
-        android:layout_width="312dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="3dp"
+        android:layout_margin="5dp"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
         android:background="@drawable/button_round"
         android:text="@string/done_button_text"
         />

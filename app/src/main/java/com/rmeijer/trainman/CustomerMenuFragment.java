@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,12 +66,11 @@ public class CustomerMenuFragment extends Fragment {
 
                     // Get the extra from the pager activity intent
                     UUID customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
+                    Log.v("CustomerMenu: ", "Got Extra customer Id: " + customerId.toString());
                     mCustomer = CustomerStore.get(getActivity()).getCustomer(customerId);
 
-                    // Start ViewCustomerActivity
-                    Intent intent = new Intent(getActivity(), ViewCustomerActivity.class);
-
-                    //intent.putExtra(ARG_CUSTOMER_ID, customerId);
+                    // Start CustomerViewActivity
+                    Intent intent = new Intent(getActivity(), CustomerViewActivity.class);
                     intent.putExtra(EXTRA_CUSTOMER_ID, customerId);
                     startActivity(intent);
                 }
@@ -84,9 +84,31 @@ public class CustomerMenuFragment extends Fragment {
             int messageResId = R.string.take_customer_picture_button_text;
             Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
+            UUID customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
+            Log.v("CustomerMenu: ", "Got Extra customer Id: " + customerId.toString());
+
             // Start PictureActivity
             Intent intent = new Intent(getActivity(), PictureActivity.class);
+            intent.putExtra(EXTRA_CUSTOMER_ID, customerId);
             startActivity(intent);
+            }
+        });
+
+        Button mViewCustomerSessionsButton = v.findViewById(R.id.customer_menu_view_sessions_button);
+        mViewCustomerSessionsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int messageResId = R.string.view_customer_sessions_button_text;
+                Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
+
+                // Get the extra from the activity intent
+                UUID customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
+                Log.v("CustomerMenu: ", "Got Extra customer Id: " + customerId.toString());
+
+                // Start SessionActivity
+                Intent intent = new Intent(getActivity(), SessionListActivity.class);
+                intent.putExtra(EXTRA_CUSTOMER_ID, customerId);
+                startActivity(intent);
             }
         });
 
@@ -99,27 +121,46 @@ public class CustomerMenuFragment extends Fragment {
 
             // Get the extra from the activity intent
             UUID customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
-            mCustomer = CustomerStore.get(getActivity()).getCustomer(customerId);;
+            Log.v("CustomerMenu: ", "Got Extra customer Id: " + customerId.toString());
 
-            // Start EnterSessionActivity
-            Intent intent = new Intent(getActivity(), EnterSessionActivity.class);
-
-            //intent.putExtra(ARG_CUSTOMER_ID, customerId);
+            // Start SessionEnterActivity
+            Intent intent = new Intent(getActivity(), SessionEnterActivity.class);
             intent.putExtra(EXTRA_CUSTOMER_ID, customerId);
             startActivity(intent);
             }
         });
 
-        Button mViewSessionButton = v.findViewById(R.id.view_session_button);
-        mViewSessionButton.setOnClickListener(new View.OnClickListener() {
+        Button mViewCustomerPaymentsButton = v.findViewById(R.id.customer_menu_view_payments_button);
+        mViewCustomerPaymentsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            int messageResId = R.string.view_session_button_text;
-            Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
+                int messageResId = R.string.view_customer_sessions_button_text;
+                Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
-            // Start SessionActivity
-            Intent intent = new Intent(getActivity(), ViewSessionActivity.class);
-            startActivity(intent);
+                // Get the extra from the activity intent
+                UUID customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
+                Log.v("CustomerMenu: ", "Got Extra customer Id: " + customerId.toString());
+
+                // Start SessionActivity
+                Intent intent = new Intent(getActivity(), PaymentListActivity.class);
+                intent.putExtra(EXTRA_CUSTOMER_ID, customerId);
+                startActivity(intent);
+            }
+        });
+
+        Button mDeleteCustomerSessionsButton = v.findViewById(R.id.customer_menu_delete_sessions_button);
+        mDeleteCustomerSessionsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int messageResId = R.string.delete_customer_sessions_button_text;
+                Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
+
+                FragmentManager fm = getFragmentManager();
+                CustomerSessionsDeleteFragment dialog = new CustomerSessionsDeleteFragment();
+                UUID customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
+                Log.v("CustomerMenu: ", "Got Extra customer Id: " + customerId.toString());
+                dialog.setCustomerId(customerId);
+                dialog.show(fm, null);
             }
         });
 
@@ -134,8 +175,9 @@ public class CustomerMenuFragment extends Fragment {
             }
         });
 
-        // End of Menu *****************************************************************************
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        // Return View object
+        //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
         return v;
     }
-
 }

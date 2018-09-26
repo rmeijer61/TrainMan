@@ -18,6 +18,7 @@
         <TextView style="@style/app_title_style"
             android:id="@+id/app_title_text"
             android:layout_marginTop="30dp"
+            android:layout_marginStart="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/app_title_text"

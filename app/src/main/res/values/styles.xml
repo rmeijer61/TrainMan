@@ -15,46 +15,66 @@
         <item name="android:windowBackground">@android:color/white</item>
     </style>
 
-    <style name="app_title_style" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:textColor">#000</item>
+    <style name="app_title_style" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/purple800</item>
         <item name="android:textSize">40sp</item>
     </style>
 
-    <style name="head1_style" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="head1_style" parent="@android:style/TextAppearance.Medium">
         <item name="android:textColor">#000</item>
         <item name="android:textSize">24sp</item>
     </style>
 
-    <style name="head2_style" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="head2_style" parent="@android:style/TextAppearance.Medium">
         <item name="android:textColor">#000</item>
         <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="edittext_style" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="edittext_style" parent="@android:style/TextAppearance.Medium">
         <item name="android:textColor">@color/colorInputText</item>
         <item name="android:textSize">12sp</item>
         <item name="android:padding">4dp</item>
     </style>
 
-    <style name="main_menu_style" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:textColor">#000</item>
-        <item name="android:textSize">40sp</item>
+    <style name="main_menu_style" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">32sp</item>
     </style>
 
-    <style name="screen_title_style" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:textColor">#000</item>
+    <style name="screen_title_style" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@android:color/black</item>
         <item name="android:textSize">24sp</item>
         <item name="android:textAllCaps">false</item>
     </style>
 
-    <style name="label_style" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:textColor">#000</item>
-        <item name="android:textSize">18sp</item>
+    <style name="label_style" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textAllCaps">false</item>
     </style>
+
+    <style name="info_style"  parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="user_label_style" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/blue900</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="user_name_style" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/blue900</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
     <style
         name="DialogTheme" parent="@android:style/Theme.Dialog">
     </style>
+
     <!--style name="datePickerSpinnerStyle" parent="@android:style/Widget.Material.DatePicker">
         <item name="android:datePickerMode">spinner</item>
         <item name="android:calendarViewShown">false</item>
@@ -71,5 +91,14 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowCloseOnTouchOutside">false</item>
+    </style>
+
+    <style name="greenAccentStyle" parent="android:Theme.Holo.Light.Dialog">
+        <item name="colorAccent">@android:color/holo_green_dark</item>
+    </style>
+
+    <!-- Camera2 -->
+    <style name="MaterialTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
     </style>
 </resources>

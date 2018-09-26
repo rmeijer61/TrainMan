@@ -7,7 +7,7 @@
     android:layout_height="26dp"
     android:layout_gravity="start">
 
-    <TextView style="@style/label_style"
+    <TextView style="@style/user_label_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
@@ -16,7 +16,7 @@
         android:layout_marginBottom="1dp"
         android:text="@string/user_logged_in_as_label"/>
 
-    <TextView style="@style/label_style"
+    <TextView style="@style/user_name_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="1dp"
