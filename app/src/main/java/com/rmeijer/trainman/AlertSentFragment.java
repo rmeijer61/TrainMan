@@ -3,8 +3,11 @@ package com.rmeijer.trainman;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
+
+import java.util.Objects;
 
 
 public class AlertSentFragment extends DialogFragment {
@@ -15,10 +18,11 @@ public class AlertSentFragment extends DialogFragment {
     public AlertSentFragment() {
     }
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        dialog = new AlertDialog.Builder(getActivity())
+        dialog = new AlertDialog.Builder(Objects.requireNonNull(getActivity()))
                 .setTitle(R.string.alert_title)
                 .setMessage(getMsg())
                 .setPositiveButton(
@@ -40,19 +44,5 @@ public class AlertSentFragment extends DialogFragment {
     public String getMsg() {
         return mMsg;
     }
-
-
-/**
-    public void showAlert (String alertMsg) {
- // TESTING
-
- String msg = mCustomer.getId().toString() + " " + mCustomer.getDate();
- AlertFragment alert = new AlertFragment();
- alert.setAlertMessage(msg);
- alert.show(fmAlert, "alert_tag");
- //
-
-    }
-*/
 }
 

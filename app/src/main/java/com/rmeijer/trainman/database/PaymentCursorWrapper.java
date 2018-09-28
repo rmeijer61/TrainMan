@@ -8,7 +8,6 @@ import com.rmeijer.trainman.Payment;
 import java.util.Date;
 import java.util.UUID;
 
-
 public class PaymentCursorWrapper extends CursorWrapper {
     public PaymentCursorWrapper(Cursor cursor) {
         super(cursor);

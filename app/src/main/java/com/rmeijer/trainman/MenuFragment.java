@@ -3,6 +3,7 @@ package com.rmeijer.trainman;
 // 7.9 - Supporting the Fragment import
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
@@ -12,6 +13,8 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
+
+import java.util.Objects;
 
 public class MenuFragment extends Fragment {
     private static final String TAG = "MenuFragment";
@@ -29,12 +32,12 @@ public class MenuFragment extends Fragment {
 
     // 7.11 - Overriding onCreateView(…)
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_menu, container, false);
 
         // ???
-        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        Objects.requireNonNull(getActivity()).getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         // 5.6 - Wiring up the buttons
         // 7.12 - Wiring up the EditText widget
@@ -72,7 +75,7 @@ public class MenuFragment extends Fragment {
             public void onClick(View v) {
             FragmentManager fm = getFragmentManager();
             AlertConfirmFragment dialog = new AlertConfirmFragment();
-            dialog.show(fm, null);
+            dialog.show(Objects.requireNonNull(fm), null);
             }
         });
 

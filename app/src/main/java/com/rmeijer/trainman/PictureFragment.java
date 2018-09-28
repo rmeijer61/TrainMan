@@ -14,6 +14,7 @@ import android.graphics.Camera;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -31,6 +32,7 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 public class PictureFragment extends Fragment {
@@ -80,7 +82,7 @@ public class PictureFragment extends Fragment {
     // onCreateView
     //**********************************************************************************************
     @Override
-    public View onCreateView(LayoutInflater inflater,
+    public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_picture, container, false);
@@ -91,7 +93,7 @@ public class PictureFragment extends Fragment {
         // Get EXTRA value from the activity's intent
         // (Note: The fragment argument is also available) 
         //*****************************************************************************************
-        Context mContext = getActivity().getApplicationContext();
+        Context mContext = Objects.requireNonNull(getActivity()).getApplicationContext();
         // 11.3 - Creating newIntent - Get intent EXTRA
         final UUID customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
         if (customerId != null) {
@@ -134,7 +136,7 @@ public class PictureFragment extends Fragment {
         //------------------------------------------------------------------------------------------
         // Camera Button
         //------------------------------------------------------------------------------------------
-        mPhotoButton = (ImageButton) v.findViewById(R.id.picture_imagebutton);
+        mPhotoButton = v.findViewById(R.id.picture_imagebutton);
         // 16.8 - Firing a camera intent
 
         // ACTION_IMAGE_CAPTURE
@@ -156,6 +158,7 @@ public class PictureFragment extends Fragment {
 
         */
 
+        /*
         Log.v( TAG, "Checking canTakePhoto... ");
 
         boolean canTakePhoto = mPhotoFile != null &&
@@ -170,6 +173,7 @@ public class PictureFragment extends Fragment {
         } else {
             Log.v( TAG, "canTakePhoto! " + canTakePhoto);
         }
+        */
 
         mPhotoButton.setOnClickListener(new View.OnClickListener() {
             @Override

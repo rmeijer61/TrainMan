@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 
 // 8.11 - Implementing CustomerListFragment
 public class CustomerListFragment extends Fragment {
@@ -45,13 +46,13 @@ public class CustomerListFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater,
+    public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_customer_list, container, false);
 
         // Removed cast
-        mCustomerRecyclerView = (RecyclerView) view.findViewById(R.id.customer_recycler_view);
+        mCustomerRecyclerView = view.findViewById(R.id.customer_recycler_view);
         mCustomerRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         // 13.19 - Saving subtitle visibility
@@ -75,7 +76,7 @@ public class CustomerListFragment extends Fragment {
 
     // 13.19 - Saving subtitle visibility
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putBoolean(SAVED_SUBTITLE_VISIBLE, mSubtitleVisible);
     }
@@ -102,7 +103,7 @@ public class CustomerListFragment extends Fragment {
             case R.id.show_subtitle:
                 // 13.16 - Updating a MenuItem
                 mSubtitleVisible = !mSubtitleVisible;
-                getActivity().invalidateOptionsMenu();
+                Objects.requireNonNull(getActivity()).invalidateOptionsMenu();
                 // end 13.16
                 updateSubtitle();
                 return true;
@@ -126,7 +127,7 @@ public class CustomerListFragment extends Fragment {
         // end 13.17
 
         AppCompatActivity activity = (AppCompatActivity) getActivity();
-        activity.getSupportActionBar().setSubtitle(subtitle);
+        Objects.requireNonNull(Objects.requireNonNull(activity).getSupportActionBar()).setSubtitle(subtitle);
     }
     // end 13.13
 
@@ -142,15 +143,11 @@ public class CustomerListFragment extends Fragment {
         // 10.9 - Reloading the list in onResume()
         //mAdapter = new CustomerAdapter(customers);
         //mCustomerRecyclerView.setAdapter(mAdapter);
-        if (mAdapter == null) {
-            mAdapter = new CustomerAdapter(customers);
-            mCustomerRecyclerView.setAdapter(mAdapter);
-        } else {
-            // 14.21 - Calling setCustomers(List<>)
-            mAdapter.setCustomers(customers);
-            // end 14.21
-            mAdapter.notifyDataSetChanged();
-        }
+        // 14.21 - Calling setCustomers(List<>)
+         mAdapter.setCustomers(customers);
+         // end 14.21
+         mAdapter.notifyDataSetChanged();
+
     }
 
     // 8.17 - The beginnings of a ViewHolder
@@ -166,7 +163,7 @@ public class CustomerListFragment extends Fragment {
         private Customer mCustomer;
 
 
-        public CustomerHolder(LayoutInflater inflater, ViewGroup parent) {
+        private CustomerHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_customer, parent, false));
 
             // 8.24 - Detecting presses in CustomerHolder
@@ -215,7 +212,7 @@ public class CustomerListFragment extends Fragment {
 
         private List<Customer> mCustomers;
 
-        public CustomerAdapter(List<Customer> customers) {
+        private CustomerAdapter(List<Customer> customers) {
             mCustomers = customers;
         }
 
@@ -248,7 +245,7 @@ public class CustomerListFragment extends Fragment {
         }
 
         // 14.20 - Adding setCustomers(List<Customer>)
-        public void setCustomers(List<Customer> customers) {
+        private void setCustomers(List<Customer> customers) {
             mCustomers = customers;
         }
         // 14.20

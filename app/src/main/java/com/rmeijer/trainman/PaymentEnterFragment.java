@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.text.Editable;
@@ -22,6 +23,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.Objects;
 import java.util.UUID;
 
 import static java.lang.Double.valueOf;
@@ -78,7 +80,7 @@ public class PaymentEnterFragment extends Fragment {
     // onCreateView
     //**********************************************************************************************
     @Override
-    public View onCreateView(LayoutInflater inflater,
+    public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_payment, container, false);
@@ -88,7 +90,7 @@ public class PaymentEnterFragment extends Fragment {
         //*****************************************************************************************
         // Get EXTRA values
         //*****************************************************************************************
-        Context mContext = getActivity().getApplicationContext();
+        Context mContext = Objects.requireNonNull(getActivity()).getApplicationContext();
         // 11.3 - Creating newIntent - Get intent EXTRA
         customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
         if (customerId != null) {
@@ -151,7 +153,7 @@ public class PaymentEnterFragment extends Fragment {
         //------------------------------------------------------------------------------------------
         // Pay Method
         //------------------------------------------------------------------------------------------
-        final Spinner mPayMethodSpinner = (Spinner) v.findViewById(R.id.payment_pay_method_spinner);
+        final Spinner mPayMethodSpinner = v.findViewById(R.id.payment_pay_method_spinner);
         mPayMethodSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
@@ -214,7 +216,7 @@ public class PaymentEnterFragment extends Fragment {
                 int day = calDate.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(
-                        getContext(),
+                        Objects.requireNonNull(getContext()),
                         0,
                         mExpireDateSetListener,
                         year, month, day);
@@ -294,7 +296,7 @@ public class PaymentEnterFragment extends Fragment {
                 int day = calDate.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(
-                        getContext(),
+                        Objects.requireNonNull(getContext()),
                         0,
                         mPayDateSetListener,
                         year, month, day);

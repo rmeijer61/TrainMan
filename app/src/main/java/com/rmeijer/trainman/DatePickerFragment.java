@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
@@ -15,6 +16,7 @@ import android.widget.DatePicker;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 
 public class DatePickerFragment extends DialogFragment {
         //implements DatePickerDialog.OnDateSetListener {
@@ -37,6 +39,7 @@ public class DatePickerFragment extends DialogFragment {
         return fragment;
     }
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -47,7 +50,7 @@ public class DatePickerFragment extends DialogFragment {
 
         // 12.7 - Extracting the date and initializing DatePicker
 
-        Date date = (Date) getArguments().getSerializable(ARG_DATE);
+        Date date = (Date) Objects.requireNonNull(getArguments()).getSerializable(ARG_DATE);
 
         Calendar calDate = Calendar.getInstance();
         calDate.setTime(date);
@@ -55,24 +58,11 @@ public class DatePickerFragment extends DialogFragment {
         int month = calDate.get(Calendar.MONTH);
         int day = calDate.get(Calendar.DAY_OF_MONTH);
 
-        mDatePicker = (DatePicker) v.findViewById(R.id.dialog_date_picker);
+        mDatePicker = v.findViewById(R.id.dialog_date_picker);
         mDatePicker.init(year, month, day, null);
 
-        if (calDate != null) {
-            calDate.setTime(date);
-            year = calDate.get(Calendar.YEAR);
-            month = calDate.get(Calendar.MONTH);
-            day = calDate.get(Calendar.DAY_OF_MONTH);
-        } else {
-            // Use the current date as the default date in the picker
-            year = calDate.get(Calendar.YEAR);
-            month = calDate.get(Calendar.MONTH);
-            day = calDate.get(Calendar.DAY_OF_MONTH);
-        }
-
-
         // Create a new instance of DatePickerDialog and return it
-        return new AlertDialog.Builder(getActivity())
+        return new AlertDialog.Builder(Objects.requireNonNull(getActivity()))
                 .setTitle(R.string.date_picker_title)
                 // 12.4 - Adding DatePicker to AlertDialog
                 .setView(v)
@@ -136,6 +126,6 @@ public class DatePickerFragment extends DialogFragment {
         FragmentManager fmAlert = getFragmentManager();
         AlertFragment alert = new AlertFragment();
         alert.setAlertMessage("Msg: " + alertMsg);
-        alert.show(fmAlert, alertTag);
+        alert.show(Objects.requireNonNull(fmAlert), alertTag);
     }
 }

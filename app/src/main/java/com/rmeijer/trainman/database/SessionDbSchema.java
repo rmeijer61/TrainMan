@@ -1,14 +1,17 @@
 package com.rmeijer.trainman.database;
 
+//**************************************************************************************************
 // 14 - Define schema - Create class
+//**************************************************************************************************
 public class SessionDbSchema {
     // 14.1 - Defining SessionTable
     public static final class SessionTable {
         // Table
         public static final String TABLE_NAME = "sessions";
 
+        //******************************************************************************************
         // 14.2 - Defining your table columns
-        // Columns
+        //******************************************************************************************
         public static final class Cols {
             public static final String UUID = "uuid";
             public static final String DATE = "date";
@@ -20,7 +23,5 @@ public class SessionDbSchema {
             public static final String PAID = "paid";
             public static final String SIGN = "sign";
         }
-        // end 14.2
     }
-    // end 14.1
 }

@@ -10,8 +10,9 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
-
+//**************************************************************************************************
 // 14.13 - Creating CustomerCursorWrapper
+//**************************************************************************************************
 public class CustomerCursorWrapper extends CursorWrapper {
     public CustomerCursorWrapper(Cursor cursor) {
         super(cursor);
@@ -54,10 +55,6 @@ public class CustomerCursorWrapper extends CursorWrapper {
         customer.setNote(note);
 
         return customer;
-
-        //return null;
-        // end 14.16
     }
 
 }
-// end 14.13

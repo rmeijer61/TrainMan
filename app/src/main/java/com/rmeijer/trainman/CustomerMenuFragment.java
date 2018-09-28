@@ -2,6 +2,7 @@ package com.rmeijer.trainman;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class CustomerMenuFragment extends Fragment {
@@ -46,7 +48,7 @@ public class CustomerMenuFragment extends Fragment {
 
     // 7.11 - Overriding onCreateView(…)
     @Override
-    public View onCreateView(LayoutInflater inflater,
+    public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_customer_menu, container, false);
@@ -65,7 +67,7 @@ public class CustomerMenuFragment extends Fragment {
                     Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
                     // Get the extra from the pager activity intent
-                    UUID customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
+                    UUID customerId = (UUID) Objects.requireNonNull(getActivity()).getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
                     Log.v("CustomerMenu: ", "Got Extra customer Id: " + customerId.toString());
                     mCustomer = CustomerStore.get(getActivity()).getCustomer(customerId);
 
@@ -84,7 +86,7 @@ public class CustomerMenuFragment extends Fragment {
             int messageResId = R.string.take_customer_picture_button_text;
             Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
-            UUID customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
+            UUID customerId = (UUID) Objects.requireNonNull(getActivity()).getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
             Log.v("CustomerMenu: ", "Got Extra customer Id: " + customerId.toString());
 
             // Start PictureActivity
@@ -102,7 +104,7 @@ public class CustomerMenuFragment extends Fragment {
                 Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
                 // Get the extra from the activity intent
-                UUID customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
+                UUID customerId = (UUID) Objects.requireNonNull(getActivity()).getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
                 Log.v("CustomerMenu: ", "Got Extra customer Id: " + customerId.toString());
 
                 // Start SessionActivity
@@ -120,7 +122,7 @@ public class CustomerMenuFragment extends Fragment {
             Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
             // Get the extra from the activity intent
-            UUID customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
+            UUID customerId = (UUID) Objects.requireNonNull(getActivity()).getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
             Log.v("CustomerMenu: ", "Got Extra customer Id: " + customerId.toString());
 
             // Start SessionEnterActivity
@@ -138,7 +140,7 @@ public class CustomerMenuFragment extends Fragment {
                 Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
                 // Get the extra from the activity intent
-                UUID customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
+                UUID customerId = (UUID) Objects.requireNonNull(getActivity()).getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
                 Log.v("CustomerMenu: ", "Got Extra customer Id: " + customerId.toString());
 
                 // Start SessionActivity
@@ -157,7 +159,7 @@ public class CustomerMenuFragment extends Fragment {
 
                 FragmentManager fm = getFragmentManager();
                 CustomerSessionsDeleteFragment dialog = new CustomerSessionsDeleteFragment();
-                UUID customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
+                UUID customerId = (UUID) Objects.requireNonNull(getActivity()).getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
                 Log.v("CustomerMenu: ", "Got Extra customer Id: " + customerId.toString());
                 dialog.setCustomerId(customerId);
                 dialog.show(fm, null);
@@ -171,7 +173,7 @@ public class CustomerMenuFragment extends Fragment {
             int messageResId = R.string.done_button_text;
             Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
-            getActivity().finish();
+            Objects.requireNonNull(getActivity()).finish();
             }
         });
 

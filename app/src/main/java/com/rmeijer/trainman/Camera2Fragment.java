@@ -52,6 +52,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 import com.rmeijer.trainman.AutoFitTextureView;
@@ -406,22 +407,22 @@ public class Camera2Fragment extends Fragment
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_camera2, container, false);
     }
 
     @Override
-    public void onViewCreated(final View view, Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, Bundle savedInstanceState) {
         view.findViewById(R.id.picture).setOnClickListener(this);
         view.findViewById(R.id.info).setOnClickListener(this);
-        mTextureView = (AutoFitTextureView) view.findViewById(R.id.texture);
+        mTextureView = view.findViewById(R.id.texture);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mFile = new File(getActivity().getExternalFilesDir(null), "pic.jpg");
+        mFile = new File(Objects.requireNonNull(getActivity()).getExternalFilesDir(null), "pic.jpg");
     }
 
     @Override
@@ -478,14 +479,14 @@ public class Camera2Fragment extends Fragment
     private void setUpCameraOutputs(int width, int height) {
         Activity activity = getActivity();
 
-        CameraManager manager = (CameraManager) activity.getSystemService(Context.CAMERA_SERVICE);
+        CameraManager manager = (CameraManager) Objects.requireNonNull(activity).getSystemService(Context.CAMERA_SERVICE);
 
 
         //------------------------------------------------------------------------------------------
         // Check the camera list
         //------------------------------------------------------------------------------------------
         try {
-            Log.v( TAG, "setUpCameraOutputs: cameraId List=" + manager.getCameraIdList().toString());
+            Log.v( TAG, "setUpCameraOutputs: cameraId List=" + Objects.requireNonNull(manager).getCameraIdList().toString());
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
@@ -612,7 +613,7 @@ public class Camera2Fragment extends Fragment
      * Opens the camera specified by {@link Camera2Fragment#mCameraId}.
      */
     private void openCamera(int width, int height) {
-        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA)
+        if (ContextCompat.checkSelfPermission(Objects.requireNonNull(getActivity()), Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
             requestCameraPermission();
             return;
@@ -1012,11 +1013,11 @@ public class Camera2Fragment extends Fragment
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             final Activity activity = getActivity();
             return new AlertDialog.Builder(activity)
-                    .setMessage(getArguments().getString(ARG_MESSAGE))
+                    .setMessage(Objects.requireNonNull(getArguments()).getString(ARG_MESSAGE))
                     .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            activity.finish();
+                            Objects.requireNonNull(activity).finish();
                         }
                     })
                     .create();

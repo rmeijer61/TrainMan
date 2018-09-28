@@ -2,6 +2,7 @@ package com.rmeijer.trainman;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 public class CustomerEnterFragment extends Fragment {
 
@@ -41,7 +43,7 @@ public class CustomerEnterFragment extends Fragment {
     // View objects
     //**********************************************************************************************
     @Override
-    public View onCreateView(LayoutInflater inflater,
+    public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_customer_enter, container, false);
@@ -120,7 +122,7 @@ public class CustomerEnterFragment extends Fragment {
                 int day = calDate.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(
-                        getContext(),
+                        Objects.requireNonNull(getContext()),
                         0,
                         mDateSetListener,
                         year, month, day);
@@ -395,7 +397,7 @@ public class CustomerEnterFragment extends Fragment {
             public void onClick(View v) {
                 int messageResId = R.string.cancel_button_text;
                 Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
-                getActivity().finish();
+                Objects.requireNonNull(getActivity()).finish();
             }
         });
 
@@ -413,7 +415,7 @@ public class CustomerEnterFragment extends Fragment {
 
                 CustomerStore.get(getActivity()).addCustomer(mCustomer);
 
-                getActivity().finish();
+                Objects.requireNonNull(getActivity()).finish();
             }
         });
 

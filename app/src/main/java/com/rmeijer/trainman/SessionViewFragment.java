@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.text.Editable;
@@ -23,6 +24,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.Objects;
 import java.util.UUID;
 
 public class SessionViewFragment extends Fragment {
@@ -66,7 +68,7 @@ public class SessionViewFragment extends Fragment {
     }
 
     public void getSessionObject() {
-        UUID sessionId = null;
+        UUID sessionId;
         Activity test_activity = getActivity();
         if (test_activity != null) {
             Intent test_intent = getActivity().getIntent();
@@ -86,7 +88,7 @@ public class SessionViewFragment extends Fragment {
 
     // 7.11 - Overriding onCreateView(…)
     @Override
-    public View onCreateView(LayoutInflater inflater,
+    public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_session_view, container, false);
@@ -96,7 +98,7 @@ public class SessionViewFragment extends Fragment {
         //*****************************************************************************************
         // Get EXTRA values
         //*****************************************************************************************
-        Context mContext = getActivity().getApplicationContext();
+        Context mContext = Objects.requireNonNull(getActivity()).getApplicationContext();
         // 11.3 - Creating newIntent - Get intent EXTRA
         final UUID customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
         if (customerId != null) {
@@ -135,7 +137,7 @@ public class SessionViewFragment extends Fragment {
         //*****************************************************************************************
         // Process view input
         //*****************************************************************************************
-        mServiceSpinner = (Spinner) v.findViewById(R.id.view_session_service_spinner);
+        mServiceSpinner = v.findViewById(R.id.view_session_service_spinner);
         if (mSession.getService() != null) {
             String mService = mSession.getService();
             if (mService.equals("Standard")) {
@@ -169,7 +171,7 @@ public class SessionViewFragment extends Fragment {
             }
         });
 
-        mSessionDateButton = (Button) v.findViewById(R.id.view_session_date_button);
+        mSessionDateButton = v.findViewById(R.id.view_session_date_button);
         if (mSession.getSessionDate() != null) {
             Log.v("ViewSession: ", "Session date: " + mSession.getSessionDate().toString());
             Calendar calDate = Calendar.getInstance();
@@ -215,7 +217,7 @@ public class SessionViewFragment extends Fragment {
             }
         };
 
-        mDescrEditText = (EditText) v.findViewById(R.id.view_session_descr_edittext);
+        mDescrEditText = v.findViewById(R.id.view_session_descr_edittext);
         if (mSession.getDescr() != null) {
             mDescrEditText.setText(mSession.getDescr());
         }
@@ -232,7 +234,7 @@ public class SessionViewFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {}
         });
 
-        mCompletedCheckBox = (CheckBox) v.findViewById(R.id.view_session_completed_checkbox);
+        mCompletedCheckBox = v.findViewById(R.id.view_session_completed_checkbox);
         Log.v("ViewSession: ", "onDateSet (store) completed is " + mSession.isCompleted());
         mCompletedCheckBox.setChecked(mSession.isCompleted());
         Log.v("ViewSession: ", "onDateSet (CheckBox) completed is now " + mCompletedCheckBox.isChecked());
@@ -245,7 +247,7 @@ public class SessionViewFragment extends Fragment {
             }
         });
 
-        mPaidCheckBox = (CheckBox) v.findViewById(R.id.view_session_paid_checkbox);
+        mPaidCheckBox = v.findViewById(R.id.view_session_paid_checkbox);
         Log.v("ViewSession: ", "onDateSet (store) paid is " + mSession.isPaid());
         mPaidCheckBox.setChecked(mSession.isPaid());
         Log.v("ViewSession: ", "onDateSet (CheckBox) paid is now " + mPaidCheckBox.isChecked());
@@ -258,7 +260,7 @@ public class SessionViewFragment extends Fragment {
             }
         });
 
-        mSignEditText = (EditText) v.findViewById(R.id.view_session_sign_edittext);
+        mSignEditText = v.findViewById(R.id.view_session_sign_edittext);
         if (mSession.getSign() != null) {
             mSignEditText.setText(mSession.getSign());
         }
@@ -300,7 +302,7 @@ public class SessionViewFragment extends Fragment {
                 FragmentManager fm = getFragmentManager();
                 SessionDeleteFragment dialog = new SessionDeleteFragment();
                 dialog.setSessionId(mSession.getId());
-                dialog.show(fm, null);
+                dialog.show(Objects.requireNonNull(fm), null);
             }
         });
 

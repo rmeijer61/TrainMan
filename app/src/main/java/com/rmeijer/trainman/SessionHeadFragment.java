@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class SessionHeadFragment extends Fragment {
@@ -54,12 +56,12 @@ public class SessionHeadFragment extends Fragment {
     }
 
     public void getSessionObject() {
-        UUID sessionId = null;
+        UUID sessionId;
         Activity test_activity = getActivity();
         if (test_activity != null) {
             Intent test_intent = getActivity().getIntent();
             if (test_intent != null) {
-                sessionId = (UUID) this.getArguments().get(ARG_SESSION_ID);
+                sessionId = (UUID) Objects.requireNonNull(this.getArguments()).get(ARG_SESSION_ID);
                 Log.v("SessionHead: ", "Found ARG_SESSION_ID: " + sessionId);
             }
         }
@@ -74,7 +76,7 @@ public class SessionHeadFragment extends Fragment {
         // 10.6 - Writing a newInstance(UUID) method
         String ARG_SESSION_ID = "session_id";
 
-        getActivity().getIntent().putExtra(EXTRA_SESSION_ID, sessionId);
+        Objects.requireNonNull(getActivity()).getIntent().putExtra(EXTRA_SESSION_ID, sessionId);
     }
 
     // 7.10 - Overriding Fragment.onCreate(Bundle)
@@ -97,7 +99,7 @@ public class SessionHeadFragment extends Fragment {
 
     // 7.11 - Overriding onCreateView(…)
     @Override
-    public View onCreateView(LayoutInflater inflater,
+    public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_session_head, container, false);
@@ -105,7 +107,7 @@ public class SessionHeadFragment extends Fragment {
         mCustomer = new Customer();
         mSession = new Session();
 
-        UUID customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
+        UUID customerId = (UUID) Objects.requireNonNull(getActivity()).getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
         Log.v("SessionHead: ", "Got Extra customer Id: " + customerId.toString());
         if (customerId != null) {
             mCustomer = CustomerStore.get(getActivity()).getCustomer(customerId);

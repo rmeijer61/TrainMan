@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.text.Editable;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.util.Calendar;
+import java.util.Objects;
 import java.util.UUID;
 
 public class CustomerViewFragment extends Fragment {
@@ -83,7 +85,7 @@ public class CustomerViewFragment extends Fragment {
     // View objects
     //**********************************************************************************************
     @Override
-    public View onCreateView(LayoutInflater inflater,
+    public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_customer_view, container, false);
@@ -92,7 +94,7 @@ public class CustomerViewFragment extends Fragment {
         // Get EXTRA value from the activity's intent
         // (Note: The fragment argument is also available)
         //*****************************************************************************************
-        Context mContext = getActivity().getApplicationContext();
+        Context mContext = Objects.requireNonNull(getActivity()).getApplicationContext();
         // 11.3 - Creating newIntent - Get intent EXTRA
         final UUID customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
         if (customerId != null) {
@@ -196,7 +198,7 @@ public class CustomerViewFragment extends Fragment {
                 int day = calDate.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(
-                        getContext(),
+                        Objects.requireNonNull(getContext()),
                         0,
                         mDateSetListener,
                         year, month, day);
@@ -488,7 +490,7 @@ public class CustomerViewFragment extends Fragment {
                         FragmentManager fm = getFragmentManager();
                         CustomerDeleteFragment dialog = new CustomerDeleteFragment();
                         dialog.setCustomerId(mCustomer.getId());
-                        dialog.show(fm, null);
+                        dialog.show(Objects.requireNonNull(fm), null);
                     }
                 }
         );
@@ -535,7 +537,7 @@ public class CustomerViewFragment extends Fragment {
             mPhotoImageView.setImageResource(R.drawable.nophoto);
         } else {
             Bitmap bitmap = PictureUtils.getScaledBitmap(
-                    mPhotoFile.getPath(), getActivity());
+                    mPhotoFile.getPath(), Objects.requireNonNull(getActivity()));
             mPhotoImageView.setImageBitmap(bitmap);
             Log.v( TAG, "updatePhotoView Drawable: " + mPhotoImageView.getDrawable());
         }

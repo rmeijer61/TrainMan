@@ -27,10 +27,28 @@ public class CustomerStore {
     private SQLiteDatabase mDatabase;
 
     //**********************************************************************************************
-    // Methods
+    // 8.1 - Setting up the singleton
     //**********************************************************************************************
+    public static CustomerStore get(Context context) {
+        if (sCustomerStore == null) {
+            sCustomerStore = new CustomerStore(context);
+        }
+        return sCustomerStore;
+    }
 
+    //**********************************************************************************************
+    // 14.4 - Opening a SQLiteDatabase
+    //**********************************************************************************************
+    private CustomerStore(Context context) {
+
+        mContext = context.getApplicationContext();
+        mDatabase = new CustomerBaseHelper(mContext)
+                .getWritableDatabase();
+    }
+
+    //**********************************************************************************************
     // 13.8 - Adding a new customer
+    //**********************************************************************************************
     public void addCustomer(Customer c) {
         // 14.7 - Tearing down some walls
         //mCustomers.add(c);
@@ -40,10 +58,10 @@ public class CustomerStore {
         mDatabase.insert(CustomerDbSchema.CustomerTable.TABLE_NAME, null, values);
     }
 
+    //**********************************************************************************************
     // Delete customer row
-    // ???? Need to check return code ????
-    public void deleteCustomer(UUID customerId)
-    {
+    //**********************************************************************************************
+    public void deleteCustomer(UUID customerId) {
         String uuidString = customerId.toString();
         mDatabase.delete(CustomerDbSchema.CustomerTable.TABLE_NAME,
            CustomerDbSchema.CustomerTable.Cols.UUID + " = ?",
@@ -51,43 +69,42 @@ public class CustomerStore {
             );
     }
 
-    // 14.7 - Tearing down some walls
-    // 8.2 - Setting up the List of Customer objects
-    //private List<Customer> mCustomers;
-    // end 14.7
+    //**********************************************************************************************
+    // 14.10 - Updating a Customer
+    //**********************************************************************************************
+    public void updateCustomer(Customer customer) {
+        String uuidString = customer.getId().toString();
+        ContentValues values = getContentValues(customer);
 
-    // 8.1 - Setting up the singleton
-    public static CustomerStore get(Context context) {
-        if (sCustomerStore == null) {
-            sCustomerStore = new CustomerStore(context);
-        }
-        return sCustomerStore;
+        mDatabase.update(CustomerDbSchema.CustomerTable.TABLE_NAME, values,
+                CustomerDbSchema.CustomerTable.Cols.UUID + " = ?",
+                new String[] { uuidString });
     }
 
-    // 8.1 - Setting up the singleton
-    private CustomerStore(Context context) {
-        // 14.4 - Opening a SQLiteDatabase
-        mContext = context.getApplicationContext();
-        mDatabase = new CustomerBaseHelper(mContext)
-                .getWritableDatabase();
-        // end 14.4
+    //**********************************************************************************************
+    // Get a customer object
+    //**********************************************************************************************
+    public Customer getCustomer(UUID id) {
+        CustomerCursorWrapper cursor = queryCustomers(
+                CustomerDbSchema.CustomerTable.Cols.UUID + " = ?",
+                new String[] { id.toString() }
+        );
 
-        // 14.7 - Tearing down some walls
-        // 8.2 - Setting up the List of Customer objects
-        //mCustomers = new ArrayList<>();
-        // end 14.7
+        try {
+            if (cursor.getCount() == 0) {
+                return null;
+            }
 
-        /** 13.9 - Remove random customers
-        // 8.3 - Generating customers
-        for (int i = 100; i < 120; i++) {
-            Customer customer = new Customer();
-            customer.setName("Customer #" + i);
-            mCustomers.add(customer);
+            cursor.moveToFirst();
+            return cursor.getCustomerRow();
+        } finally {
+            cursor.close();
         }
-        end 13.9 */
     }
 
+    //**********************************************************************************************
     // 8.2 - Setting up the List of Customer objects
+    //**********************************************************************************************
     public List<Customer> getCustomers() {
         // 14.7 - Tearing down some walls
         //return mCustomers;
@@ -112,49 +129,6 @@ public class CustomerStore {
         //end 14.18
     }
 
-    // Why not static?
-    public Customer getCustomer(UUID id) {
-
-        // 14.7 - Tearing down some walls
-        /**
-        for (Customer customer : mCustomers) {
-           if (customer.getId().equals(id)) {
-               return customer;
-           }
-        }
-        */
-        // 14.19 - Rewriting getCustomer(UUID)
-        //return null;
-        CustomerCursorWrapper cursor = queryCustomers(
-                CustomerDbSchema.CustomerTable.Cols.UUID + " = ?",
-                new String[] { id.toString() }
-        );
-
-        try {
-            if (cursor.getCount() == 0) {
-                return null;
-            }
-
-            cursor.moveToFirst();
-            return cursor.getCustomerRow();
-        } finally {
-            cursor.close();
-        }
-        // end 14.19
-
-    }
-
-    // 14.10 - Updating a Customer
-    public void updateCustomer(Customer customer) {
-        String uuidString = customer.getId().toString();
-        ContentValues values = getContentValues(customer);
-
-        mDatabase.update(CustomerDbSchema.CustomerTable.TABLE_NAME, values,
-                CustomerDbSchema.CustomerTable.Cols.UUID + " = ?",
-                new String[] { uuidString });
-    }
-    // end 14.10
-
     //**********************************************************************************************
     // 16.6 - Finding photo file location
     //**********************************************************************************************
@@ -166,11 +140,10 @@ public class CustomerStore {
     }
 
     //**********************************************************************************************
-    // SQLite wrapper and content values
+    // SQLite wrapper
     //**********************************************************************************************
     // 14.17 - 14.17 - Vending cursor wrapper
     // 14.12 - Querying for Customers
-    //private Cursor queryCustomers(String whereClause, String[] whereArgs) {
     private CustomerCursorWrapper queryCustomers(String whereClause, String[] whereArgs) {
         Cursor cursor = mDatabase.query(
                 CustomerDbSchema.CustomerTable.TABLE_NAME,
@@ -185,12 +158,12 @@ public class CustomerStore {
         //return cursor;
         return new CustomerCursorWrapper(cursor);
     }
-    // end 14.12
-    // end 14.17
 
+    //**********************************************************************************************
     // 14.8 - Creating a ContentValues
     // Writes and updates to databases are done with the assistance of a class called ContentValues
     // ContentValues is a key-value store class, specifically designed to store the kinds of data SQLite can hold
+    //**********************************************************************************************
     private static ContentValues getContentValues(Customer customer) {
         ContentValues values = new ContentValues();
         values.put(CustomerDbSchema.CustomerTable.Cols.UUID, customer.getId().toString());
@@ -210,5 +183,5 @@ public class CustomerStore {
         values.put(CustomerDbSchema.CustomerTable.Cols.NOTE, customer.getNote());
         return values;
     }
-    // end 14.8
+
 }

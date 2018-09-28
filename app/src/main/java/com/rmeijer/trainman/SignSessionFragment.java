@@ -2,6 +2,7 @@ package com.rmeijer.trainman;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -65,7 +66,7 @@ public class SignSessionFragment extends Fragment {
 
     // 7.11 - Overriding onCreateView(…)
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_sign_session, container, false);
 
@@ -113,7 +114,7 @@ public class SignSessionFragment extends Fragment {
         Log.v("ViewSession: ", "(store) --> Customer Id:  " + mSession.getCustomerId());
 
 
-        mSessionServiceTextView = (TextView) v.findViewById(R.id.sign_session_service_textview);
+        mSessionServiceTextView = v.findViewById(R.id.sign_session_service_textview);
         mSessionServiceTextView.setText(mSession.getService());
 
         Calendar calDate = Calendar.getInstance();
@@ -122,10 +123,10 @@ public class SignSessionFragment extends Fragment {
         int month = calDate.get(Calendar.MONTH);
         int day = calDate.get(Calendar.DAY_OF_MONTH);
         String dateString = (month+1) + "/" + day + "/" + year;
-        mSessionDateTextView = (TextView) v.findViewById(R.id.sign_session_date_textview);
+        mSessionDateTextView = v.findViewById(R.id.sign_session_date_textview);
         mSessionDateTextView.setText(dateString);
 
-        mSignEditText = (EditText) v.findViewById(R.id.sign_session_sign_edittext);
+        mSignEditText = v.findViewById(R.id.sign_session_sign_edittext);
         if (mSession.getSign() != null) {
             mSignEditText.setText(mSession.getSign());
         }

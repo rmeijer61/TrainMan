@@ -1,6 +1,8 @@
 package com.rmeijer.trainman.database;
 
+//**************************************************************************************************
 // 14 - Define schema - Create class
+//**************************************************************************************************
 public class CustomerDbSchema {
     // 14.1 - Defining CustomerTable
     public static final class CustomerTable {
@@ -8,7 +10,6 @@ public class CustomerDbSchema {
         public static final String TABLE_NAME = "customers";
 
         // 14.2 - Defining your table columns
-        // Columns
         public static final class Cols {
             public static final String UUID = "uuid";
             public static final String DATE = "date";
@@ -26,7 +27,5 @@ public class CustomerDbSchema {
             public static final String ZIP = "zip";
             public static final String NOTE = "note";
         }
-        // end 14.2
     }
-    // end 14.1
 }

@@ -7,7 +7,9 @@ import android.util.Log;
 
 import static com.rmeijer.trainman.database.SessionDbSchema.SessionTable.TABLE_NAME;
 
+//**************************************************************************************************
 // 14.3 - Creating SessionBaseHelper
+//**************************************************************************************************
 public class SessionBaseHelper extends SQLiteOpenHelper {
     private static final int VERSION = 2018091102;
     private static final String DATABASE_NAME = "sessionBase.db";
@@ -19,9 +21,11 @@ public class SessionBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
+        //******************************************************************************************
         // Listing 14.5 - Writing first part of onCreate(SQLiteDatabase)
         //db.execSQL("create table " + SessionTable.NAME);
         // 14.6 - Creating session table
+        //******************************************************************************************
         db.execSQL("create table " + TABLE_NAME
                 + "(" + " _id integer primary key autoincrement"
                 + ", " + SessionDbSchema.SessionTable.Cols.UUID
@@ -35,7 +39,6 @@ public class SessionBaseHelper extends SQLiteOpenHelper {
                 + ", " + SessionDbSchema.SessionTable.Cols.SIGN
                 + ")"
         );
-        // 14.6
     }
 
     @Override
@@ -47,4 +50,3 @@ public class SessionBaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 }
-// end 14.3

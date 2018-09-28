@@ -8,15 +8,18 @@ import com.rmeijer.trainman.Session;
 import java.util.Date;
 import java.util.UUID;
 
-
+//**************************************************************************************************
 // 14.13 - Creating SessionCursorWrapper
+//**************************************************************************************************
 public class SessionCursorWrapper extends CursorWrapper {
     public SessionCursorWrapper(Cursor cursor) {
         super(cursor);
     }
 
+    //**********************************************************************************************
     // 14.14 - Adding getSession() method
     // See also https://developer.android.com/reference/android/database/Cursor
+    //**********************************************************************************************
     public Session getSessionRow() {
         String uuidString = getString(getColumnIndex(SessionDbSchema.SessionTable.Cols.UUID));
         Date date = new Date(getLong(getColumnIndex(SessionDbSchema.SessionTable.Cols.DATE)));
@@ -35,15 +38,11 @@ public class SessionCursorWrapper extends CursorWrapper {
         session.setService(service);
         session.setSessionDate(sessionDate);
         session.setDescr(descr);
-        session.setCompleted(completed == 1 ? true : false);
-        session.setPaid(paid == 1 ? true : false);
+        session.setCompleted(completed == 1);
+        session.setPaid(paid == 1);
         session.setSign(sign);
 
         return session;
-
-        //return null;
-        // end 14.16
     }
 
 }
-// end 14.13

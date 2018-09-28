@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
@@ -16,6 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Objects;
 import java.util.UUID;
 
 import static android.widget.AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL;
@@ -118,7 +120,7 @@ public class CustomerHeadFragment extends Fragment {
         // 10.6 - Writing a newInstance(UUID) method
         String ARG_CUSTOMER_ID = "customer_id";
 
-        getActivity().getIntent().putExtra(EXTRA_CUSTOMER_ID, customerId);
+        Objects.requireNonNull(getActivity()).getIntent().putExtra(EXTRA_CUSTOMER_ID, customerId);
     }
 
     // 7.10 - Overriding Fragment.onCreate(Bundle)
@@ -143,13 +145,13 @@ public class CustomerHeadFragment extends Fragment {
 
     // 7.11 - Overriding onCreateView(…)
     @Override
-    public View onCreateView(LayoutInflater inflater,
+    public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_customer_head, container, false);
 
         // 7.12 - Wiring up the EditText widget
-        mNameField = (TextView) v.findViewById(R.id.customer_head_customer_name);
+        mNameField = v.findViewById(R.id.customer_head_customer_name);
 
         // 10.5 - Updating view objects
         mNameField.setText(mCustomer.getName());

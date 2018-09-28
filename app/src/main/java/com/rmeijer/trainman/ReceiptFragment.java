@@ -2,6 +2,7 @@ package com.rmeijer.trainman;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.text.Editable;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.Objects;
 import java.util.UUID;
 
 public class ReceiptFragment extends Fragment {
@@ -82,7 +84,7 @@ public class ReceiptFragment extends Fragment {
     // View object
     //**********************************************************************************************
     @Override
-    public View onCreateView(LayoutInflater inflater,
+    public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_receipt, container, false);
@@ -90,7 +92,7 @@ public class ReceiptFragment extends Fragment {
         //*****************************************************************************************
         // Get EXTRA values
         //*****************************************************************************************
-        Context mContext = getActivity().getApplicationContext();
+        Context mContext = Objects.requireNonNull(getActivity()).getApplicationContext();
         // 11.3 - Creating newIntent - Get intent EXTRA
         customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
         if (customerId != null) {
@@ -145,19 +147,19 @@ public class ReceiptFragment extends Fragment {
         if (mPayment.getSessionId() == null) {
             FragmentManager fm = getFragmentManager();
             AlertNotFoundFragment dialog = new AlertNotFoundFragment();
-            dialog.show(fm, null);
+            dialog.show(Objects.requireNonNull(fm), null);
         }
 
         //------------------------------------------------------------------------------------------
         // Customer Name
         //------------------------------------------------------------------------------------------
-        mNameTextView = (TextView) v.findViewById(R.id.receipt_customer_name_textview);
+        mNameTextView = v.findViewById(R.id.receipt_customer_name_textview);
         mNameTextView.setText(mCustomer.getName());
 
         //------------------------------------------------------------------------------------------
         // Session Service
         //------------------------------------------------------------------------------------------
-        mSessionServiceTextView = (TextView) v.findViewById(R.id.receipt_session_service_textview);
+        mSessionServiceTextView = v.findViewById(R.id.receipt_session_service_textview);
         mSessionServiceTextView.setText(mSession.getService());
 
         //------------------------------------------------------------------------------------------
@@ -169,13 +171,13 @@ public class ReceiptFragment extends Fragment {
         int sessionMonth = calDate.get(Calendar.MONTH);
         int sessionDay = calDate.get(Calendar.DAY_OF_MONTH);
         String sessionDateString = (sessionMonth+1) + "/" + sessionDay + "/" + sessionYear;
-        mSessionDateTextView = (TextView) v.findViewById(R.id.receipt_session_date_textview);
+        mSessionDateTextView = v.findViewById(R.id.receipt_session_date_textview);
         mSessionDateTextView.setText(sessionDateString);
 
         //------------------------------------------------------------------------------------------
         // Payment Amount
         //------------------------------------------------------------------------------------------
-        mAmountTextView = (TextView) v.findViewById(R.id.receipt_payment_amount_textview);
+        mAmountTextView = v.findViewById(R.id.receipt_payment_amount_textview);
         mAmountTextView.setText((Double.valueOf(mPayment.getAmount()).toString()));
 
         //------------------------------------------------------------------------------------------
@@ -193,7 +195,7 @@ public class ReceiptFragment extends Fragment {
         //------------------------------------------------------------------------------------------
         // Email
         //------------------------------------------------------------------------------------------
-        mEmailEditText = (EditText) v.findViewById(R.id.receipt_email_edittext);
+        mEmailEditText = v.findViewById(R.id.receipt_email_edittext);
         // For view/edit; for enter function, object should be empty
         mEmailEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -241,7 +243,7 @@ public class ReceiptFragment extends Fragment {
                 FragmentManager fm = getFragmentManager();
                 AlertSentFragment dialog = new AlertSentFragment();
                 dialog.setAlertMessage("Email sent");
-                dialog.show(fm, null);
+                dialog.show(Objects.requireNonNull(fm), null);
             }
         });
 
@@ -255,7 +257,7 @@ public class ReceiptFragment extends Fragment {
                 FragmentManager fm = getFragmentManager();
                 AlertSentFragment dialog = new AlertSentFragment();
                 dialog.setAlertMessage("Sending to printer");
-                dialog.show(fm, null);
+                dialog.show(Objects.requireNonNull(fm), null);
             }
         });
 

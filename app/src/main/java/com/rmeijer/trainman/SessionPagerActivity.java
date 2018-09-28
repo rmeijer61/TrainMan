@@ -154,7 +154,7 @@ public class SessionPagerActivity extends AppCompatActivity {
         // This Fragment - Fragment fragment_fView Session3 = fm.findFragmentById(R.id.fragment_container_fViewSession3);
         // is handled by the pager: android.support.v4.view.ViewPager: fragment_container_fViewSession2_session_view_pager
         // 11.2 - Setting up pager adapter
-        mViewPager = (ViewPager) findViewById(R.id.fragment_container_fViewSession3_session_view_pager);
+        mViewPager = findViewById(R.id.fragment_container_fViewSession3_session_view_pager);
 
         // 7.16 - Adding a CustomerMenuFragment
         Fragment fragment_fViewSession4 = fm.findFragmentById(R.id.fragment_container_fViewSession4);

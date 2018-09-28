@@ -2,6 +2,7 @@ package com.rmeijer.trainman;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class SessionMenuFragment extends Fragment {
@@ -51,7 +53,7 @@ public class SessionMenuFragment extends Fragment {
 
     // 7.11 - Overriding onCreateView(…)
     @Override
-    public View onCreateView(LayoutInflater inflater,
+    public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_session_menu, container, false);
@@ -70,7 +72,7 @@ public class SessionMenuFragment extends Fragment {
                     Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
                     // Get the extra from the pager activity intent
-                    UUID customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
+                    UUID customerId = (UUID) Objects.requireNonNull(getActivity()).getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
                     UUID sessionId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_SESSION_ID);
                     mSession = SessionStore.get(getActivity()).getSession(customerId, sessionId);
 
@@ -95,7 +97,7 @@ public class SessionMenuFragment extends Fragment {
                 int messageResId = R.string.sign_session_button_text;
                 Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
-                UUID customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
+                UUID customerId = (UUID) Objects.requireNonNull(getActivity()).getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
                 UUID sessionId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_SESSION_ID);
 
                 // Start SignSessionActivity
@@ -114,7 +116,7 @@ public class SessionMenuFragment extends Fragment {
                 int messageResId = R.string.enter_payment_button_text;
                 Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
-                UUID customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
+                UUID customerId = (UUID) Objects.requireNonNull(getActivity()).getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
                 UUID sessionId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_SESSION_ID);
 
                 // Start SignSessionActivity
@@ -133,7 +135,7 @@ public class SessionMenuFragment extends Fragment {
                 int messageResId = R.string.view_payment_button_text;
                 Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
-                UUID customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
+                UUID customerId = (UUID) Objects.requireNonNull(getActivity()).getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
                 UUID sessionId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_SESSION_ID);
 
                 // Start SignSessionActivity
@@ -153,7 +155,7 @@ public class SessionMenuFragment extends Fragment {
                 int messageResId = R.string.generate_receipt_button_text;
                 Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
-                UUID customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
+                UUID customerId = (UUID) Objects.requireNonNull(getActivity()).getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
                 UUID sessionId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_SESSION_ID);
 
                 // Start SignSessionActivity
@@ -171,7 +173,7 @@ public class SessionMenuFragment extends Fragment {
                 int messageResId = R.string.done_button_text;
                 Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
-                getActivity().finish();
+                Objects.requireNonNull(getActivity()).finish();
             }
         });
 

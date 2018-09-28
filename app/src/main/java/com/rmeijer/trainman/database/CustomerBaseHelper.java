@@ -9,7 +9,9 @@ import com.rmeijer.trainman.CustomerGenerator;
 
 import static com.rmeijer.trainman.database.CustomerDbSchema.CustomerTable.TABLE_NAME;
 
+//**************************************************************************************************
 // 14.3 - Creating CustomerBaseHelper
+//**************************************************************************************************
 public class CustomerBaseHelper extends SQLiteOpenHelper {
     private static final String TAG = "CustomerBaseHelper";
     private static final int VERSION = 2018091404;
@@ -22,9 +24,11 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
+        //******************************************************************************************
         // Listing 14.5 - Writing first part of onCreate(SQLiteDatabase)
         //db.execSQL("create table " + CustomerTable.NAME);
         // 14.6 - Creating customer table
+        //******************************************************************************************
         db.execSQL("create table " + TABLE_NAME
                 + "(" + " _id integer primary key autoincrement"
                 + ", " + CustomerDbSchema.CustomerTable.Cols.UUID
@@ -44,7 +48,6 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
                 + ", " + CustomerDbSchema.CustomerTable.Cols.NOTE
                 + ")"
         );
-        // 14.6
     }
 
     @Override
@@ -56,4 +59,3 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 }
-// end 14.3

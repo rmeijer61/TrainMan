@@ -93,7 +93,7 @@ public class CustomerPagerActivity extends AppCompatActivity
 
         // 11.2 - Setting up pager adapter
         // This points to the layout XML
-        mViewPager = (ViewPager) findViewById(R.id.fragment_container_fVCust2_customer_view_pager);
+        mViewPager = findViewById(R.id.fragment_container_fVCust2_customer_view_pager);
 
         mCustomers = CustomerStore.get(this).getCustomers();
 

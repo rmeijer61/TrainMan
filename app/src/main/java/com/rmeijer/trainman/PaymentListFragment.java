@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 // 8.11 - Implementing CustomerListFragment
@@ -57,7 +58,7 @@ public class PaymentListFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater,
+    public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_payment_list, container, false);
@@ -65,7 +66,7 @@ public class PaymentListFragment extends Fragment {
         //*****************************************************************************************
         // Get intent EXTRA(s)
         //*****************************************************************************************
-        customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
+        customerId = (UUID) Objects.requireNonNull(getActivity()).getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
         Log.v("SessionList: ", "Got Extra customer Id: " + customerId.toString());
         if (customerId != null) {
             mCustomer = CustomerStore.get(getActivity()).getCustomer(customerId);
@@ -80,7 +81,7 @@ public class PaymentListFragment extends Fragment {
         }
 
         // Removed cast
-        mPaymentRecyclerView = (RecyclerView) view.findViewById(R.id.payment_recycler_view);
+        mPaymentRecyclerView = view.findViewById(R.id.payment_recycler_view);
         mPaymentRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         // 13.19 - Saving subtitle visibility
@@ -106,7 +107,7 @@ public class PaymentListFragment extends Fragment {
 
     // 13.19 - Saving subtitle visibility
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putBoolean(SAVED_SUBTITLE_VISIBLE, mSubtitleVisible);
     }
@@ -127,7 +128,7 @@ public class PaymentListFragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.new_session:
                 // Start CustomerEnterActivity
-                UUID customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
+                UUID customerId = (UUID) Objects.requireNonNull(getActivity()).getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
                 Log.v("SessionList: ", "Got Extra customer Id: " + customerId.toString());
                 Intent intent = new Intent(getActivity(), SessionEnterActivity.class);
                 intent.putExtra(EXTRA_CUSTOMER_ID, customerId);
@@ -137,7 +138,7 @@ public class PaymentListFragment extends Fragment {
             case R.id.show_subtitle:
                 // 13.16 - Updating a MenuItem
                 mSubtitleVisible = !mSubtitleVisible;
-                getActivity().invalidateOptionsMenu();
+                Objects.requireNonNull(getActivity()).invalidateOptionsMenu();
                 // end 13.16
                 updateSubtitle();
                 return true;
@@ -165,7 +166,7 @@ public class PaymentListFragment extends Fragment {
         // end 13.17
 
         AppCompatActivity activity = (AppCompatActivity) getActivity();
-        activity.getSupportActionBar().setSubtitle(subtitle);
+        Objects.requireNonNull(Objects.requireNonNull(activity).getSupportActionBar()).setSubtitle(subtitle);
     }
     // end 13.13
 
@@ -184,15 +185,10 @@ public class PaymentListFragment extends Fragment {
         // 10.9 - Reloading the list in onResume()
         //mAdapter = new PaymentAdapter(sessions);
         //mPaymentRecyclerView.setAdapter(mAdapter);
-        if (mAdapter == null) {
-            mAdapter = new PaymentAdapter(payments);
-            mPaymentRecyclerView.setAdapter(mAdapter);
-        } else {
-            // 14.21 - Calling setSessions(List<>)
-            mAdapter.setPayments(payments);
-            // end 14.21
-            mAdapter.notifyDataSetChanged();
-        }
+        // 14.21 - Calling setSessions(List<>)
+        mAdapter.setPayments(payments);
+        // end 14.21
+        mAdapter.notifyDataSetChanged();
     }
 
     // 8.17 - The beginnings of a ViewHolder
@@ -208,7 +204,7 @@ public class PaymentListFragment extends Fragment {
         private Payment mPayment;
 
 
-        public PaymentHolder(LayoutInflater inflater, ViewGroup parent) {
+        private PaymentHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_payment, parent, false));
 
             // 8.24 - Detecting presses in SessionHolder
@@ -265,7 +261,7 @@ public class PaymentListFragment extends Fragment {
 
         private List<Payment> mPayments;
 
-        public PaymentAdapter(List<Payment> payments) {
+        private PaymentAdapter(List<Payment> payments) {
             mPayments = payments;
         }
 
@@ -298,7 +294,7 @@ public class PaymentListFragment extends Fragment {
         }
 
         // 14.20 - Adding setPayments(List<Payment>)
-        public void setPayments(List<Payment> payments) {
+        private void setPayments(List<Payment> payments) {
             mPayments = payments;
         }
         // 14.20

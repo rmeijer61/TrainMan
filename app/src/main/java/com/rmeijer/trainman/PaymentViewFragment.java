@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.text.Editable;
@@ -22,6 +23,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.Objects;
 import java.util.UUID;
 
 import static java.lang.Double.valueOf;
@@ -97,7 +99,7 @@ public class PaymentViewFragment extends Fragment {
 
     // 7.11 - Overriding onCreateView(…)
     @Override
-    public View onCreateView(LayoutInflater inflater,
+    public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_payment, container, false);
@@ -109,7 +111,7 @@ public class PaymentViewFragment extends Fragment {
         //*****************************************************************************************
         // Get EXTRA values
         //*****************************************************************************************
-        Context mContext = getActivity().getApplicationContext();
+        Context mContext = Objects.requireNonNull(getActivity()).getApplicationContext();
         // 11.3 - Creating newIntent - Get intent EXTRA
         customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
         if (customerId != null) {
@@ -164,6 +166,7 @@ public class PaymentViewFragment extends Fragment {
         if (mPayment.getSessionId() == null) {
             FragmentManager fm = getFragmentManager();
             AlertNotFoundFragment dialog = new AlertNotFoundFragment();
+            assert fm != null;
             dialog.show(fm, null);
         }
 
@@ -174,7 +177,7 @@ public class PaymentViewFragment extends Fragment {
         //------------------------------------------------------------------------------------------
         // Pay Method
         //------------------------------------------------------------------------------------------
-        mPayMethodSpinner = (Spinner) v.findViewById(R.id.payment_pay_method_spinner);
+        mPayMethodSpinner = v.findViewById(R.id.payment_pay_method_spinner);
         if (mPayment.getPayMethod() != null) {
             String mPayMethod = mPayment.getPayMethod();
             if (mPayMethod.equals("Cash")) {
@@ -210,7 +213,7 @@ public class PaymentViewFragment extends Fragment {
         //------------------------------------------------------------------------------------------
         // Card Number
         //------------------------------------------------------------------------------------------
-        mCardNumberEditText = (EditText) v.findViewById(R.id.payment_card_number_edittext);
+        mCardNumberEditText = v.findViewById(R.id.payment_card_number_edittext);
         // For view/edit; for enter function, object should be empty
         if (mPayment.getCardNumber() != null) {
             mCardNumberEditText.setText(mPayment.getCardNumber());
@@ -231,7 +234,7 @@ public class PaymentViewFragment extends Fragment {
         //------------------------------------------------------------------------------------------
         // Card Expire Date
         //------------------------------------------------------------------------------------------
-        mExpireDateButton = (Button) v.findViewById(R.id.payment_card_expire_date_button);
+        mExpireDateButton = v.findViewById(R.id.payment_card_expire_date_button);
         if (mPayment.getExpireDate() != null) {
             Log.v(TAG, "Expire date: " + mPayment.getExpireDate().toString());
             Calendar calDate = Calendar.getInstance();
@@ -251,7 +254,7 @@ public class PaymentViewFragment extends Fragment {
                 int day = calDate.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(
-                        getContext(),
+                        Objects.requireNonNull(getContext()),
                         0,
                         mExpireDateSetListener,
                         year, month, day);
@@ -278,7 +281,7 @@ public class PaymentViewFragment extends Fragment {
         //------------------------------------------------------------------------------------------
         // Card Security Code
         //------------------------------------------------------------------------------------------
-        mSecurityCodeEditText = (EditText) v.findViewById(R.id.payment_card_security_code_edittext);
+        mSecurityCodeEditText = v.findViewById(R.id.payment_card_security_code_edittext);
         // For view/edit; for enter function, object should be empty
         if (mPayment.getSecurityCode() != null) {
             mSecurityCodeEditText.setText(mPayment.getSecurityCode());
@@ -299,7 +302,7 @@ public class PaymentViewFragment extends Fragment {
         //------------------------------------------------------------------------------------------
         // Payment Amount (double)
         //------------------------------------------------------------------------------------------
-        mAmountEditText = (EditText) v.findViewById(R.id.payment_amount_edittext);
+        mAmountEditText = v.findViewById(R.id.payment_amount_edittext);
         // For view/edit; for enter function, object should be empty
         if (valueOf(mPayment.getAmount()) > 0.0) {
             mAmountEditText.setText((Double.valueOf(mPayment.getAmount()).toString()));
@@ -320,7 +323,7 @@ public class PaymentViewFragment extends Fragment {
         //------------------------------------------------------------------------------------------
         // Payment Date
         //------------------------------------------------------------------------------------------
-        mPayDateButton = (Button) v.findViewById(R.id.payment_pay_date_button);
+        mPayDateButton = v.findViewById(R.id.payment_pay_date_button);
         if (mPayment.getPayDate() != null) {
             Log.v(TAG, "Payment date: " + mPayment.getPayDate().toString());
             Calendar calDate = Calendar.getInstance();
@@ -340,7 +343,7 @@ public class PaymentViewFragment extends Fragment {
                 int day = calDate.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(
-                        getContext(),
+                        Objects.requireNonNull(getContext()),
                         0,
                         mPayDateSetListener,
                         year, month, day);
@@ -367,7 +370,7 @@ public class PaymentViewFragment extends Fragment {
         //------------------------------------------------------------------------------------------
         // Bill To Name
         //------------------------------------------------------------------------------------------
-        mNameEditText = (EditText) v.findViewById(R.id.payment_bill_to_name_edittext);
+        mNameEditText = v.findViewById(R.id.payment_bill_to_name_edittext);
         // For view/edit; for enter function, object should be empty
         if (mPayment.getName() != null) {
             mNameEditText.setText(mPayment.getName());
@@ -388,7 +391,7 @@ public class PaymentViewFragment extends Fragment {
         //------------------------------------------------------------------------------------------
         // Bill To Address1
         //------------------------------------------------------------------------------------------
-        mAddress1EditText = (EditText) v.findViewById(R.id.payment_bill_to_address1_edittext);
+        mAddress1EditText = v.findViewById(R.id.payment_bill_to_address1_edittext);
         // For view/edit; for enter function, object should be empty
         if (mPayment.getAddress1() != null) {
             mAddress1EditText.setText(mPayment.getAddress1());
@@ -409,7 +412,7 @@ public class PaymentViewFragment extends Fragment {
         //------------------------------------------------------------------------------------------
         // Bill To Address2
         //------------------------------------------------------------------------------------------
-        mAddress2EditText = (EditText) v.findViewById(R.id.payment_bill_to_address2_edittext);
+        mAddress2EditText = v.findViewById(R.id.payment_bill_to_address2_edittext);
         // For view/edit; for enter function, object should be empty
         if (mPayment.getAddress2() != null) {
             mAddress2EditText.setText(mPayment.getAddress2());
@@ -430,7 +433,7 @@ public class PaymentViewFragment extends Fragment {
         //------------------------------------------------------------------------------------------
         // Bill To City
         //------------------------------------------------------------------------------------------
-        mCityEditText = (EditText) v.findViewById(R.id.payment_bill_to_city_edittext);
+        mCityEditText = v.findViewById(R.id.payment_bill_to_city_edittext);
         // For view/edit; for enter function, object should be empty
         if (mPayment.getCity() != null) {
             mCityEditText.setText(mPayment.getCity());
@@ -451,7 +454,7 @@ public class PaymentViewFragment extends Fragment {
         //------------------------------------------------------------------------------------------
         // Bill To State
         //------------------------------------------------------------------------------------------
-        mStateEditText = (EditText) v.findViewById(R.id.payment_bill_to_state_edittext);
+        mStateEditText = v.findViewById(R.id.payment_bill_to_state_edittext);
         // For view/edit; for enter function, object should be empty
         if (mPayment.getState() != null) {
             mStateEditText.setText(mPayment.getState());
@@ -472,7 +475,7 @@ public class PaymentViewFragment extends Fragment {
         //------------------------------------------------------------------------------------------
         // Bill To Zip
         //------------------------------------------------------------------------------------------
-        mZipEditText = (EditText) v.findViewById(R.id.payment_bill_to_zip_edittext);
+        mZipEditText = v.findViewById(R.id.payment_bill_to_zip_edittext);
         // For view/edit; for enter function, object should be empty
         if (mPayment.getZip() != null) {
             mZipEditText.setText(mPayment.getZip());

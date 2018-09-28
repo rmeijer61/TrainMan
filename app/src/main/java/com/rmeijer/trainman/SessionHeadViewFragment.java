@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.Objects;
 import java.util.UUID;
 
 public class SessionHeadViewFragment extends Fragment {
@@ -58,12 +60,12 @@ public class SessionHeadViewFragment extends Fragment {
     }
 
     public void getSessionObject() {
-        UUID sessionId = null;
+        UUID sessionId;
         Activity test_activity = getActivity();
         if (test_activity != null) {
             Intent test_intent = getActivity().getIntent();
             if (test_intent != null) {
-                sessionId = (UUID) this.getArguments().get(ARG_SESSION_ID);
+                sessionId = (UUID) Objects.requireNonNull(this.getArguments()).get(ARG_SESSION_ID);
                 Log.v("ViewSessionHead: ", "Found ARG_SESSION_ID: " + sessionId);
             }
         }
@@ -80,7 +82,7 @@ public class SessionHeadViewFragment extends Fragment {
 
     // 7.11 - Overriding onCreateView(…)
     @Override
-    public View onCreateView(LayoutInflater inflater,
+    public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_session_head_view, container, false);
@@ -90,7 +92,7 @@ public class SessionHeadViewFragment extends Fragment {
         //*****************************************************************************************
         // Get EXTRA values
         //*****************************************************************************************
-        Context mContext = getActivity().getApplicationContext();
+        Context mContext = Objects.requireNonNull(getActivity()).getApplicationContext();
         // 11.3 - Creating newIntent - Get intent EXTRA
         customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
         Log.v("ViewSessionHead: ", "Got Extra customer Id: " + customerId.toString());
@@ -126,7 +128,7 @@ public class SessionHeadViewFragment extends Fragment {
             Log.v("ViewSessionHead: ", "************Session ID EXTRA not found!****************");
         }
 
-        mSessionServiceTextView = (TextView) v.findViewById(R.id.view_session_head_service_textview);
+        mSessionServiceTextView = v.findViewById(R.id.view_session_head_service_textview);
         mSessionServiceTextView.setText(mSession.getService());
 
         Calendar calDate = Calendar.getInstance();
@@ -135,7 +137,7 @@ public class SessionHeadViewFragment extends Fragment {
         int month = calDate.get(Calendar.MONTH);
         int day = calDate.get(Calendar.DAY_OF_MONTH);
         String dateString = (month+1) + "/" + day + "/" + year;
-        mSessionDateTextView = (TextView) v.findViewById(R.id.view_session_head_date_textview);
+        mSessionDateTextView = v.findViewById(R.id.view_session_head_date_textview);
         mSessionDateTextView.setText(dateString);
         return v;
     }
