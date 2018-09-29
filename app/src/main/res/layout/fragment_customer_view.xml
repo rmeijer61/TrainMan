@@ -26,22 +26,21 @@
         <!-- Customer information -->
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_gravity="start"
-            android:orientation="horizontal">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
             <ImageView
                 android:id="@+id/customer_picture_imageview"
-                android:layout_width="7dp"
-                android:layout_height="116dp"
-                android:layout_weight="1"
+                android:layout_width="80dp"
+                android:layout_height="110dp"
+                android:background="@drawable/imageview_border"
                 android:contentDescription="@string/customer_picture_desc" />
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_marginStart="4dp"
-                android:layout_weight="2"
                 android:orientation="vertical">
                 <TextView style="@style/label_style"
                     android:id="@+id/view_customer_name_label"

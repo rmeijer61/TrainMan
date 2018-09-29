@@ -3,6 +3,7 @@ package com.rmeijer.trainman;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -14,9 +15,12 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.util.Calendar;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -24,23 +28,27 @@ import static android.widget.AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCR
 
 public class CustomerHeadFragment extends Fragment {
 
-    // 11.3 - Creating newIntent
-    private static final String EXTRA_CUSTOMER_ID =
-            "com.rmeijer.trainman.customer_id";
+    private String TAG = "CustomerHead: ";
 
-    // 10.6 - Writing a newInstance(UUID) method
+    //**********************************************************************************************
+    // Intent extras/arguments
+    //**********************************************************************************************
+    private static final String EXTRA_CUSTOMER_ID = "com.rmeijer.trainman.customer_id";
     private static final String ARG_CUSTOMER_ID = "customer_id";
 
-    // 7.10 - Overriding Fragment.onCreate(Bundle)
+    //**********************************************************************************************
+    // Objects and Variables
+    //**********************************************************************************************
     private Customer mCustomer;
+    private TextView mNameTextView;
+    private TextView mGenderTextView;
+    private TextView mBirthDateTextView;
+    private ImageView mPhotoImageView;
+    private File mPhotoFile;
 
-    // 7.12 - Wiring up the EditText widget
-    private TextView mNameField;
-
-    // Customer Id field
-    private TextView mIdField;
-
+    //**********************************************************************************************
     // 17.6 - Adding callback interface
+    //**********************************************************************************************
     private Callbacks mCallbacks;
 
     /**
@@ -50,6 +58,9 @@ public class CustomerHeadFragment extends Fragment {
         void onCustomerSelected(Customer customer);
     }
 
+    //**********************************************************************************************
+    // onAttach
+    //**********************************************************************************************
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -62,17 +73,19 @@ public class CustomerHeadFragment extends Fragment {
         Log.v("CustomerHead: ", "onAttach - end+++++++++++++++++++++++++++++++++++");
     }
 
+    //**********************************************************************************************
+    //
+    //**********************************************************************************************
     @Override
     public void onDetach() {
         super.onDetach();
         mCallbacks = null;
     }
 
-    // end 17.6
-
-
+    //**********************************************************************************************
     // 10.6 - Writing a newInstance(UUID) method
     // Creates each instance of the fragment - one for each customer
+    //**********************************************************************************************
     public static CustomerHeadFragment newInstance(UUID customerId) {
         Bundle args = new Bundle();
         args.putSerializable(ARG_CUSTOMER_ID, customerId);
@@ -83,6 +96,9 @@ public class CustomerHeadFragment extends Fragment {
         return fragment;
     }
 
+    //**********************************************************************************************
+    // Get Customer object
+    //**********************************************************************************************
     public void getCustomerObject() {
         UUID customerId = null;
         Activity test_activity = getActivity();
@@ -91,7 +107,7 @@ public class CustomerHeadFragment extends Fragment {
             if (test_intent != null) {
                 //customerId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
                 //Log.v("CustomerHead: ", "Found EXTRA_CUSTOMER_ID: " + customerId);
-                customerId = (UUID) this.getArguments().get(ARG_CUSTOMER_ID);
+                customerId = (UUID) Objects.requireNonNull(this.getArguments()).get(ARG_CUSTOMER_ID);
                 Log.v("CustomerHead: ", "Found ARG_CUSTOMER_ID: " + customerId);
             }
         }
@@ -111,6 +127,9 @@ public class CustomerHeadFragment extends Fragment {
         }
     }
 
+    //**********************************************************************************************
+    // Update intent extra customer data with new pager data
+    //**********************************************************************************************
     public void updateExtra(UUID customerId) {
 
         // Get the customer_id from the parent activity
@@ -123,12 +142,9 @@ public class CustomerHeadFragment extends Fragment {
         Objects.requireNonNull(getActivity()).getIntent().putExtra(EXTRA_CUSTOMER_ID, customerId);
     }
 
+    //**********************************************************************************************
     // 7.10 - Overriding Fragment.onCreate(Bundle)
-    //@Override
-    //public void onCreate(Bundle savedInstanceState) {
-    //    super.onCreate(savedInstanceState);
-    //    Customer mCustomerHead = new Customer();
-    //}
+    //**********************************************************************************************
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -139,33 +155,65 @@ public class CustomerHeadFragment extends Fragment {
         // 10.8 - Getting customer ID from the arguments
         //UUID customerId = (UUID) getActivity().getIntent()
         //        .getSerializableExtra(Customer.EXTRA_CUSTOMER_ID);
-        UUID customerId = (UUID) getArguments().getSerializable(ARG_CUSTOMER_ID);
+        UUID customerId = (UUID) Objects.requireNonNull(getArguments()).getSerializable(ARG_CUSTOMER_ID);
         mCustomer = CustomerStore.get(getActivity()).getCustomer(customerId);
     }
 
+    //**********************************************************************************************
     // 7.11 - Overriding onCreateView(…)
+    //**********************************************************************************************
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_customer_head, container, false);
 
-        // 7.12 - Wiring up the EditText widget
-        mNameField = v.findViewById(R.id.customer_head_customer_name);
+        // Customer Picture
+        mPhotoImageView = v.findViewById(R.id.customer_head_picture_imageview);
+        mPhotoFile = CustomerStore.get(getActivity()).getPhotoFile(mCustomer);
+        updatePhotoView();
 
-        // 10.5 - Updating view objects
-        mNameField.setText(mCustomer.getName());
+        // Customer name
+        mNameTextView = v.findViewById(R.id.customer_head_customer_name_textview);
+        mNameTextView.setText(mCustomer.getName());
 
-        // Customer id textview field
-        mIdField = v.findViewById(R.id.customer_head_customer_id);
-        mIdField.setText(mCustomer.getId().toString());
-        mIdField.setTag(mCustomer.getId());
+        // Gender
+        mGenderTextView = v.findViewById(R.id.customer_head_gender_textview);
+        mGenderTextView.setText(mCustomer.getGender());
 
-        //*************************************
+        //Birthdate
+        mBirthDateTextView = v.findViewById(R.id.customer_head_birthdate_textview);
+        Calendar calDate = Calendar.getInstance();
+        calDate.setTime(mCustomer.getBirthDate());
+        int year = calDate.get(Calendar.YEAR);
+        int month = calDate.get(Calendar.MONTH);
+        int day = calDate.get(Calendar.DAY_OF_MONTH);
+        String dateString = (month+1) + "/" + day + "/" + year;
+        mBirthDateTextView.setText(dateString);
+
+        //******************************************************************************************
         return v;
 
     }
 
+    //**********************************************************************************************
+    // 16.11 - Updating mPhotoImageView
+    //**********************************************************************************************
+    private void updatePhotoView() {
+        if (mPhotoFile == null || !mPhotoFile.exists()) {
+            Log.v( TAG, "updatePhotoView: mPhotoFile is null!" );
+            mPhotoImageView.setImageResource(R.drawable.nophoto);
+        } else {
+            Bitmap bitmap = PictureUtils.getScaledBitmap(
+                    mPhotoFile.getPath(), Objects.requireNonNull(getActivity()));
+            mPhotoImageView.setImageBitmap(bitmap);
+            Log.v( TAG, "updatePhotoView Drawable: " + mPhotoImageView.getDrawable());
+        }
+    }
+
+    //**********************************************************************************************
+    // Determine what is being displayed by the pager
+    //**********************************************************************************************
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
@@ -181,6 +229,9 @@ public class CustomerHeadFragment extends Fragment {
         }
     }
 
+    //**********************************************************************************************
+    // onResume
+    //**********************************************************************************************
     @Override
     public void onResume() {
         super.onResume();

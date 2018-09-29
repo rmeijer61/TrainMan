@@ -136,7 +136,7 @@ public class CustomerMenuFragment extends Fragment {
         mViewCustomerPaymentsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int messageResId = R.string.view_customer_sessions_button_text;
+                int messageResId = R.string.view_customer_payments_button_text;
                 Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
                 // Get the extra from the activity intent
@@ -162,7 +162,7 @@ public class CustomerMenuFragment extends Fragment {
                 UUID customerId = (UUID) Objects.requireNonNull(getActivity()).getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
                 Log.v("CustomerMenu: ", "Got Extra customer Id: " + customerId.toString());
                 dialog.setCustomerId(customerId);
-                dialog.show(fm, null);
+                dialog.show(Objects.requireNonNull(fm), null);
             }
         });
 

@@ -2,6 +2,7 @@ package com.rmeijer.trainman;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -39,6 +41,7 @@ public class CustomerViewFragment extends Fragment {
     // Objects and Variables
     //**********************************************************************************************
     private Customer mCustomer;
+    private Spinner mGenderSpinner;
     private Button mBirthDateButton;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private ImageView mPhotoImageView;
@@ -153,7 +156,7 @@ public class CustomerViewFragment extends Fragment {
         //------------------------------------------------------------------------------------------
         // Gender
         //------------------------------------------------------------------------------------------
-        Spinner mGenderSpinner = v.findViewById(R.id.view_customer_gender_spinner);
+        mGenderSpinner = v.findViewById(R.id.view_customer_gender_spinner);
         if (mCustomer.getGender() != null) {
             String mGender = mCustomer.getGender();
             if (mGender.equals("Male")) {
@@ -174,6 +177,18 @@ public class CustomerViewFragment extends Fragment {
             Log.v("ViewCustomer: ", "Gender is null.");
         }
 
+        mGenderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view,
+                                       int position, long id) {
+                mCustomer.setGender(mGenderSpinner.getSelectedItem().toString());
+                Log.v("EnterSession: ", "Service: " + mCustomer.getGender());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         //------------------------------------------------------------------------------------------
         // Birth Date
@@ -473,9 +488,16 @@ public class CustomerViewFragment extends Fragment {
             new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int messageResId = R.string.customer_take_picture_button_text;
+                    int messageResId = R.string.take_customer_picture_button_text;
                     Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
-                    getActivity().finish();
+
+                    UUID customerId = (UUID) Objects.requireNonNull(getActivity()).getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
+                    Log.v("CustomerView: ", "Got Extra customer Id: " + customerId.toString());
+
+                    // Start PictureActivity
+                    Intent intent = new Intent(getActivity(), PictureActivity.class);
+                    intent.putExtra(EXTRA_CUSTOMER_ID, customerId);
+                    startActivity(intent);
                 }
             }
         );

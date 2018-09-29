@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:textAllCaps="false"
+    android:layout_margin="10dp">
+
+    <TextView style="@style/screen_title_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/take_customer_picture_title"/>
+
+    <View
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray400" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_gravity="start"
+        android:layout_marginBottom="1dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+        <TextView style="@style/label_style"
+            android:id="@+id/picture_customer_name_label"
+            android:layout_marginEnd="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="@string/customer_name_label" />
+        <TextView style="@style/label_style"
+            android:id="@+id/picture_customer_name_textview"
+            android:layout_marginEnd="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout style="?android:attr/buttonBarStyle"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start">
+        <ImageButton style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/picture_imagebutton"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/button_round"
+            android:src="@android:drawable/ic_menu_camera"
+            android:textColor="@android:color/black"
+            android:contentDescription="@string/null_string"
+            android:text="@string/picture_button_text" />
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            android:textColor="@color/gray500"/>
+    </LinearLayout>
+
+    <!-- Customer photo **************************************** -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/picture_image_imageview"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:contentDescription="@string/customer_picture_desc"
+            android:background="@color/gray100" />
+    </LinearLayout>
+    <!-- ******************************************************* -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            android:textColor="@color/gray500"/>
+    </LinearLayout>
+    <LinearLayout style="?android:attr/buttonBarStyle"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <Button style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/picture_cancel_button"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/button_round"
+            android:textColor="@android:color/black"
+            android:text="@string/cancel_button_text" />
+        <Button style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/picture_save_button"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/button_round"
+            android:textColor="@android:color/black"
+            android:text="@string/save_button_text" />
+
+    </LinearLayout>
+
+</LinearLayout>

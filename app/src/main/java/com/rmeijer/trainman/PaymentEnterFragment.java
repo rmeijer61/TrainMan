@@ -481,6 +481,17 @@ public class PaymentEnterFragment extends Fragment {
 
                 PaymentStore.get(getActivity()).addPayment(mPayment);
 
+                mSession.setPaid(true);
+                Log.v(TAG, "Save: paid " + mSession.isPaid());
+
+                SessionStore.get(getActivity()).updateSessionPaid(mSession);
+
+                //To confirm the result
+                Context mContext = getActivity().getApplicationContext();
+                SessionStore sSessionStore = SessionStore.get(mContext);
+                Session newSession = sSessionStore.getSession(customerId, sessionId);
+                Log.v(TAG, "Confirm paid: " + mSession.isPaid());
+
                 getActivity().finish();
             }
         });

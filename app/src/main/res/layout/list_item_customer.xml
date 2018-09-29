@@ -19,10 +19,15 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <ImageView
-                android:id="@+id/custumer_list_picture_image"
-                android:layout_marginBottom="1dp"
+                android:id="@+id/customer_list_picture_imageview"
+                android:layout_gravity="start"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="2dp"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:padding="2dp"
+                android:scaleType="centerInside"
+                android:background="@drawable/imageview_border"
                 android:contentDescription="@string/customer_picture_desc"
                 android:src="@drawable/nophoto"
                 />

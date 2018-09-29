@@ -143,7 +143,16 @@ public class SessionStore {
 
     public void updateSessionSign(Session session) {
         String uuidString = session.getId().toString();
-        ContentValues values = getContentValues(session);
+        ContentValues values = getContentSignValue(session);
+
+        mDatabase.update(SessionDbSchema.SessionTable.TABLE_NAME, values,
+                SessionDbSchema.SessionTable.Cols.UUID + " = ?",
+                new String[] { uuidString });
+    }
+
+    public void updateSessionPaid(Session session) {
+        String uuidString = session.getId().toString();
+        ContentValues values = getContentPaidValue(session);
 
         mDatabase.update(SessionDbSchema.SessionTable.TABLE_NAME, values,
                 SessionDbSchema.SessionTable.Cols.UUID + " = ?",
@@ -167,8 +176,6 @@ public class SessionStore {
         //return cursor;
         return new SessionCursorWrapper(cursor);
     }
-    // end 14.12
-    // end 14.17
 
     // 14.8 - Creating a ContentValues
     // Writes and updates to databases are done with the assistance of a class called ContentValues
@@ -187,11 +194,17 @@ public class SessionStore {
 
         return values;
     }
-    // end 14.8
 
     private static ContentValues getContentSignValue(Session session) {
         ContentValues value = new ContentValues();
         value.put(SessionDbSchema.SessionTable.Cols.SIGN, session.getSign());
+
+        return value;
+    }
+
+    private static ContentValues getContentPaidValue(Session session) {
+        ContentValues value = new ContentValues();
+        value.put(SessionDbSchema.SessionTable.Cols.PAID, session.isPaid());
 
         return value;
     }

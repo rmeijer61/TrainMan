@@ -3,47 +3,99 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/customer_head_layout"
     android:orientation="vertical"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:textAllCaps="false"
-    android:layout_margin="16dp"
-    android:tag="@string/customer_head_layout">
+    android:textAllCaps="false" >
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_gravity="start"
-        android:layout_marginBottom="1dp"
+        android:layout_marginBottom="2dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 
-        <TextView
-            android:id="@+id/customer_head_customer_id"
-            android:layout_width="1dp"
-            android:layout_height="1dp"
-            android:text=""/>
-
         <ImageView
-            android:id="@+id/customer_head_picture_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/customer_picture_desc"
+            android:id="@+id/customer_head_picture_imageview"
+            android:layout_gravity="start"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="2dp"
+            android:layout_width="80dp"
+            android:layout_height="110dp"
+            android:padding="2dp"
+            android:scaleType="centerInside"
+            android:background="@drawable/imageview_border"
             android:src="@drawable/nophoto"
-            />
-        <TextView style="@style/label_style"
-            android:id="@+id/customer_head_name_label"
-            android:layout_marginEnd="3dp"
+            android:contentDescription="@string/customer_picture_desc" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="1dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAllCaps="false"
-            android:text="@string/customer_name_label"
-            />
-        <TextView style="@style/label_style"
-            android:id="@+id/customer_head_customer_name"
-            android:layout_marginEnd="1dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            />
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+                <TextView style="@style/label_style"
+                    android:id="@+id/customer_head_customer_name_label"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="1dp"
+                    android:text="@string/customer_name_label"
+                    android:textAllCaps="false" />
+                <TextView style="@style/label_style"
+                    android:id="@+id/customer_head_customer_name_textview"
+                    android:layout_marginEnd="1dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp" >
+                <TextView style="@style/label_style"
+                    android:id="@+id/customer_head_gender_label"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gender_label" />
+                <TextView
+                    android:id="@+id/customer_head_gender_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp" >
+                <TextView style="@style/label_style"
+                    android:id="@+id/customer_head_birthdate_label"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/birthdate_label" />
+                <TextView
+                    android:id="@+id/customer_head_birthdate_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

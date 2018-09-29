@@ -160,12 +160,10 @@ public class CustomerPagerActivity extends AppCompatActivity
                     if (getCurrentFocus() != null) {
                         current_focus_view = getCurrentFocus();
                         Log.v("pager_adapter: ", "getItem- (Current) Current View: " + current_focus_view);
-                        current_focus_view_id = current_focus_view.findViewById(R.id.customer_head_customer_id);
                         Log.v("pager_adapter: ", "getItem- (Current) Current View Id: " + current_focus_view_id);
                     }
                     if (mViewPager.getFocusedChild() != null) {
                         current_focus_child = mViewPager.getFocusedChild();
-                        current_id = (UUID) mViewPager.getFocusedChild().findViewById(R.id.customer_head_customer_id).getTag();
                         Log.v("pager_adapter: ", "getItem- (Current) Current focus: " + current_focus_child.toString());
                         Log.v("pager_adapter: ", "getItem- (Current) Current customerId: " + current_id.toString());
                     }
