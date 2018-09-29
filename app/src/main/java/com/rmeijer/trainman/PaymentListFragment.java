@@ -24,15 +24,20 @@ import java.util.UUID;
 // 8.11 - Implementing CustomerListFragment
 public class PaymentListFragment extends Fragment {
 
-    // 11.3 - Creating newIntent
-    private static final String EXTRA_CUSTOMER_ID =
-            "com.rmeijer.trainman.customer_id";
+    // Logging Tag
+    String TAG = "PaymentList: ";
 
-    // 10.6 - Writing a newInstance(UUID) method
+    // 11.3 - Creating newIntent
+    private static final String EXTRA_CUSTOMER_ID = "com.rmeijer.trainman.customer_id";
     private static final String ARG_CUSTOMER_ID = "customer_id";
 
     // 10.6 - Writing a newInstance(UUID) method
+    private static final String EXTRA_SESSION_ID = "com.rmeijer.trainman.session_id";
     private static final String ARG_SESSION_ID = "session_id";
+
+    // 11.3 - Creating newIntent
+    private static final String EXTRA_PAYMENT_ID = "com.rmeijer.trainman.payment_id";
+    private static final String ARG_PAYMENT_ID = "payment_id";
 
     // 13.19 - Saving subtitle visibility
     private static final String SAVED_SUBTITLE_VISIBLE = "subtitle";
@@ -67,17 +72,17 @@ public class PaymentListFragment extends Fragment {
         // Get intent EXTRA(s)
         //*****************************************************************************************
         customerId = (UUID) Objects.requireNonNull(getActivity()).getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
-        Log.v("SessionList: ", "Got Extra customer Id: " + customerId.toString());
+        Log.v(TAG, "Got Extra customer Id: " + customerId.toString());
         if (customerId != null) {
             mCustomer = CustomerStore.get(getActivity()).getCustomer(customerId);
             if (mCustomer != null) {
-                Log.v("SessionList: ", "Name " + mCustomer.getName());
-                Log.v("SessionList: ", "Customer Id " + mCustomer.getId().toString());
+                Log.v(TAG, "Name " + mCustomer.getName());
+                Log.v(TAG, "Customer Id " + mCustomer.getId().toString());
             } else {
-                Log.v("SessionList: ", "************Customer not found!****************");
+                Log.v(TAG, "************Customer not found!****************");
             }
         } else {
-            Log.v("SessionList: ", "************Customer ID EXTRA not found!****************");
+            Log.v(TAG, "************Customer ID EXTRA not found!****************");
         }
 
         // Removed cast
@@ -129,8 +134,8 @@ public class PaymentListFragment extends Fragment {
             case R.id.new_session:
                 // Start CustomerEnterActivity
                 UUID customerId = (UUID) Objects.requireNonNull(getActivity()).getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
-                Log.v("SessionList: ", "Got Extra customer Id: " + customerId.toString());
-                Intent intent = new Intent(getActivity(), SessionEnterActivity.class);
+                Log.v(TAG, "Got Extra customer Id: " + customerId.toString());
+                Intent intent = new Intent(getActivity(), PaymentEnterActivity.class);
                 intent.putExtra(EXTRA_CUSTOMER_ID, customerId);
                 startActivity(intent);
                 return true;
@@ -232,24 +237,17 @@ public class PaymentListFragment extends Fragment {
         // 8.24 - Detecting presses in SessionHolder
         @Override
         public void onClick(View view) {
-            // Go to Session main - (Update: Go to pager instead)
-            // 10.3 - Stashing and passing a Session
-            //Intent intent = new Intent(getActivity(), SessionViewActivity.class);
-            // 11.4 - Firing it up
-            //Intent intent = SessionViewActivity.newIntent(getActivity(), mSession.getId());
+            Log.v(TAG, "Create intent with customer Id: " + customerId);
+            Log.v(TAG, "Create intent with payment Id: " + mPayment.getId().toString());
 
-            Log.v("SessionList: ", "Create intent with customer Id: " + customerId);
-            Log.v("SessionList: ", "Create intent with customer Id: " + mPayment.getId().toString());
+            // Get the extra from the activity intent
+            UUID customerId = (UUID) Objects.requireNonNull(getActivity()).getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
+            Log.v(TAG, "Got Extra customer Id: " + customerId.toString());
 
-            Intent intent = SessionPagerActivity.newIntent(getActivity(), customerId, mPayment.getId());
-
-            //**************************************************************************************
-            //Create arguments in the pager activity intent for the customerId and session_id
-            intent.putExtra(ARG_CUSTOMER_ID, mCustomer.getId());
-            //intent.putExtra(ARG_SESSION_ID, mSession.getId());
-
-            //**************************************************************************************
-
+            // Start SessionEnterActivity
+            Intent intent = new Intent(getActivity(), PaymentViewActivity.class);
+            intent.putExtra(EXTRA_CUSTOMER_ID, customerId);
+            intent.putExtra(EXTRA_PAYMENT_ID, mPayment.getId());
             startActivity(intent);
         }
     }
@@ -304,9 +302,9 @@ public class PaymentListFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        Log.v("PaymentList: ", "onStop *******************************************");
-        Log.v("PaymentList: ", "onStop- Current customer Id: " + customerId);
-        Log.v("PaymentList: ", "onStop *******************************************");
+        Log.v(TAG, "onStop *******************************************");
+        Log.v(TAG, "onStop- Current customer Id: " + customerId);
+        Log.v(TAG, "onStop *******************************************");
     }
 
 }

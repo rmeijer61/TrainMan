@@ -37,6 +37,15 @@
             android:text="@string/customer_list_title" />
     </FrameLayout>
 
+    <TextView
+        style="@style/label_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:text="@string/choose_one" />
+
     <FrameLayout
         android:id="@+id/fragment_container_f12"
         android:layout_width="match_parent"

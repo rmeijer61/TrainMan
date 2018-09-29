@@ -14,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.Calendar;
@@ -49,6 +50,8 @@ public class SessionListFragment extends Fragment {
 
     UUID customerId;
     private Customer mCustomer;
+    private CheckBox mCompletedCheckBox;
+    private CheckBox mPaidCheckBox;
 
     // 13.7 - Receiving menu callbacks
     @Override
@@ -216,22 +219,29 @@ public class SessionListFragment extends Fragment {
             itemView.setOnClickListener(this);
 
             // 8.21 - Pulling out views in the constructor
-            mServiceTextView = itemView.findViewById(R.id.session_list_session_type);
-            mDateTextView = itemView.findViewById(R.id.session_list_date);
+            mServiceTextView = itemView.findViewById(R.id.session_list_session_type_textview);
+            mDateTextView = itemView.findViewById(R.id.session_list_session_date);
+            mCompletedCheckBox = itemView.findViewById(R.id.session_list_completed_checkbox);
+            mPaidCheckBox = itemView.findViewById(R.id.session_list_paid_checkbox);
         }
 
         // 8.22 - Writing a bind(Customer) method
         public void bind(Session session) {
             mSession = session;
+            // Service
             mServiceTextView.setText(mSession.getService());
-            // Format the date
+            // Service date
             Calendar calDate = Calendar.getInstance();
             calDate.setTime(mSession.getSessionDate());
             int year = calDate.get(Calendar.YEAR);
             int month = calDate.get(Calendar.MONTH);
             int day = calDate.get(Calendar.DAY_OF_MONTH);
-            String dateString = "Session Date: " + (month+1) + "/" + day + "/" + year;
+            String dateString = (month+1) + "/" + day + "/" + year;
             mDateTextView.setText(dateString);
+            // Completed
+            mCompletedCheckBox.setChecked(mSession.isCompleted());
+            // Paid
+            mPaidCheckBox.setChecked(mSession.isPaid());
         }
 
         // 8.24 - Detecting presses in SessionHolder

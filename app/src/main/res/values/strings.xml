@@ -45,6 +45,7 @@
     <string name="OK_to_continue_msg_text">OK to continue</string>
     <string name="print_button_text">Send to printer</string>
     <string name="email_button_text">Send email</string>
+    <string name="choose_one">Choose One</string>
 
     <!-- Common labels  -->
     <string name="address_label">Address</string>

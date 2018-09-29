@@ -50,6 +50,13 @@ public class PaymentViewFragment extends Fragment {
     // 10.6 - Writing a newInstance(UUID) method
     private static final String ARG_SESSION_ID = "session_id";
 
+    // 11.3 - Creating newIntent
+    private static final String EXTRA_PAYMENT_ID =
+            "com.rmeijer.trainman.payment_id";
+
+    // 10.6 - Writing a newInstance(UUID) method
+    private static final String ARG_PAYMENT_ID = "payment_id";
+
     // 12.3 - Showing your DialogFragment
     private static final String DIALOG_DATE_FM_TAG = "DialogDateFMTag";
 
@@ -61,6 +68,7 @@ public class PaymentViewFragment extends Fragment {
     //*********************************************************************************************
     private UUID customerId;
     private UUID sessionId;
+    private UUID paymentId;
 
     //*********************************************************************************************
     // Custom Objects
@@ -89,6 +97,19 @@ public class PaymentViewFragment extends Fragment {
     private DatePickerDialog.OnDateSetListener mExpireDateSetListener;
     private DatePickerDialog.OnDateSetListener mPayDateSetListener;
 
+    //**********************************************************************************************
+    // Called when creating a new instance of this fragment
+    //**********************************************************************************************
+    // 10.6 - Writing a newInstance(UUID) method
+    public static PaymentViewFragment newInstance(UUID customerId, UUID paymentId) {
+        Bundle args = new Bundle();
+        args.putSerializable(ARG_CUSTOMER_ID, customerId);
+        args.putSerializable(ARG_PAYMENT_ID, paymentId);
+
+        PaymentViewFragment fragment = new PaymentViewFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
     //*********************************************************************************************
     // Methods
     //*********************************************************************************************
@@ -161,6 +182,10 @@ public class PaymentViewFragment extends Fragment {
             }
         } else {
             Log.v(TAG, "*** Session Id is null! ***");
+            paymentId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_PAYMENT_ID);
+            Log.v(TAG, "Find the Payment object for payment Id:  " + paymentId);
+            PaymentStore sPaymentStore = PaymentStore.get(mContext);
+            mPayment = sPaymentStore.getPayment(paymentId);
         }
 
         if (mPayment.getSessionId() == null) {
