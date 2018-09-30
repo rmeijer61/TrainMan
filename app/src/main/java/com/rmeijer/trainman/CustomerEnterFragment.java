@@ -22,7 +22,7 @@ import java.util.Objects;
 
 public class CustomerEnterFragment extends Fragment {
 
-    private String TAG = "EnterCustomer: ";
+    private String TAG = "CustomerEnter: ";
 
     //**********************************************************************************************
     // Objects and Variables
@@ -81,36 +81,16 @@ public class CustomerEnterFragment extends Fragment {
         // Gender
         //------------------------------------------------------------------------------------------
         mGenderSpinner = v.findViewById(R.id.gender_spinner);
-        if (mCustomer.getGender() != null) {
-            String mGender = mCustomer.getGender();
-            if (mGender.equals("Male")) {
-                mGenderSpinner.setSelection(1);
-                Log.v(TAG, "Gender: " + mGenderSpinner.toString());
-            } else if (mGender.equals("Female")) {
-                mGenderSpinner.setSelection(2);
-                Log.v(TAG, "Gender: " + mGenderSpinner.toString());
-            } else if (mGender.equals("Other")) {
-                mGenderSpinner.setSelection(3);
-                Log.v(TAG, "Gender: " + mGenderSpinner.toString());
-            } else {
-                mGenderSpinner.setSelection(0);
-                Log.v(TAG, "Gender not selected");
-            }
-        } else {
-            mGenderSpinner.setSelection(0);
-            Log.v(TAG, "Gender is null.");
-        }
-
         mGenderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
                 mCustomer.setGender(mGenderSpinner.getSelectedItem().toString());
-                Log.v("EnterSession: ", "Service: " + mCustomer.getGender());
+                Log.v(TAG, "Gender: " + mCustomer.getGender());
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
+                Log.v(TAG, "Gender not selected!");
             }
         });
 

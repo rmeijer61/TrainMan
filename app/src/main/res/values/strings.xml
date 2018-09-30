@@ -31,7 +31,7 @@
     <string name="done_button_text">Done</string>
     <string name="back_button_text">Back</string>
     <string name="OK_msg_text">OK</string>
-    <string name="logoff_button_text">LogOff</string>
+    <string name="logoff_button_text">Log Off</string>
     <string name="logoff_msg_text">Logging You Off</string>
     <string name="are_you_sure_msg_text">Are you sure?</string>
     <string name="null_string"> </string>

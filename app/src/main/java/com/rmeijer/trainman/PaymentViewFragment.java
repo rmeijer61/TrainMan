@@ -31,7 +31,7 @@ import static java.lang.Double.valueOf;
 public class PaymentViewFragment extends Fragment {
 
     // Logging Tag
-    String TAG = "ViewPayment: ";
+    String TAG = "PaymentView: ";
 
     //*********************************************************************************************
     // Intent Extras and/or Arguments
@@ -205,22 +205,26 @@ public class PaymentViewFragment extends Fragment {
         mPayMethodSpinner = v.findViewById(R.id.payment_pay_method_spinner);
         if (mPayment.getPayMethod() != null) {
             String mPayMethod = mPayment.getPayMethod();
-            if (mPayMethod.equals("Cash")) {
-                mPayMethodSpinner.setSelection(1);
-                Log.v(TAG, "PayMethod: " + mPayMethodSpinner.toString());
-            } else if (mPayMethod.equals("Credit Card")) {
-                mPayMethodSpinner.setSelection(2);
-                Log.v(TAG, "PayMethod: " + mPayMethodSpinner.toString());
-            } else if (mPayMethod.equals("PayPal")) {
-                mPayMethodSpinner.setSelection(3);
-                Log.v(TAG, "PayMethod: " + mPayMethodSpinner.toString());
-            } else {
-                mPayMethodSpinner.setSelection(0);
-                Log.v(TAG, "PayMethod not selected");
+            switch (mPayMethod) {
+                case "Cash":
+                    mPayMethodSpinner.setSelection(1);
+                    Log.v(TAG, "PayMethod: " + mPayMethodSpinner.getSelectedItem());
+                    break;
+                case "Credit Card":
+                    mPayMethodSpinner.setSelection(2);
+                    Log.v(TAG, "PayMethod: " + mPayMethodSpinner.getSelectedItem());
+                    break;
+                case "PayPal":
+                    mPayMethodSpinner.setSelection(3);
+                    Log.v(TAG, "PayMethod: " + mPayMethodSpinner.getSelectedItem());
+                    break;
+                default:
+                    mPayMethodSpinner.setSelection(0);
+                    Log.v(TAG, "PayMethod not selected");
             }
         } else {
             mPayMethodSpinner.setSelection(0);
-            Log.v("TAG ", "PayMethod is null");
+            Log.v(TAG, "PayMethod is null");
         }
         mPayMethodSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view,
@@ -231,7 +235,7 @@ public class PaymentViewFragment extends Fragment {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
+                Log.v(TAG, "PayMethod not selected!");
             }
         });
 

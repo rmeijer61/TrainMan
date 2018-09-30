@@ -184,7 +184,7 @@ public class ReceiptFragment extends Fragment {
         // Payment date
         //------------------------------------------------------------------------------------------
         Calendar calPayDate = Calendar.getInstance();
-        calDate.setTime(mSession.getSessionDate());
+        calDate.setTime(mPayment.getPayDate());
         int paymentYear = calDate.get(Calendar.YEAR);
         int paymentMonth = calDate.get(Calendar.MONTH);
         int paymentDay = calDate.get(Calendar.DAY_OF_MONTH);
@@ -196,14 +196,16 @@ public class ReceiptFragment extends Fragment {
         // Email
         //------------------------------------------------------------------------------------------
         mEmailEditText = v.findViewById(R.id.receipt_email_edittext);
+        if (mCustomer != null) {
+            if (mCustomer.getEmail1() != null) {
+                mEmailEditText.setText(mCustomer.getEmail1());
+            }
+        }
         // For view/edit; for enter function, object should be empty
         mEmailEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {
                 Log.v(TAG, "onDateSet (EditText) email: " + mEmailEditText.getText());
-                //Future Use
-                //mReceipt.setEmail(mEmailEditText.getText().toString());
-                //Log.v(TAG, "onDateSet (Receipt Object) email: " + mReceipt.getEmail());
             }
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -220,9 +222,6 @@ public class ReceiptFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 Log.v(TAG, "onDateSet (EditText) printer: " + mPrinterEditText.getText());
-                //Future Use
-                //mReceipt.setPrinter(mPrinterEditText.getText().toString());
-                //Log.v(TAG, "onDateSet (Receipt Object) printer: " + mReceipt.getPrinter());
             }
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}

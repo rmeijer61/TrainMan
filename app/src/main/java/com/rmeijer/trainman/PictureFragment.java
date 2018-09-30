@@ -204,11 +204,6 @@ public class PictureFragment extends Fragment {
                     Log.e(getString(R.string.app_name), "Failed to start camera activity with intent: " + captureImageIntent.toString());
                     e.printStackTrace();
                 }
-
-
-                Log.v( TAG, "OnClickListener: back: " + REQUEST_PHOTO);
-
-                getActivity().finish();
             }
         });
 
@@ -277,8 +272,12 @@ public class PictureFragment extends Fragment {
                 int messageResId = R.string.save_button_text;
                 Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
-                // Save data
-                // here
+                Intent intent = CustomerPagerActivity.newIntent(getActivity(), customerId);
+                //Create an argument in the pager activity intent for the customer_id
+                intent.putExtra(EXTRA_CUSTOMER_ID, customerId);
+                intent.putExtra(ARG_CUSTOMER_ID, customerId);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
 
                 getActivity().finish();
             }

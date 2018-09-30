@@ -159,29 +159,33 @@ public class CustomerViewFragment extends Fragment {
         mGenderSpinner = v.findViewById(R.id.view_customer_gender_spinner);
         if (mCustomer.getGender() != null) {
             String mGender = mCustomer.getGender();
-            if (mGender.equals("Male")) {
-                mGenderSpinner.setSelection(1);
-                Log.v("ViewCustomer: ", "Gender: " + mGenderSpinner.toString());
-            } else if (mGender.equals("Female")) {
-                mGenderSpinner.setSelection(2);
-                Log.v("ViewCustomer: ", "Gender: " + mGenderSpinner.toString());
-            } else if (mGender.equals("Other")) {
-                mGenderSpinner.setSelection(3);
-                Log.v("ViewCustomer: ", "Gender: " + mGenderSpinner.toString());
-            } else {
-                mGenderSpinner.setSelection(0);
-                Log.v("ViewCustomer: ", "Gender not selected");
+            switch (mGender) {
+                case "Male":
+                    mGenderSpinner.setSelection(1);
+                    Log.v(TAG, "Gender: " + mGenderSpinner.getSelectedItem());
+                    break;
+                case "Female":
+                    mGenderSpinner.setSelection(2);
+                    Log.v(TAG, "Gender: " + mGenderSpinner.getSelectedItem());
+                    break;
+                case "Other":
+                    mGenderSpinner.setSelection(3);
+                    Log.v(TAG, "Gender: " + mGenderSpinner.getSelectedItem());
+                    break;
+                default:
+                    mGenderSpinner.setSelection(0);
+                    Log.v(TAG, "Gender not selected");
             }
         } else {
             mGenderSpinner.setSelection(0);
-            Log.v("ViewCustomer: ", "Gender is null.");
+            Log.v(TAG, "Gender is null.");
         }
 
         mGenderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
                 mCustomer.setGender(mGenderSpinner.getSelectedItem().toString());
-                Log.v("EnterSession: ", "Service: " + mCustomer.getGender());
+                Log.v(TAG, "Gender: " + mCustomer.getGender());
             }
 
             @Override
@@ -195,7 +199,7 @@ public class CustomerViewFragment extends Fragment {
         //------------------------------------------------------------------------------------------
         mBirthDateButton = v.findViewById(R.id.view_customer_birthdate_button);
         if (mCustomer.getBirthDate() != null) {
-            Log.v("ViewCustomer: ", "Birthdate: " + mCustomer.getBirthDate().toString());
+            Log.v(TAG, "Birthdate: " + mCustomer.getBirthDate().toString());
             Calendar calDate = Calendar.getInstance();
             calDate.setTime(mCustomer.getBirthDate());
             int year = calDate.get(Calendar.YEAR);
@@ -228,14 +232,14 @@ public class CustomerViewFragment extends Fragment {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 // For display: month = month +1;
-                Log.v("EnterCustomer: ", "onDateSet got birthdate " + (month+1) + "/" + day + "/" + year);
+                Log.v(TAG, "onDateSet got birthdate " + (month+1) + "/" + day + "/" + year);
                 Calendar calDate = Calendar.getInstance();
                 calDate.set(year, month, day);
                 String dateString = (month+1) + "/" + day + "/" + year;
                 mBirthDateButton.setText(dateString);
                 // Convert Calendar to jave.util.Date. Internally, the date is handled properly
                 mCustomer.setBirthDate(calDate.getTime());
-                Log.v("EnterCustomer: ", "onDateSet set birthdate " + mCustomer.getBirthDate().toString());
+                Log.v(TAG, "onDateSet set birthdate " + mCustomer.getBirthDate().toString());
             }
         };
 
@@ -492,7 +496,7 @@ public class CustomerViewFragment extends Fragment {
                     Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
                     UUID customerId = (UUID) Objects.requireNonNull(getActivity()).getIntent().getSerializableExtra(EXTRA_CUSTOMER_ID);
-                    Log.v("CustomerView: ", "Got Extra customer Id: " + customerId.toString());
+                    Log.v(TAG, "Got Extra customer Id: " + customerId.toString());
 
                     // Start PictureActivity
                     Intent intent = new Intent(getActivity(), PictureActivity.class);
@@ -525,7 +529,7 @@ public class CustomerViewFragment extends Fragment {
                         int messageResId = R.string.save_button_text;
                         Toast.makeText(getContext(), messageResId, Toast.LENGTH_SHORT).show();
 
-                        Log.v("ViewCustomer: ", "Updating " + mCustomer.getName() + "...");
+                        Log.v(TAG, "Updating " + mCustomer.getName() + "...");
 
                         CustomerStore.get(getActivity()).updateCustomer(mCustomer);
                         getActivity().finish();
